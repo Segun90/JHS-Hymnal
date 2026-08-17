@@ -329,9 +329,9 @@ const styles = StyleSheet.create({
     fontFamily: fonts.sansSemiBold, fontSize: 15, marginBottom: 12,
   },
   upcomingGrid: {
-    flexDirection: 'row', flexWrap: 'wrap', gap: 12,
+    flexDirection: 'column', gap: 16, alignItems: 'center',
   },
   upcomingCardWrap: {
-    flex: 1, minWidth: '45%', maxWidth: '48%',
+    width: '100%',
   },
 });

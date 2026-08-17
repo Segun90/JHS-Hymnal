@@ -153,7 +153,28 @@ export function getDevotionalProgress(): DevotionalProgress {
   const db = getUserDb();
   const row: any = db.getFirstSync('SELECT * FROM devotional_progress WHERE id = 1');
   if (!row) return getOrCreateProgress();
-  return mapProgress(row, epochDay());
+
+  const today = epochDay();
+  const lastRead = row.last_read_date;
+  const currentDay = row.current_day;
+
+  if (currentDay != null && lastRead != null && today > lastRead) {
+    const count = getDevotionalsCount();
+    const daysPassed = today - lastRead;
+    let newDay = currentDay + daysPassed;
+    if (newDay > count) newDay = count;
+
+    if (newDay !== currentDay) {
+      db.runSync(
+        'UPDATE devotional_progress SET current_day = ?, last_read_date = ? WHERE id = 1',
+        [newDay, today]
+      );
+      const updated: any = db.getFirstSync('SELECT * FROM devotional_progress WHERE id = 1');
+      return mapProgress(updated, today);
+    }
+  }
+
+  return mapProgress(row, today);
 }
 
 export function getCurrentDay(): number {
