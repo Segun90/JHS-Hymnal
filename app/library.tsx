@@ -8,6 +8,8 @@ import { useScreenClearance } from '@/utils/layout';
 import { useLibraryStore } from '@/stores/useLibraryStore';
 import { SegmentedControl } from '@/components/SegmentedControl';
 import { formatBibleRef } from '@/utils/references';
+import { UpcomingCard } from '@/components/UpcomingCard';
+import { getUpcomingContent } from '@/data/upcomingContent';
 import type { LibraryItem, Note, HistoryItem } from '@/types';
 
 const TABS = ['Bookmarks', 'Favorites', 'Notes', 'History'];
@@ -190,6 +192,8 @@ export default function LibraryScreen() {
     { key: 'recent', label: 'Recent' },
   ];
 
+  const upcoming = useMemo(() => getUpcomingContent(), []);
+
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
       <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
@@ -209,52 +213,71 @@ export default function LibraryScreen() {
         )}
       </View>
 
-      <SegmentedControl segments={TABS} selectedIndex={tab} onSelect={setTab} />
+      <FlatList
+        data={sorted}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        ListHeaderComponent={
+          <View>
+            {upcoming.length > 0 && (
+              <View style={styles.upcomingSection}>
+                <Text style={[styles.sectionTitle, { color: palette.text }]}>Upcoming</Text>
+                <View style={styles.upcomingGrid}>
+                  {upcoming.map((item) => (
+                    <View key={item.id} style={styles.upcomingCardWrap}>
+                      <UpcomingCard
+                        item={item}
+                        onPress={() => router.push(`/upcoming/${item.id}`)}
+                      />
+                    </View>
+                  ))}
+                </View>
+              </View>
+            )}
 
-      <View style={[styles.toolbar, { borderBottomColor: palette.border }]}>
-        <View style={[styles.searchWrap, { backgroundColor: palette.surfaceAlt }]}>
-          <Search size={14} color={palette.textSecondary} />
-          <TextInput
-            ref={searchRef}
-            style={[styles.searchInput, { color: palette.text }]}
-            value={search}
-            onChangeText={setSearch}
-            placeholder={`Search ${TABS[tab].toLowerCase()}...`}
-            placeholderTextColor={palette.textSecondary}
-          />
-          {search.length > 0 && (
-            <TouchableOpacity onPress={() => setSearch('')}>
-              <X size={14} color={palette.textSecondary} />
-            </TouchableOpacity>
-          )}
-        </View>
-        <TouchableOpacity
-          style={styles.sortBtn}
-          onPress={() => setSortMode(sorters[(sorters.findIndex((s) => s.key === sortMode) + 1) % sorters.length].key)}
-        >
-          <ArrowUpDown size={14} color={palette.textSecondary} />
-          <Text style={[styles.sortLabel, { color: palette.textSecondary }]}>
-            {sorters.find((s) => s.key === sortMode)?.label ?? 'Newest'}
-          </Text>
-        </TouchableOpacity>
-      </View>
+            <SegmentedControl segments={TABS} selectedIndex={tab} onSelect={setTab} />
 
-      {sorted.length === 0 ? (
-        <View style={styles.empty}>
-          <Text style={[styles.emptyText, { color: palette.textSecondary }]}>{emptyMsg}</Text>
-        </View>
-      ) : (
-        <FlatList
-          data={sorted}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          contentContainerStyle={{ paddingBottom: screenClearance }}
-          showsVerticalScrollIndicator={false}
-          initialNumToRender={30}
-          maxToRenderPerBatch={15}
-          windowSize={7}
-        />
-      )}
+            <View style={[styles.toolbar, { borderBottomColor: palette.border }]}>
+              <View style={[styles.searchWrap, { backgroundColor: palette.surfaceAlt }]}>
+                <Search size={14} color={palette.textSecondary} />
+                <TextInput
+                  ref={searchRef}
+                  style={[styles.searchInput, { color: palette.text }]}
+                  value={search}
+                  onChangeText={setSearch}
+                  placeholder={`Search ${TABS[tab].toLowerCase()}...`}
+                  placeholderTextColor={palette.textSecondary}
+                />
+                {search.length > 0 && (
+                  <TouchableOpacity onPress={() => setSearch('')}>
+                    <X size={14} color={palette.textSecondary} />
+                  </TouchableOpacity>
+                )}
+              </View>
+              <TouchableOpacity
+                style={styles.sortBtn}
+                onPress={() => setSortMode(sorters[(sorters.findIndex((s) => s.key === sortMode) + 1) % sorters.length].key)}
+              >
+                <ArrowUpDown size={14} color={palette.textSecondary} />
+                <Text style={[styles.sortLabel, { color: palette.textSecondary }]}>
+                  {sorters.find((s) => s.key === sortMode)?.label ?? 'Newest'}
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            {sorted.length === 0 && (
+              <View style={styles.empty}>
+                <Text style={[styles.emptyText, { color: palette.textSecondary }]}>{emptyMsg}</Text>
+              </View>
+            )}
+          </View>
+        }
+        contentContainerStyle={{ paddingBottom: screenClearance }}
+        showsVerticalScrollIndicator={false}
+        initialNumToRender={30}
+        maxToRenderPerBatch={15}
+        windowSize={7}
+      />
     </View>
   );
 }
@@ -298,5 +321,17 @@ const styles = StyleSheet.create({
     width: 22, height: 22, borderRadius: 11,
     borderWidth: 2, borderColor: '#9CA3AF',
     alignItems: 'center', justifyContent: 'center',
+  },
+  upcomingSection: {
+    paddingHorizontal: space.screenPadding, paddingTop: space.space4, paddingBottom: space.space2,
+  },
+  sectionTitle: {
+    fontFamily: fonts.sansSemiBold, fontSize: 15, marginBottom: 12,
+  },
+  upcomingGrid: {
+    flexDirection: 'row', flexWrap: 'wrap', gap: 12,
+  },
+  upcomingCardWrap: {
+    flex: 1, minWidth: '45%', maxWidth: '48%',
   },
 });

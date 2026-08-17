@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { ChevronLeft } from 'lucide-react-native';
 import { useTheme } from '../theme/ThemeContext';
-import { type, space, radius } from '../theme/tokens';
+import { type, space, radius, gradients } from '../theme/tokens';
+import { LinearGradient } from 'expo-linear-gradient';
+import { DecorativeBackground } from './DecorativeBackground';
 
 interface AppBarProps {
   title: string;
@@ -26,11 +28,17 @@ export function AppBar({ title, variant = 'default', leading, onBack, trailing, 
   return (
     <View style={[
       styles.bar,
-      { backgroundColor: bgColor },
+      variant !== 'primary' && { backgroundColor: bgColor },
       showBorder && { borderBottomWidth: 1, borderBottomColor: palette.border },
       variant === 'immersive' && styles.elevation,
       variant === 'immersive' && { shadowColor: palette.border },
     ]}>
+      {variant === 'primary' && (
+        <View style={StyleSheet.absoluteFill} pointerEvents="none">
+          <LinearGradient colors={gradients.primaryToAccent} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
+          <DecorativeBackground variant="waves" opacity={0.08} inverse />
+        </View>
+      )}
       <View style={[styles.left, !onBack && !leading && { minWidth: 0 }]}>
         {onBack && (
           <TouchableOpacity onPress={onBack} accessibilityLabel="Go back" style={styles.iconBtn}>

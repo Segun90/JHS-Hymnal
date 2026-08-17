@@ -11,12 +11,12 @@ import { useSettingsStore } from '@/stores/useSettingsStore';
 import { useLibraryStore } from '@/stores/useLibraryStore';
 import { useDevotionsStore } from '@/stores/useDevotionsStore';
 import { initDatabases } from '@/db/database';
-import { syncRemindersFromStore, scheduleSnooze, ACTION_READ_NOW, ACTION_REMIND_15, ACTION_REMIND_30 } from '@/services/notifications';
+import { syncRemindersFromStore, scheduleSnooze, sendTestNotification, ACTION_READ_NOW, ACTION_REMIND_15, ACTION_REMIND_30 } from '@/services/notifications';
 import { useKeepAwakeSetting } from '@/hooks/useKeepAwakeSetting';
 import { light, gradients } from '@/theme/tokens';
 import { LinearGradient } from 'expo-linear-gradient';
 import { LogoMark } from '@/components/LogoMark';
-import WelcomeScreen from './welcome';
+import { DailyInspirationScreen } from '@/components/DailyInspirationScreen';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -29,15 +29,20 @@ export default function RootLayout() {
   const [dbReady, setDbReady] = useState(false);
   const [dbError, setDbError] = useState(false);
   const [retryKey, setRetryKey] = useState(0);
-  const [welcomeDone, setWelcomeDone] = useState(false);
+  const [inspirationDone, setInspirationDone] = useState(false);
   const hydrateSettings = useSettingsStore((s) => s.hydrate);
   const hydrateLibrary = useLibraryStore((s) => s.hydrate);
   const hydrateDevotions = useDevotionsStore((s) => s.hydrate);
   const themeMode = useSettingsStore((s) => s.themeMode);
-  const hasSeenWelcome = useSettingsStore((s) => s.hasSeenWelcome);
 
   const lastNotificationResponse = Notifications.useLastNotificationResponse();
   useKeepAwakeSetting();
+
+  useEffect(() => {
+    (globalThis as any).__sendTestNotification = sendTestNotification;
+    const timer = setTimeout(() => { sendTestNotification().catch(() => {}); }, 5000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!dbReady || !lastNotificationResponse) return;
@@ -106,7 +111,7 @@ export default function RootLayout() {
 
   const fontsLoaded = interLoaded && notoLoaded && poppinsLoaded;
   const showLoading = !fontsLoaded || !dbReady;
-  const showWelcome = !showLoading && !hasSeenWelcome && !welcomeDone;
+  const showInspiration = !showLoading && !inspirationDone;
 
   if (showLoading) {
     return (
@@ -122,9 +127,9 @@ export default function RootLayout() {
     );
   }
 
-  if (showWelcome) {
+  if (showInspiration) {
     return (
-      <WelcomeScreen onComplete={() => setWelcomeDone(true)} />
+      <DailyInspirationScreen onComplete={() => setInspirationDone(true)} />
     );
   }
 
@@ -142,6 +147,7 @@ export default function RootLayout() {
         <Stack.Screen name="library" />
         <Stack.Screen name="settings" options={{ animation: 'slide_from_bottom' }} />
         <Stack.Screen name="reminders" options={{ animation: 'slide_from_bottom' }} />
+        <Stack.Screen name="upcoming/[id]" options={{ animation: 'slide_from_bottom' }} />
         <Stack.Screen name="about" />
         <Stack.Screen name="devotional/welcome" />
         <Stack.Screen name="devotional/[day]" />

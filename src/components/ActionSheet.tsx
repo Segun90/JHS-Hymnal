@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { useTheme } from '../theme/ThemeContext';
-import { fonts, space, radius } from '../theme/tokens';
+import { fonts, space, radius, elevation, gradients } from '../theme/tokens';
+import { LinearGradient } from 'expo-linear-gradient';
 
 interface ActionSheetProps {
   visible: boolean;
@@ -12,7 +13,7 @@ interface ActionSheetProps {
 }
 
 export function ActionSheet({ visible, title, subtitle, actions, onCancel }: ActionSheetProps) {
-  const { palette } = useTheme();
+  const { palette, isDark } = useTheme();
   if (!visible) return null;
 
   return (
@@ -22,7 +23,13 @@ export function ActionSheet({ visible, title, subtitle, actions, onCancel }: Act
         onPress={onCancel}
         activeOpacity={1}
       />
-      <View style={[styles.sheet, { backgroundColor: palette.surface }]}>
+      <View style={[styles.sheet, { backgroundColor: palette.surface }, elevation.modal]}>
+        <LinearGradient 
+          colors={isDark ? gradients.surfaceSoftDark : gradients.surfaceSoftLight} 
+          style={StyleSheet.absoluteFill} 
+          start={{x: 0, y: 0}} end={{x: 0, y: 1}} 
+          pointerEvents="none"
+        />
         <View style={[styles.head, { borderBottomColor: palette.border }]}>
           <Text style={[styles.headTitle, { color: palette.text }]}>{title}</Text>
           <Text style={[styles.headSub, { color: palette.textSecondary }]}>{subtitle}</Text>

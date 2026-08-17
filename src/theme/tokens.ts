@@ -6,6 +6,11 @@ export const brand = {
 export const gradients = {
   hero: ['#1E3A8A', '#2747A8'] as const,
   secondary: ['#C62828', '#B71C1C'] as const,
+  primaryToAccent: ['#1E3A8A', '#512A68', '#C62828'] as const,
+  accentToPrimary: ['#C62828', '#512A68', '#1E3A8A'] as const,
+  surfaceSoftLight: ['#FFFFFF', '#FAF8F5'] as const,
+  surfaceSoftDark: ['#161F36', '#121A2E'] as const,
+  warmGlow: ['#D4A017', '#E8C564'] as const,
 } as const;
 
 export interface Palette {
@@ -72,9 +77,9 @@ export const tabBar = {
 export const radius = { r1: 8, r2: 12, r3: 20, r4: 28, rFull: 999 } as const;
 
 export const elevation = {
-  card:  { shadowColor: '#1F2937', shadowOffset: { width: 0, height: 1 }, shadowOpacity: 0.08, shadowRadius: 3,  elevation: 2 },
-  bar:   { shadowColor: '#1F2937', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.10, shadowRadius: 8,  elevation: 4 },
-  modal: { shadowColor: '#1F2937', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.16, shadowRadius: 24, elevation: 8 },
+  card:  { shadowColor: '#000000', shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.06, shadowRadius: 12,  elevation: 3 },
+  bar:   { shadowColor: '#000000', shadowOffset: { width: 0, height: 3 }, shadowOpacity: 0.08, shadowRadius: 16,  elevation: 6 },
+  modal: { shadowColor: '#000000', shadowOffset: { width: 0, height: -4 }, shadowOpacity: 0.12, shadowRadius: 32, elevation: 16 },
 } as const;
 
 export const motion = { fast: 150, normal: 250 } as const;

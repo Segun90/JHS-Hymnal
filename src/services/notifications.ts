@@ -243,6 +243,25 @@ export async function scheduleReminder(type: ReminderType, settings: Notificatio
   }
 }
 
+export async function sendTestNotification(): Promise<void> {
+  await ensureNotificationSetup();
+  await Notifications.requestPermissionsAsync();
+  await Notifications.scheduleNotificationAsync({
+    identifier: 'test-notification',
+    content: {
+      title: "Today's Devotional",
+      body: "May God speak to your heart today. Tap to begin today's reading.",
+      data: { screen: '/devotions', type: 'devotional' },
+      sound: true,
+    },
+    trigger: {
+      type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+      seconds: 1,
+      channelId: CHANNELS.sound,
+    },
+  });
+}
+
 export async function scheduleSnooze(minutes: number): Promise<void> {
   await ensureNotificationSetup();
   const settings = getNotificationSettings();

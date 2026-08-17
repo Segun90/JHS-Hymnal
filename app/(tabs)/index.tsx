@@ -14,6 +14,8 @@ import { getHymn } from '@/db/hymns';
 import { formatBibleRef } from '@/utils/references';
 import { useTabBarClearance } from '@/utils/layout';
 import type { Verse } from '@/types';
+import { DecorativeBackground } from '@/components/DecorativeBackground';
+import { elevation } from '@/theme/tokens';
 
 const CAROUSEL_ITEMS = [
   { bookId: 43, chapter: 3, verse: 16, category: 'Love' },
@@ -140,6 +142,10 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
       <View style={[styles.appbar, { backgroundColor: palette.primary }]}>
+        <View style={StyleSheet.absoluteFill} pointerEvents="none">
+          <LinearGradient colors={gradients.primaryToAccent} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
+          <DecorativeBackground variant="rays" opacity={0.06} inverse />
+        </View>
         <Image source={require('../../assets/logo.png')} style={styles.logoSmall} />
         <Text style={[styles.appbarTitle, { color: palette.onPrimary }]}>J.H.S</Text>
         <View style={{ flex: 1 }} />
@@ -165,7 +171,6 @@ export default function HomeScreen() {
                 icon={<Icon size={28} color={palette.primary} />}
                 label={tile.label}
                 sub={tile.sub}
-                bg={palette.surfaceAlt}
                 textColor={palette.text}
                 subColor={palette.textSecondary}
                 onPress={() => router.push(tile.route as any)}
@@ -176,7 +181,7 @@ export default function HomeScreen() {
 
         {continueInfo ? (
           <TouchableOpacity
-            style={[styles.contCard, { backgroundColor: palette.surface }]}
+            style={[styles.contCard, { backgroundColor: palette.surface }, elevation.card]}
             onPress={() => {
               record(continueItem);
               router.push(continueInfo.route as any);
@@ -196,7 +201,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
         ) : (
           <TouchableOpacity
-            style={[styles.contCard, { backgroundColor: palette.surface }]}
+            style={[styles.contCard, { backgroundColor: palette.surface }, elevation.card]}
             onPress={() => router.push('/(tabs)/bible')}
             activeOpacity={0.8}
           >
@@ -227,11 +232,14 @@ export default function HomeScreen() {
 
         {todayDevotional ? (
           <TouchableOpacity
-            style={styles.devCard}
+            style={[styles.devCard, elevation.card]}
             onPress={() => router.push(`/devotional/${todayDevDay}`)}
             activeOpacity={0.9}
           >
-            <LinearGradient colors={gradients.hero} style={styles.devBg} />
+            <LinearGradient colors={gradients.primaryToAccent} style={styles.devBg} start={{x:0, y:0}} end={{x:1, y:1}} />
+            <View style={StyleSheet.absoluteFill} pointerEvents="none">
+              <DecorativeBackground variant="glow" opacity={0.15} inverse />
+            </View>
             <View style={styles.devCardTop}>
               <View style={[styles.devDayPill, { backgroundColor: 'rgba(255,255,255,0.18)' }]}>
                 <Text style={[styles.devDayText, { color: palette.onPrimary }]}>
@@ -249,11 +257,14 @@ export default function HomeScreen() {
           </TouchableOpacity>
         ) : devTotal > 0 ? (
           <TouchableOpacity
-            style={styles.devCard}
+            style={[styles.devCard, elevation.card]}
             onPress={() => router.push('/devotional/complete')}
             activeOpacity={0.9}
           >
-            <LinearGradient colors={gradients.hero} style={styles.devBg} />
+            <LinearGradient colors={gradients.primaryToAccent} style={styles.devBg} start={{x:0, y:0}} end={{x:1, y:1}} />
+            <View style={StyleSheet.absoluteFill} pointerEvents="none">
+              <DecorativeBackground variant="glow" opacity={0.15} inverse />
+            </View>
             <View style={styles.devCardTop}>
               <View style={[styles.devDayPill, { backgroundColor: 'rgba(255,255,255,0.18)' }]}>
                 <Text style={[styles.devDayText, { color: palette.onPrimary }]}>COMPLETE</Text>
@@ -312,8 +323,9 @@ export default function HomeScreen() {
   );
 }
 
-function DashboardCard({ width, icon, label, sub, bg, textColor, subColor, onPress }: any) {
+function DashboardCard({ width, icon, label, sub, textColor, subColor, onPress }: any) {
   const scale = useSharedValue(1);
+  const { isDark } = useTheme();
 
   const animStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
@@ -325,11 +337,20 @@ function DashboardCard({ width, icon, label, sub, bg, textColor, subColor, onPre
         onPress={onPress}
         onPressIn={() => { scale.value = withSpring(0.97, { damping: 18, stiffness: 200 }); }}
         onPressOut={() => { scale.value = withSpring(1, { damping: 15, stiffness: 180 }); }}
-        style={[styles.tile, { backgroundColor: bg }]}
+        style={[styles.tile, elevation.card, { borderColor: isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)', borderWidth: 1, overflow: 'hidden' }]}
       >
-        {icon}
-        <Text style={[styles.tileTitle, { color: textColor }]}>{label}</Text>
-        <Text style={[styles.tileSub, { color: subColor }]}>{sub}</Text>
+        <LinearGradient 
+          colors={isDark ? gradients.surfaceSoftDark : gradients.surfaceSoftLight} 
+          style={StyleSheet.absoluteFill} 
+          start={{x: 0, y: 0}} end={{x: 0, y: 1}} 
+        />
+        <View style={{ zIndex: 1, gap: space.space2 }}>
+          {icon}
+          <View>
+            <Text style={[styles.tileTitle, { color: textColor }]}>{label}</Text>
+            <Text style={[styles.tileSub, { color: subColor }]}>{sub}</Text>
+          </View>
+        </View>
       </Pressable>
     </Animated.View>
   );
@@ -353,10 +374,9 @@ const styles = StyleSheet.create({
   },
   tile: {
     borderRadius: radius.r2, padding: space.space4,
-    gap: space.space2,
   },
-  tileTitle: { fontFamily: fonts.sansSemiBold, fontSize: 14, marginTop: space.space1 },
-  tileSub: { fontFamily: fonts.sansMedium, fontSize: 11, lineHeight: 14 },
+  tileTitle: { fontFamily: fonts.sansSemiBold, fontSize: 14 },
+  tileSub: { fontFamily: fonts.sansMedium, fontSize: 11, lineHeight: 14, marginTop: 2 },
   contCard: {
     flexDirection: 'row', alignItems: 'center',
     marginHorizontal: space.screenPadding, marginTop: 16, marginBottom: 4,
