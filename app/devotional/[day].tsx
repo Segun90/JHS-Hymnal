@@ -9,6 +9,8 @@ import {
   ImageDown, NotebookPen, Lock, PartyPopper,
 } from 'lucide-react-native';
 import * as ViewShot from 'react-native-view-shot';
+import * as Sharing from 'expo-sharing';
+import { documentDirectory, copyAsync } from 'expo-file-system/legacy';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 import { useTheme } from '@/theme/ThemeContext';
 import { space, radius, fonts, type } from '@/theme/tokens';
@@ -160,8 +162,15 @@ export default function DevotionalReaderScreen() {
       const uri = await ViewShot.captureRef(cardRef.current, {
         format: 'png', quality: 1, result: 'tmpfile',
       });
-      await Share.share({ url: uri, message: 'J.H.S Daily Devotional' });
-    } catch {}
+      const fileName = `JHS_Devotional_Day${dayNum}.png`;
+      const dest = `${documentDirectory}${fileName}`;
+      await copyAsync({ from: uri, to: dest });
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(dest, { mimeType: 'image/png', dialogTitle: 'Share Devotional' });
+      }
+    } catch (e) {
+      console.warn('Failed to save devotional image:', e);
+    }
     setSaving(false);
   };
 
