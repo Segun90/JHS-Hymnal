@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import {
   View, ScrollView, StyleSheet, TouchableOpacity, Text, Share,
-  TextInput, KeyboardAvoidingView, Platform,
+  TextInput, KeyboardAvoidingView, Platform, Alert,
 } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import {
@@ -9,8 +9,7 @@ import {
   ImageDown, NotebookPen, Lock, PartyPopper,
 } from 'lucide-react-native';
 import * as ViewShot from 'react-native-view-shot';
-import * as Sharing from 'expo-sharing';
-import { documentDirectory, copyAsync } from 'expo-file-system/legacy';
+import { documentDirectory, copyAsync, makeDirectoryAsync, getInfoAsync } from 'expo-file-system/legacy';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 import { useTheme } from '@/theme/ThemeContext';
 import { space, radius, fonts, type } from '@/theme/tokens';
@@ -162,14 +161,15 @@ export default function DevotionalReaderScreen() {
       const uri = await ViewShot.captureRef(cardRef.current, {
         format: 'png', quality: 1, result: 'tmpfile',
       });
-      const fileName = `JHS_Devotional_Day${dayNum}.png`;
-      const dest = `${documentDirectory}${fileName}`;
+      const picturesDir = `${documentDirectory}Pictures/`;
+      const { exists } = await getInfoAsync(picturesDir);
+      if (!exists) await makeDirectoryAsync(picturesDir, { intermediates: true });
+      const dest = `${picturesDir}JHS_Devotional_Day${dayNum}.png`;
       await copyAsync({ from: uri, to: dest });
-      if (await Sharing.isAvailableAsync()) {
-        await Sharing.shareAsync(dest, { mimeType: 'image/png', dialogTitle: 'Share Devotional' });
-      }
+      Alert.alert('Saved', `Devotional image saved to Pictures folder.`);
     } catch (e) {
       console.warn('Failed to save devotional image:', e);
+      Alert.alert('Error', 'Could not save the image. Please try again.');
     }
     setSaving(false);
   };
