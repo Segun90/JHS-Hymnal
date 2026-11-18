@@ -20,6 +20,8 @@ export interface HymnSection {
   name: string;
   sortOrder: number;
   hymnCount: number;
+  minNumber?: number;
+  maxNumber?: number;
 }
 
 export interface Hymn {
@@ -44,6 +46,7 @@ export interface IndexEntry {
   indexType: 'topical' | 'general' | 'first_lines';
   entryText: string;
   hymnId: number;
+  hymnNumber?: number;
 }
 
 export interface LibraryItem {

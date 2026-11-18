@@ -6,6 +6,7 @@ import { ChevronLeft } from 'lucide-react-native';
 import { useTheme } from '@/theme/ThemeContext';
 import { space, fonts } from '@/theme/tokens';
 import { LogoMark } from '@/components/LogoMark';
+import { AppBar } from '@/components/AppBar';
 
 export default function AboutScreen() {
   const { palette } = useTheme();
@@ -14,12 +15,11 @@ export default function AboutScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>About</Text>
-      </View>
+      <AppBar 
+        title="About" 
+        variant="primary" 
+        onBack={() => router.back()} 
+      />
       <View style={styles.body}>
         <LogoMark size={96} />
         <Text style={[styles.title, { color: palette.text }]}>J.H.S Bible & Hymnal</Text>

@@ -5,12 +5,13 @@ import { ChevronLeft, ChevronRight, Heart, Share2, Bookmark, ArrowLeft } from 'l
 import Animated, { FadeInUp } from 'react-native-reanimated';
 import { useTheme } from '@/theme/ThemeContext';
 import { space, type, fonts } from '@/theme/tokens';
-import { getHymnWithStanzas } from '@/db/hymns';
+import { getHymnWithStanzas, getHymnBounds, getAdjacentHymnNumbers } from '@/db/hymns';
 import { useSettingsStore } from '@/stores/useSettingsStore';
 import { useLibraryStore } from '@/stores/useLibraryStore';
 import { useStatsStore } from '@/stores/useStatsStore';
 import { StanzaView } from '@/components/StanzaView';
 import { Toast } from '@/components/Toast';
+import { AppBar } from '@/components/AppBar';
 
 export default function HymnViewScreen() {
   const { palette } = useTheme();
@@ -22,7 +23,15 @@ export default function HymnViewScreen() {
   const statsStore = useStatsStore();
   const sessionRef = useRef(0);
 
-  const data = useMemo(() => getHymnWithStanzas(num), [num]);
+  const data = useMemo(
+    () => (Number.isFinite(num) && num > 0 ? getHymnWithStanzas(num) : null),
+    [num]
+  );
+  const bounds = useMemo(() => getHymnBounds(), []);
+  const adjacent = useMemo(
+    () => (Number.isFinite(num) ? getAdjacentHymnNumbers(num) : { prev: null, next: null }),
+    [num]
+  );
   const [toastMsg, setToastMsg] = useState('');
   const [toastKey, setToastKey] = useState(0);
 
@@ -43,15 +52,15 @@ export default function HymnViewScreen() {
 
   const isFav = useMemo(() => data && store.favorites.some((f: any) => f.hymnId === data.hymn.id), [store.favorites, data]);
   const isBm = useMemo(() => data && store.bookmarks.some((b: any) => b.hymnId === data.hymn.id), [store.bookmarks, data]);
-  const prevExists = num > 1;
-  const nextExists = num < 376;
+  const prevExists = adjacent.prev !== null;
+  const nextExists = adjacent.next !== null;
 
   const handlePrev = () => {
-    if (num > 1) router.replace(`/hymns/${num - 1}` as any);
+    if (adjacent.prev !== null) router.replace(`/hymns/${adjacent.prev}` as any);
   };
 
   const handleNext = () => {
-    if (num < 376) router.replace(`/hymns/${num + 1}` as any);
+    if (adjacent.next !== null) router.replace(`/hymns/${adjacent.next}` as any);
   };
 
   if (!data) {
@@ -69,40 +78,42 @@ export default function HymnViewScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, shadowColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ArrowLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>№ {hymn.number}</Text>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity
-          onPress={() => {
-            store.toggleBookmark({ itemType: 'hymn', hymnId: hymn.id, label: hymn.title }, `${hymn.title} \u00B7 Hymn ${hymn.number}`);
-            showToast(isBm ? 'Bookmark removed' : 'Bookmarked!');
-          }}
-          style={styles.iconBtn}
-        >
-          <Bookmark size={20} color={isBm ? palette.primary : palette.textSecondary} fill={isBm ? palette.primary : 'transparent'} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            store.toggleFavorite({ itemType: 'hymn', hymnId: hymn.id });
-            showToast(isFav ? 'Removed from favorites' : 'Added to favorites');
-          }}
-          style={styles.iconBtn}
-        >
-          <Heart size={22} color={isFav ? palette.primary : palette.textSecondary} fill={isFav ? palette.primary : 'transparent'} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            const text = stanzas.map((s: any) => (s.stanzaType === 'chorus' ? `Chorus: ${s.text}` : `${s.stanzaNumber}. ${s.text}`)).join('\n\n');
-            Share.share({ message: `${hymn.title}\n\n${text}\n\nHymn ${hymn.number} \u00B7 J.H.S Hymnal` });
-          }}
-          style={styles.iconBtn}
-        >
-          <Share2 size={22} color={palette.text} />
-        </TouchableOpacity>
-      </View>
+      <AppBar 
+        title={`№ ${hymn.number}`} 
+        variant="primary" 
+        onBack={() => router.back()}
+        trailing={
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity
+              onPress={() => {
+                store.toggleBookmark({ itemType: 'hymn', hymnId: hymn.id, label: hymn.title }, `${hymn.title} \u00B7 Hymn ${hymn.number}`);
+                showToast(isBm ? 'Bookmark removed' : 'Bookmarked!');
+              }}
+              style={styles.iconBtn}
+            >
+              <Bookmark size={20} color={isBm ? palette.primary : palette.onPrimary} fill={isBm ? palette.primary : 'transparent'} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                store.toggleFavorite({ itemType: 'hymn', hymnId: hymn.id });
+                showToast(isFav ? 'Removed from favorites' : 'Added to favorites');
+              }}
+              style={styles.iconBtn}
+            >
+              <Heart size={22} color={isFav ? palette.primary : palette.onPrimary} fill={isFav ? palette.primary : 'transparent'} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                const text = stanzas.map((s: any) => (s.stanzaType === 'chorus' ? `Chorus: ${s.text}` : `${s.stanzaNumber}. ${s.text}`)).join('\n\n');
+                Share.share({ message: `${hymn.title}\n\n${text}\n\nHymn ${hymn.number} \u00B7 J.H.S Hymnal` });
+              }}
+              style={styles.iconBtn}
+            >
+              <Share2 size={22} color={palette.onPrimary} />
+            </TouchableOpacity>
+          </View>
+        }
+      />
 
       <ScrollView
         style={{ flex: 1 }}
@@ -139,7 +150,7 @@ export default function HymnViewScreen() {
           <ChevronLeft size={24} color={palette.text} />
         </TouchableOpacity>
         <Text style={[styles.miniBarText, { color: palette.textSecondary }]}>
-          Hymn {hymn.number} of 376
+          Hymn {hymn.number} of {bounds.totalCount || bounds.maxNumber}
         </Text>
         <TouchableOpacity onPress={handleNext} disabled={!nextExists} style={[styles.iconBtn, !nextExists && { opacity: 0.3 }]}>
           <ChevronRight size={24} color={palette.text} />

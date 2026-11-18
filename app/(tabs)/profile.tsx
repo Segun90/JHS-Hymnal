@@ -8,6 +8,7 @@ import { useSettingsStore } from '@/stores/useSettingsStore';
 import { useStatsStore } from '@/stores/useStatsStore';
 import { space, fonts, brand } from '@/theme/tokens';
 import { useTabBarClearance } from '@/utils/layout';
+import { AppBar } from '@/components/AppBar';
 
 function formatTime(seconds: number): string {
   if (seconds < 60) return `${seconds}s`;
@@ -63,13 +64,15 @@ export default function ProfileScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>Profile</Text>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/settings')}>
-          <Settings size={22} color={palette.text} />
-        </TouchableOpacity>
-      </View>
+      <AppBar 
+        title="Profile" 
+        variant="primary" 
+        trailing={
+          <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/settings')}>
+            <Settings size={22} color={palette.onPrimary} />
+          </TouchableOpacity>
+        }
+      />
 
       <ScrollView
         style={{ flex: 1 }}

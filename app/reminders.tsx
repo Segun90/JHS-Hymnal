@@ -9,6 +9,8 @@ import { space, fonts, radius } from '@/theme/tokens';
 import { useScreenClearance } from '@/utils/layout';
 import { useDevotionsStore } from '@/stores/useDevotionsStore';
 import { requestExactAlarmAccess } from '@/services/notifications';
+import { AppBar } from '@/components/AppBar';
+import { ActionSheet } from '@/components/ActionSheet';
 import type { NotificationSettings } from '@/db/notifications';
 
 type Target = 'devotional' | 'bible' | 'prayer' | 'quietStart' | 'quietEnd';
@@ -35,6 +37,7 @@ export default function RemindersScreen() {
   const [picking, setPicking] = useState<Target | null>(null);
   const [draft, setDraft] = useState<Date>(new Date());
   const pickingRef = useRef<Target | null>(null);
+  const [showRingtoneSheet, setShowRingtoneSheet] = useState(false);
 
   const quietEnabled = !!(notifications.quietHoursStart && notifications.quietHoursEnd);
 
@@ -140,12 +143,11 @@ export default function RemindersScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>Reminder & Alarm Settings</Text>
-      </View>
+      <AppBar 
+        title="Reminder & Alarm Settings" 
+        variant="primary" 
+        onBack={() => router.back()} 
+      />
 
       <ScrollView
         style={{ flex: 1 }}
@@ -211,6 +213,27 @@ export default function RemindersScreen() {
                   thumbColor={palette.surface}
                 />
               </View>
+              {notifications.sound && (
+                <TouchableOpacity 
+                  style={[styles.setRow, { borderBottomColor: palette.border, borderBottomWidth: 1 }]} 
+                  onPress={() => setShowRingtoneSheet(true)}
+                >
+                  <View style={{ width: 20 }} />
+                  <View style={{ flex: 1, marginLeft: 12 }}>
+                    <Text style={[styles.setLabel, { color: palette.text }]}>Notification Sound</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+                    <Text style={{ color: palette.textSecondary, fontSize: 15, fontFamily: fonts.sansMedium }}>
+                      {notifications.preferredSound === 'act' ? 'Act' : 
+                       notifications.preferredSound === 'pray' ? 'Pray' : 
+                       notifications.preferredSound === 'read' ? 'Read' : 
+                       notifications.preferredSound === 'wake' ? 'Wake' : 
+                       'Default'}
+                    </Text>
+                    <ChevronRight size={18} color={palette.textSecondary} />
+                  </View>
+                </TouchableOpacity>
+              )}
               <View style={styles.setRow}>
                 <Vibrate size={20} color={palette.primary} />
                 <View style={{ flex: 1, marginLeft: 12 }}>
@@ -301,6 +324,20 @@ export default function RemindersScreen() {
           />
         </View>
       )}
+
+      <ActionSheet
+        visible={showRingtoneSheet}
+        onCancel={() => setShowRingtoneSheet(false)}
+        title="Choose Notification Sound"
+        subtitle="Select sound for reminders"
+        actions={[
+          { label: 'Default System Sound', icon: <Volume2 size={20} color={palette.primary} />, onPress: () => { setNotifications({ ...notifications, preferredSound: 'default' }); setShowRingtoneSheet(false); } },
+          { label: 'Act', icon: <Volume2 size={20} color={palette.primary} />, onPress: () => { setNotifications({ ...notifications, preferredSound: 'act' }); setShowRingtoneSheet(false); } },
+          { label: 'Pray', icon: <Volume2 size={20} color={palette.primary} />, onPress: () => { setNotifications({ ...notifications, preferredSound: 'pray' }); setShowRingtoneSheet(false); } },
+          { label: 'Read', icon: <Volume2 size={20} color={palette.primary} />, onPress: () => { setNotifications({ ...notifications, preferredSound: 'read' }); setShowRingtoneSheet(false); } },
+          { label: 'Wake', icon: <Volume2 size={20} color={palette.primary} />, onPress: () => { setNotifications({ ...notifications, preferredSound: 'wake' }); setShowRingtoneSheet(false); } },
+        ]}
+      />
     </View>
   );
 }

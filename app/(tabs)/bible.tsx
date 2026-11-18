@@ -8,6 +8,7 @@ import { space, fonts } from '@/theme/tokens';
 import { useTabBarClearance } from '@/utils/layout';
 import { getBooks } from '@/db/bible';
 import { SegmentedControl } from '@/components/SegmentedControl';
+import { AppBar } from '@/components/AppBar';
 import type { BibleBook } from '@/types';
 
 export default function BibleScreen() {
@@ -32,13 +33,15 @@ export default function BibleScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>Holy Bible</Text>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/search')}>
-          <SearchIcon size={22} color={palette.text} />
-        </TouchableOpacity>
-      </View>
+      <AppBar 
+        title="Holy Bible" 
+        variant="primary" 
+        trailing={
+          <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/search')}>
+            <SearchIcon size={22} color={palette.onPrimary} />
+          </TouchableOpacity>
+        }
+      />
 
       <SegmentedControl
         segments={['Old Testament', 'New Testament']}

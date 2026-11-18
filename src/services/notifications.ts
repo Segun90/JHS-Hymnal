@@ -34,11 +34,12 @@ const CATEGORY_ACTIONS: Notifications.NotificationAction[] = [
 ];
 
 const CHANNELS = {
-  sound: 'jhs-reminders-sound',
   vibrateOnly: 'jhs-reminders-vibrate-only',
-  soundOnly: 'jhs-reminders-sound-only',
   silent: 'jhs-reminders-silent',
 } as const;
+
+const getSoundChannel = (soundName: string, vibration: boolean) => 
+  `jhs-reminders-sound-${soundName}${vibration ? '' : '-only'}`;
 
 const IDENTIFIERS: Record<ReminderType, string> = {
   devotional: 'devotional-reminder',
@@ -62,26 +63,31 @@ Notifications.setNotificationHandler({
 
 export async function ensureNotificationSetup(): Promise<void> {
   if (Platform.OS === 'android') {
-    await Notifications.setNotificationChannelAsync(CHANNELS.sound, {
-      name: 'J.H.S Reminders',
-      importance: Notifications.AndroidImportance.HIGH,
-      sound: null,
-      vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#C00000',
-    });
+    const customSounds = ['default', 'act', 'pray', 'read', 'wake'];
+    for (const s of customSounds) {
+      const soundFile = s === 'default' ? null : `${s}.mp3`;
+      await Notifications.setNotificationChannelAsync(getSoundChannel(s, true), {
+        name: `J.H.S Reminders (${s})`,
+        importance: Notifications.AndroidImportance.HIGH,
+        sound: soundFile,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: '#C00000',
+      });
+      await Notifications.setNotificationChannelAsync(getSoundChannel(s, false), {
+        name: `J.H.S Reminders (${s}, No Vibration)`,
+        importance: Notifications.AndroidImportance.HIGH,
+        sound: soundFile,
+        enableVibrate: false,
+        vibrationPattern: null,
+        lightColor: '#C00000',
+      });
+    }
+
     await Notifications.setNotificationChannelAsync(CHANNELS.vibrateOnly, {
       name: 'J.H.S Reminders (Silent)',
       importance: Notifications.AndroidImportance.HIGH,
       sound: null,
       vibrationPattern: [0, 250, 250, 250],
-      lightColor: '#C00000',
-    });
-    await Notifications.setNotificationChannelAsync(CHANNELS.soundOnly, {
-      name: 'J.H.S Reminders (No Vibration)',
-      importance: Notifications.AndroidImportance.HIGH,
-      sound: null,
-      enableVibrate: false,
-      vibrationPattern: null,
       lightColor: '#C00000',
     });
     await Notifications.setNotificationChannelAsync(CHANNELS.silent, {
@@ -182,10 +188,9 @@ function messageFor(type: ReminderType, hour: number, minute: number): { title: 
   return prayerMessage();
 }
 
-function channelFor(sound: boolean, vibration: boolean, quiet: boolean): string {
+function channelFor(sound: boolean, vibration: boolean, quiet: boolean, preferredSound: string = 'default'): string {
   if (quiet) return CHANNELS.silent;
-  if (sound && vibration) return CHANNELS.sound;
-  if (sound) return CHANNELS.soundOnly;
+  if (sound) return getSoundChannel(preferredSound, vibration);
   if (vibration) return CHANNELS.vibrateOnly;
   return CHANNELS.silent;
 }
@@ -214,7 +219,7 @@ export async function scheduleReminder(type: ReminderType, settings: Notificatio
     data: { screen: message.screen, type },
   };
   if (Platform.OS !== 'android') {
-    content.sound = playSound ? 'default' : false;
+    content.sound = playSound ? (settings.preferredSound === 'default' ? 'default' : `${settings.preferredSound}.mp3`) : false;
   }
   if (type === 'devotional') {
     content.categoryIdentifier = CATEGORY_ID;
@@ -227,7 +232,7 @@ export async function scheduleReminder(type: ReminderType, settings: Notificatio
         type: Notifications.SchedulableTriggerInputTypes.DAILY,
         hour,
         minute,
-        channelId: channelFor(settings.sound, settings.vibration, quiet),
+        channelId: channelFor(settings.sound, settings.vibration, quiet, settings.preferredSound),
       },
     });
   } else {
@@ -257,7 +262,7 @@ export async function sendTestNotification(): Promise<void> {
     trigger: {
       type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
       seconds: 1,
-      channelId: CHANNELS.sound,
+      channelId: channelFor(true, true, false),
     },
   });
 }

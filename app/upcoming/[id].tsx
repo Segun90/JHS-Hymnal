@@ -6,6 +6,7 @@ import { ChevronLeft, Clock, CheckCircle, Calendar, BookOpen } from 'lucide-reac
 import { useTheme } from '@/theme/ThemeContext';
 import { space, fonts, radius, gradients } from '@/theme/tokens';
 import { getUpcomingContent } from '@/data/upcomingContent';
+import { AppBar } from '@/components/AppBar';
 import type { ContentStatus } from '@/data/upcomingContent';
 
 const STATUS_CONFIG: Record<ContentStatus, { label: string; color: string; icon: typeof Clock }> = {
@@ -51,12 +52,11 @@ export default function UpcomingDetailScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: palette.background }]}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]} numberOfLines={1}>{item.title}</Text>
-      </View>
+      <AppBar 
+        title={item.title} 
+        variant="primary" 
+        onBack={() => router.back()} 
+      />
 
       <ScrollView contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
         <LinearGradient

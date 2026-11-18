@@ -14,6 +14,7 @@ export interface NotificationSettings {
   vibration: boolean;
   quietHoursStart: string | null;
   quietHoursEnd: string | null;
+  preferredSound: string;
 }
 
 export const DEFAULT_NOTIFICATION_SETTINGS: NotificationSettings = {
@@ -30,6 +31,7 @@ export const DEFAULT_NOTIFICATION_SETTINGS: NotificationSettings = {
   vibration: true,
   quietHoursStart: null,
   quietHoursEnd: null,
+  preferredSound: 'default',
 };
 
 export function parseTime24(value: string | null | undefined): { hour: number; minute: number } {
@@ -65,6 +67,7 @@ export function getNotificationSettings(): NotificationSettings {
     vibration: !!row.vibration,
     quietHoursStart: row.quiet_hours_start || null,
     quietHoursEnd: row.quiet_hours_end || null,
+    preferredSound: row.preferred_sound || 'default',
   };
 }
 
@@ -73,8 +76,8 @@ export function setNotificationSettings(settings: NotificationSettings): void {
   db.runSync(
     `INSERT INTO notification_settings (
        id, devotional_enabled, devotional_time, bible_enabled, bible_time,
-       prayer_enabled, prayer_time, sound, vibration, quiet_hours_start, quiet_hours_end)
-     VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+       prayer_enabled, prayer_time, sound, vibration, quiet_hours_start, quiet_hours_end, preferred_sound)
+     VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
      ON CONFLICT(id) DO UPDATE SET
        devotional_enabled = excluded.devotional_enabled,
        devotional_time = excluded.devotional_time,
@@ -85,7 +88,8 @@ export function setNotificationSettings(settings: NotificationSettings): void {
        sound = excluded.sound,
        vibration = excluded.vibration,
        quiet_hours_start = excluded.quiet_hours_start,
-       quiet_hours_end = excluded.quiet_hours_end`,
+       quiet_hours_end = excluded.quiet_hours_end,
+       preferred_sound = excluded.preferred_sound`,
     [
       settings.devotionalEnabled ? 1 : 0,
       formatTime24(settings.devotionalHour, settings.devotionalMinute),
@@ -97,6 +101,7 @@ export function setNotificationSettings(settings: NotificationSettings): void {
       settings.vibration ? 1 : 0,
       settings.quietHoursStart,
       settings.quietHoursEnd,
+      settings.preferredSound,
     ]
   );
 }

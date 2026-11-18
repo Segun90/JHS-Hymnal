@@ -16,6 +16,7 @@ import { space, radius, fonts, type } from '@/theme/tokens';
 import { useDevotionsStore } from '@/stores/useDevotionsStore';
 import { parseScriptureRef } from '@/utils/references';
 import { useScreenClearance } from '@/utils/layout';
+import { AppBar } from '@/components/AppBar';
 
 function formatReminderTime(): string {
   const { devotionalHour, devotionalMinute } = useDevotionsStore.getState().notifications;
@@ -376,14 +377,12 @@ function ChevronDown() {
 function Header({ title, onBack, trailing }: { title: string; onBack: () => void; trailing?: React.ReactNode }) {
   const { palette } = useTheme();
   return (
-    <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-      <TouchableOpacity onPress={onBack} style={styles.headerIcon} accessibilityLabel="Back">
-        <ChevronLeft size={24} color={palette.text} />
-      </TouchableOpacity>
-      <Text style={[styles.appbarTitle, { color: palette.text }]}>{title}</Text>
-      <View style={{ flex: 1 }} />
-      {trailing}
-    </View>
+    <AppBar 
+      title={title} 
+      variant="primary" 
+      onBack={onBack} 
+      trailing={trailing} 
+    />
   );
 }
 

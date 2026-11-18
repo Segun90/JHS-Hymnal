@@ -1,13 +1,15 @@
 import { documentDirectory, getInfoAsync, makeDirectoryAsync, copyAsync, deleteAsync } from 'expo-file-system/legacy';
 import * as SQLite from 'expo-sqlite';
 import { Asset } from 'expo-asset';
+import { HYMN_V2_TO_V3_ID_MAP } from './hymnMigrationMap';
 
 const contentAsset = require('../../assets/db/content.db');
 const bibleAsset = require('../../assets/db/kjv.sqlite');
 const devotionalsAsset = require('../../assets/db/devotionals.db');
 
-const BUNDLED_DB_VERSION = 2;
+const BUNDLED_DB_VERSION = 3;
 const DB_VERSION_KEY = 'bundled_db_version';
+const HYMN_V3_MIGRATED_KEY = 'hymn_v3_migrated';
 
 let contentDb: SQLite.SQLiteDatabase | null = null;
 let bibleDb: SQLite.SQLiteDatabase | null = null;
@@ -107,7 +109,8 @@ CREATE TABLE IF NOT EXISTS notification_settings (
   sound INTEGER NOT NULL DEFAULT 1,
   vibration INTEGER NOT NULL DEFAULT 1,
   quiet_hours_start TEXT,
-  quiet_hours_end TEXT
+  quiet_hours_end TEXT,
+  preferred_sound TEXT NOT NULL DEFAULT 'default'
 );
 `;
 
@@ -118,6 +121,14 @@ function migrateUserDb(db: SQLite.SQLiteDatabase): void {
   if (!cols.includes('preview_text')) {
     try { db.execSync("ALTER TABLE bookmarks ADD COLUMN preview_text TEXT"); } catch {}
   }
+  
+  const notifCols: string[] = [];
+  const notifRows: any[] = db.getAllSync("PRAGMA table_info('notification_settings')");
+  for (const r of notifRows) notifCols.push(r.name);
+  if (!notifCols.includes('preferred_sound')) {
+    try { db.execSync("ALTER TABLE notification_settings ADD COLUMN preferred_sound TEXT NOT NULL DEFAULT 'default'"); } catch {}
+  }
+  
   if (!cols.includes('reading_position')) {
     try { db.execSync("ALTER TABLE bookmarks ADD COLUMN reading_position INTEGER"); } catch {}
   }
@@ -212,23 +223,108 @@ async function removeBundledDbCopies(): Promise<void> {
   }
 }
 
+function migrateUserHymnIdsV3(db: SQLite.SQLiteDatabase): void {
+  const done: any = db.getFirstSync('SELECT value FROM settings WHERE key = ?', [HYMN_V3_MIGRATED_KEY]);
+  if (done?.value === '1') return;
+
+  db.withTransactionSync(() => {
+    const doubleCheck: any = db.getFirstSync('SELECT value FROM settings WHERE key = ?', [HYMN_V3_MIGRATED_KEY]);
+    if (doubleCheck?.value === '1') return;
+
+    // 1. Bookmarks & Favorites (have label column)
+    for (const table of ['bookmarks', 'favorites'] as const) {
+      const rows: any[] = db.getAllSync(
+        `SELECT id, hymn_id, label FROM ${table} WHERE item_type = 'hymn' AND hymn_id IS NOT NULL`
+      );
+      for (const r of rows) {
+        const newId = HYMN_V2_TO_V3_ID_MAP[r.hymn_id];
+        if (newId !== undefined) {
+          db.runSync(`UPDATE ${table} SET hymn_id = ? WHERE id = ?`, [newId, r.id]);
+        } else {
+          const baseLabel = r.label ? String(r.label) : `Hymn #${r.hymn_id}`;
+          const legacyLabel = baseLabel.startsWith('[Legacy]') ? baseLabel : `[Legacy] ${baseLabel}`;
+          db.runSync(`UPDATE ${table} SET hymn_id = NULL, label = ? WHERE id = ?`, [legacyLabel, r.id]);
+        }
+      }
+    }
+
+    // 2. Notes (preserve body text; prefix legacy hymn number if unmatched)
+    const noteRows: any[] = db.getAllSync(
+      `SELECT id, hymn_id, body FROM notes WHERE item_type = 'hymn' AND hymn_id IS NOT NULL`
+    );
+    for (const r of noteRows) {
+      const newId = HYMN_V2_TO_V3_ID_MAP[r.hymn_id];
+      if (newId !== undefined) {
+        db.runSync('UPDATE notes SET hymn_id = ? WHERE id = ?', [newId, r.id]);
+      } else {
+        const body = r.body ? String(r.body) : '';
+        const prefix = `[Legacy Hymn #${r.hymn_id}]`;
+        const legacyBody = body.startsWith('[Legacy') ? body : (body ? `${prefix} ${body}` : prefix);
+        db.runSync('UPDATE notes SET hymn_id = NULL, body = ? WHERE id = ?', [legacyBody, r.id]);
+      }
+    }
+
+    // 3. History
+    const historyRows: any[] = db.getAllSync(
+      `SELECT id, hymn_id FROM history WHERE item_type = 'hymn' AND hymn_id IS NOT NULL`
+    );
+    for (const r of historyRows) {
+      const newId = HYMN_V2_TO_V3_ID_MAP[r.hymn_id];
+      if (newId !== undefined) {
+        db.runSync('UPDATE history SET hymn_id = ? WHERE id = ?', [newId, r.id]);
+      } else {
+        db.runSync('UPDATE history SET hymn_id = NULL WHERE id = ?', [r.id]);
+      }
+    }
+
+    // 4. Reading sessions (content_type = 'hymn', reference = String(hymn.id))
+    const sessionRows: any[] = db.getAllSync(
+      `SELECT id, reference FROM reading_sessions WHERE content_type = 'hymn' AND reference IS NOT NULL`
+    );
+    for (const r of sessionRows) {
+      const oldId = parseInt(String(r.reference), 10);
+      if (!Number.isFinite(oldId)) continue;
+      const newId = HYMN_V2_TO_V3_ID_MAP[oldId];
+      if (newId !== undefined) {
+        db.runSync('UPDATE reading_sessions SET reference = ? WHERE id = ?', [String(newId), r.id]);
+      } else {
+        db.runSync('UPDATE reading_sessions SET reference = ? WHERE id = ?', [`legacy:${oldId}`, r.id]);
+      }
+    }
+
+    db.runSync('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', [
+      HYMN_V3_MIGRATED_KEY,
+      '1',
+    ]);
+  });
+}
+
 export async function initDatabases(): Promise<void> {
   if (contentDb && bibleDb && userDb && devotionalsDb) return;
   userDb = await SQLite.openDatabaseAsync('user.db');
   await userDb.execAsync(USER_SCHEMA);
-  if (readBundledDbVersion(userDb) !== BUNDLED_DB_VERSION) {
+  const prevVersion = readBundledDbVersion(userDb);
+  if (prevVersion !== BUNDLED_DB_VERSION) {
     await removeBundledDbCopies();
   }
   await Promise.all([ensureContentDbCopied(), ensureBibleDbCopied(), ensureDevotionalsDbCopied()]);
   contentDb = await SQLite.openDatabaseAsync('content.db');
   bibleDb = await SQLite.openDatabaseAsync('kjv.sqlite');
   devotionalsDb = await SQLite.openDatabaseAsync('devotionals.db');
-  writeBundledDbVersion(userDb);
   contentDb.execSync('DROP TABLE IF EXISTS bible_books');
   contentDb.execSync('DROP TABLE IF EXISTS bible_verses');
   bibleDb.execSync('CREATE INDEX IF NOT EXISTS idx_verses_book_chapter ON verses(book, chapter)');
   ensureBibleFtsPopulated(bibleDb);
   migrateUserDb(userDb);
+  if (prevVersion !== null && prevVersion < 3) {
+    migrateUserHymnIdsV3(userDb);
+  } else if (prevVersion === null) {
+    userDb.runSync('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', [
+      HYMN_V3_MIGRATED_KEY,
+      '1',
+    ]);
+  }
+  writeBundledDbVersion(userDb);
 }
 
 export function getContentDb(): SQLite.SQLiteDatabase {

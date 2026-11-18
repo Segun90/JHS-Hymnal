@@ -1,16 +1,70 @@
 import { getContentDb } from './database';
 import type { HymnSection, Hymn, Stanza, IndexEntry } from '../types';
 
+export interface HymnBounds {
+  minNumber: number;
+  maxNumber: number;
+  totalCount: number;
+}
+
+let cachedBounds: HymnBounds | null = null;
+
+export function clearHymnBoundsCache(): void {
+  cachedBounds = null;
+}
+
+export function getHymnBounds(): HymnBounds {
+  if (cachedBounds) return cachedBounds;
+  const db = getContentDb();
+  const row: any = db.getFirstSync(
+    'SELECT COALESCE(MIN(number), 1) as min_num, COALESCE(MAX(number), 0) as max_num, COUNT(*) as total_count FROM hymns'
+  );
+  const bounds: HymnBounds = {
+    minNumber: row?.min_num ?? 1,
+    maxNumber: row?.max_num ?? 0,
+    totalCount: row?.total_count ?? 0,
+  };
+  if (bounds.totalCount > 0) {
+    cachedBounds = bounds;
+  }
+  return bounds;
+}
+
+export function getAdjacentHymnNumbers(number: number): { prev: number | null; next: number | null } {
+  const db = getContentDb();
+  const prevRow: any = db.getFirstSync(
+    'SELECT MAX(number) as num FROM hymns WHERE number < ?',
+    [number]
+  );
+  const nextRow: any = db.getFirstSync(
+    'SELECT MIN(number) as num FROM hymns WHERE number > ?',
+    [number]
+  );
+  return {
+    prev: prevRow?.num ?? null,
+    next: nextRow?.num ?? null,
+  };
+}
+
 export function getSections(): HymnSection[] {
   const db = getContentDb();
   const rows: any[] = db.getAllSync(`
     SELECT hs.id, hs.name, hs.sort_order,
-           (SELECT COUNT(*) FROM hymns h WHERE h.section_id = hs.id) as hymn_count
+           COUNT(h.id) as hymn_count,
+           MIN(h.number) as min_number,
+           MAX(h.number) as max_number
     FROM hymn_sections hs
+    LEFT JOIN hymns h ON h.section_id = hs.id
+    GROUP BY hs.id, hs.name, hs.sort_order
     ORDER BY hs.sort_order
   `);
   return rows.map((r: any) => ({
-    id: r.id, name: r.name, sortOrder: r.sort_order, hymnCount: r.hymn_count,
+    id: r.id,
+    name: r.name,
+    sortOrder: r.sort_order,
+    hymnCount: r.hymn_count,
+    minNumber: r.min_number ?? undefined,
+    maxNumber: r.max_number ?? undefined,
   }));
 }
 
@@ -59,55 +113,126 @@ export function getHymnWithStanzas(number: number): { hymn: Hymn; stanzas: Stanz
 export function getIndexEntries(indexType: 'topical' | 'general' | 'first_lines'): IndexEntry[] {
   const db = getContentDb();
   const rows: any[] = db.getAllSync(
-    'SELECT id, index_type, entry_text, hymn_id FROM hymn_index_entries WHERE index_type = ? ORDER BY id',
+    `SELECT ie.id, ie.index_type, ie.entry_text, ie.hymn_id, h.number as hymn_number
+     FROM hymn_index_entries ie
+     LEFT JOIN hymns h ON ie.hymn_id = h.id
+     WHERE ie.index_type = ?
+     ORDER BY ie.id`,
     [indexType]
   );
   return rows.map((r: any) => ({
-    id: r.id, indexType: r.index_type, entryText: r.entry_text, hymnId: r.hymn_id,
+    id: r.id,
+    indexType: r.index_type,
+    entryText: r.entry_text,
+    hymnId: r.hymn_id,
+    hymnNumber: r.hymn_number ?? r.hymn_id,
   }));
 }
 
 export function searchHymns(query: string, limit = 50): any[] {
   const db = getContentDb();
-  const safe = escapeFts(query);
-  const lower = query.trim().toLowerCase();
-  const sql = `
-    SELECT hf.rowid, h.number, h.title, h.first_line
-    FROM hymn_fts hf
-    JOIN hymns h ON hf.rowid = h.id
-    WHERE hymn_fts MATCH ?
-    ORDER BY rank
-    LIMIT ?
-  `;
-  try {
-    const rows: any[] = db.getAllSync(sql, [safe, limit]);
-    return rows.map((r: any) => {
-      const inTitle = r.title.toLowerCase().includes(lower);
-      const inFirstLine = !inTitle && r.first_line.toLowerCase().includes(lower);
-      return {
-        source: 'hymn' as const,
-        rank: r.rank ?? 0,
-        hymnNumber: r.number,
-        hymnTitle: r.title,
-        matchField: inTitle ? 'title' : inFirstLine ? 'first_line' : 'text',
-        text: r.first_line ?? r.title,
-      };
-    });
-  } catch {
-    const pattern = `%${query.replace(/[%_]/g, '\\$&')}%`;
-    const rows: any[] = db.getAllSync(
-      'SELECT number, title, first_line FROM hymns WHERE title LIKE ? OR first_line LIKE ? ORDER BY number LIMIT ?',
-      [pattern, pattern, limit]
+  const trimmed = query.trim();
+  if (!trimmed) return [];
+
+  const results: any[] = [];
+  const seenNumbers = new Set<number>();
+
+  // Direct hymn number lookup when query is numeric (e.g. "12" or "250")
+  if (/^\d+$/.test(trimmed)) {
+    const num = parseInt(trimmed, 10);
+    const exactRow: any = db.getFirstSync(
+      'SELECT number, title, first_line FROM hymns WHERE number = ?',
+      [num]
     );
-    return rows.map((r: any) => ({
+    if (exactRow) {
+      seenNumbers.add(exactRow.number);
+      results.push({
+        source: 'hymn' as const,
+        rank: -100,
+        hymnNumber: exactRow.number,
+        hymnTitle: exactRow.title,
+        matchField: 'number',
+        text: exactRow.first_line ?? exactRow.title,
+      });
+    }
+    const prefixRows: any[] = db.getAllSync(
+      'SELECT number, title, first_line FROM hymns WHERE CAST(number AS TEXT) LIKE ? AND number != ? ORDER BY number LIMIT ?',
+      [`${trimmed}%`, num, limit]
+    );
+    for (const r of prefixRows) {
+      if (results.length >= limit) break;
+      if (!seenNumbers.has(r.number)) {
+        seenNumbers.add(r.number);
+        results.push({
+          source: 'hymn' as const,
+          rank: -50,
+          hymnNumber: r.number,
+          hymnTitle: r.title,
+          matchField: 'number',
+          text: r.first_line ?? r.title,
+        });
+      }
+    }
+  }
+
+  const remaining = limit - results.length;
+  if (remaining <= 0) return results;
+
+  const safe = escapeFts(trimmed);
+  const lower = trimmed.toLowerCase();
+  if (safe && safe !== '""') {
+    const sql = `
+      SELECT hf.rowid, h.number, h.title, h.first_line
+      FROM hymn_fts hf
+      JOIN hymns h ON hf.rowid = h.id
+      WHERE hymn_fts MATCH ?
+      ORDER BY rank
+      LIMIT ?
+    `;
+    try {
+      const rows: any[] = db.getAllSync(sql, [safe, remaining]);
+      for (const r of rows) {
+        if (seenNumbers.has(r.number)) continue;
+        seenNumbers.add(r.number);
+        const title = r.title ?? '';
+        const firstLine = r.first_line ?? '';
+        const inTitle = title.toLowerCase().includes(lower);
+        const inFirstLine = !inTitle && firstLine.toLowerCase().includes(lower);
+        results.push({
+          source: 'hymn' as const,
+          rank: r.rank ?? 0,
+          hymnNumber: r.number,
+          hymnTitle: title,
+          matchField: inTitle ? 'title' : inFirstLine ? 'first_line' : 'text',
+          text: firstLine || title,
+        });
+      }
+      return results;
+    } catch {
+      // Fall through to LIKE fallback below
+    }
+  }
+
+  const pattern = `%${trimmed.replace(/[%_]/g, '\\$&')}%`;
+  const rows: any[] = db.getAllSync(
+    "SELECT number, title, first_line FROM hymns WHERE title LIKE ? ESCAPE '\\' OR first_line LIKE ? ESCAPE '\\' ORDER BY number LIMIT ?",
+    [pattern, pattern, remaining]
+  );
+  for (const r of rows) {
+    if (seenNumbers.has(r.number)) continue;
+    seenNumbers.add(r.number);
+    const title = r.title ?? '';
+    const firstLine = r.first_line ?? '';
+    results.push({
       source: 'hymn' as const,
       rank: 0,
       hymnNumber: r.number,
-      hymnTitle: r.title,
-      matchField: r.title.toLowerCase().includes(lower) ? 'title' : 'first_line',
-      text: r.first_line ?? r.title,
-    }));
+      hymnTitle: title,
+      matchField: title.toLowerCase().includes(lower) ? 'title' : 'first_line',
+      text: firstLine || title,
+    });
   }
+  return results;
 }
 
 function mapHymn(row: any): Hymn {

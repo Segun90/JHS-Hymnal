@@ -32,7 +32,8 @@ export default function SearchScreen() {
     recordedRef.current = false;
     if (timerRef.current) clearTimeout(timerRef.current);
     const q = query.trim();
-    if (!q || q.length < 2) {
+    const isNumeric = /^\d+$/.test(q);
+    if (!q || (!isNumeric && q.length < 2)) {
       setResults({ bible: [], hymns: [] });
       return;
     }
@@ -119,11 +120,11 @@ export default function SearchScreen() {
         showsVerticalScrollIndicator={false}
         keyboardDismissMode="on-drag"
       >
-        {query.trim().length > 0 && query.trim().length < 2 && (
+        {query.trim().length > 0 && !/^\d+$/.test(query.trim()) && query.trim().length < 2 && (
           <Text style={[styles.hint, { color: palette.textSecondary }]}>Type at least 2 characters to search</Text>
         )}
 
-        {totalResults === 0 && query.trim().length >= 2 && (
+        {totalResults === 0 && (/^\d+$/.test(query.trim()) || query.trim().length >= 2) && (
           <Text style={[styles.hint, { color: palette.textSecondary }]}>No results found</Text>
         )}
 

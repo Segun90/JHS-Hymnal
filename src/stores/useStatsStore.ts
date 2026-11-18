@@ -58,7 +58,7 @@ export const useStatsStore = create<StatsState>((set, get) => ({
   biblePercentage: 0,
   hymnsOpened: 0,
   uniqueHymns: 0,
-  totalHymns: 376,
+  totalHymns: 0,
   bookmarks: 0,
   bibleBookmarks: 0,
   hymnBookmarks: 0,

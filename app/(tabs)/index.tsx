@@ -10,7 +10,7 @@ import { useLibraryStore } from '@/stores/useLibraryStore';
 import { useSettingsStore } from '@/stores/useSettingsStore';
 import { useDevotionsStore } from '@/stores/useDevotionsStore';
 import { getVerse, getBook } from '@/db/bible';
-import { getHymn } from '@/db/hymns';
+import { getHymn, getHymnBounds, getSections } from '@/db/hymns';
 import { formatBibleRef } from '@/utils/references';
 import { useTabBarClearance } from '@/utils/layout';
 import type { Verse } from '@/types';
@@ -30,7 +30,7 @@ const CAROUSEL_ITEMS = [
 
 const TILE_CONFIG = [
   { icon: BookOpen, label: 'Bible', sub: 'KJV \u00B7 Old & New Testament', route: '/(tabs)/bible' },
-  { icon: Music, label: 'Hymns', sub: '376 hymns \u00B7 22 topics', route: '/(tabs)/hymns' },
+  { icon: Music, label: 'Hymns', sub: 'Hymns \u00B7 Topics', route: '/(tabs)/hymns' },
   { icon: Search, label: 'Search', sub: 'Bible & hymnal', route: '/search' },
   { icon: Library, label: 'My Library', sub: 'Bookmarks \u00B7 notes', route: '/library' },
 ];
@@ -56,6 +56,23 @@ export default function HomeScreen() {
 
   const cardGap = 10;
   const cardWidth = (screenWidth - space.screenPadding * 2 - cardGap) / 2;
+
+  const tileConfig = useMemo(() => {
+    let hymnSub = 'Hymns \u00B7 Topics';
+    try {
+      const bounds = getHymnBounds();
+      const sectionCount = getSections().length;
+      if (bounds.totalCount > 0) {
+        hymnSub = `${bounds.totalCount} hymns \u00B7 ${sectionCount} topics`;
+      }
+    } catch {}
+    return [
+      TILE_CONFIG[0],
+      { ...TILE_CONFIG[1], sub: hymnSub },
+      TILE_CONFIG[2],
+      TILE_CONFIG[3],
+    ];
+  }, []);
 
   const continueItem = useMemo(() => {
     if (!history || history.length === 0) return null;
@@ -142,9 +159,13 @@ export default function HomeScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
       <View style={[styles.appbar, { backgroundColor: palette.primary }]}>
-        <View style={StyleSheet.absoluteFill} pointerEvents="none">
-          <LinearGradient colors={gradients.primaryToAccent} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
-          <DecorativeBackground variant="rays" opacity={0.06} inverse />
+        <View style={[StyleSheet.absoluteFill, { overflow: 'hidden' }]} pointerEvents="none">
+          <Image 
+            source={require('../../assets/images/home-header-bg.png')}
+            style={{ position: 'absolute', width: '100%', height: 700, bottom: 0 }}
+            resizeMode="cover"
+          />
+          <LinearGradient colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0.1)']} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 0, y: 1}} />
         </View>
         <Image source={require('../../assets/logo.png')} style={styles.logoSmall} />
         <Text style={[styles.appbarTitle, { color: palette.onPrimary }]}>J.H.S</Text>
@@ -162,7 +183,7 @@ export default function HomeScreen() {
         <Text style={[styles.greeting, { color: palette.text }]}>You Are Welcome</Text>
 
         <View style={[styles.grid, { paddingHorizontal: space.screenPadding }]}>
-          {TILE_CONFIG.map((tile, i) => {
+          {tileConfig.map((tile, i) => {
             const Icon = tile.icon;
             return (
               <DashboardCard
@@ -236,10 +257,15 @@ export default function HomeScreen() {
             onPress={() => router.push(`/devotional/${todayDevDay}`)}
             activeOpacity={0.9}
           >
-            <LinearGradient colors={gradients.primaryToAccent} style={styles.devBg} start={{x:0, y:0}} end={{x:1, y:1}} />
-            <View style={StyleSheet.absoluteFill} pointerEvents="none">
-              <DecorativeBackground variant="glow" opacity={0.15} inverse />
+            <View style={StyleSheet.absoluteFill}>
+              <LinearGradient colors={['#13224a', '#0a1128']} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
+              <Image 
+                source={require('../../assets/images/devotional-bg.png')}
+                style={{ position: 'absolute', height: '120%', width: '130%', right: 0, bottom: 0, opacity: 0.2 }}
+                resizeMode="cover"
+              />
             </View>
+            <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.1)' }]} pointerEvents="none" />
             <View style={styles.devCardTop}>
               <View style={[styles.devDayPill, { backgroundColor: 'rgba(255,255,255,0.18)' }]}>
                 <Text style={[styles.devDayText, { color: palette.onPrimary }]}>
@@ -261,10 +287,15 @@ export default function HomeScreen() {
             onPress={() => router.push('/devotional/complete')}
             activeOpacity={0.9}
           >
-            <LinearGradient colors={gradients.primaryToAccent} style={styles.devBg} start={{x:0, y:0}} end={{x:1, y:1}} />
-            <View style={StyleSheet.absoluteFill} pointerEvents="none">
-              <DecorativeBackground variant="glow" opacity={0.15} inverse />
+            <View style={StyleSheet.absoluteFill}>
+              <LinearGradient colors={['#13224a', '#0a1128']} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
+              <Image 
+                source={require('../../assets/images/devotional-bg.png')}
+                style={{ position: 'absolute', height: '120%', width: '130%', right: 0, bottom: 0, opacity: 0.2 }}
+                resizeMode="cover"
+              />
             </View>
+            <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.1)' }]} pointerEvents="none" />
             <View style={styles.devCardTop}>
               <View style={[styles.devDayPill, { backgroundColor: 'rgba(255,255,255,0.18)' }]}>
                 <Text style={[styles.devDayText, { color: palette.onPrimary }]}>COMPLETE</Text>

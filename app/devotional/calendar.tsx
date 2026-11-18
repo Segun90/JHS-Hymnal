@@ -6,6 +6,7 @@ import { useTheme } from '@/theme/ThemeContext';
 import { space, radius, fonts, type } from '@/theme/tokens';
 import { useScreenClearance } from '@/utils/layout';
 import { useDevotionsStore } from '@/stores/useDevotionsStore';
+import { AppBar } from '@/components/AppBar';
 
 export default function DevotionalJourneyScreen() {
   const { palette } = useTheme();
@@ -30,13 +31,11 @@ export default function DevotionalJourneyScreen() {
 
   return (
     <View style={[styles.root, { backgroundColor: palette.background }]}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.headerIcon} accessibilityLabel="Back">
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>Your Journey</Text>
-        <View style={{ flex: 1 }} />
-      </View>
+      <AppBar 
+        title="Your Journey" 
+        variant="primary" 
+        onBack={() => router.back()} 
+      />
 
       {!hydrated ? (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

@@ -44,6 +44,8 @@ yarn-error.*
 /assets/content.db
 /assets/justfit brand.pdf
 /assets/welcome screen.png
+/scripts/*.db
+/scripts/*.docx
 
 # typescript
 *.tsbuildinfo

@@ -1,0 +1,3120 @@
+{
+  "summary": {
+    "old_hymn_count": 376,
+    "new_hymn_count": 375,
+    "matched_count": 370,
+    "unmatched_old_count": 6,
+    "duplicate_title_disambiguations": 5,
+    "many_to_one_collisions": 6
+  },
+  "matched": {
+    "1": {
+      "old_number": 1,
+      "old_title": "ALL YOUR ANXIETY",
+      "new_id": 2,
+      "new_number": 2,
+      "new_title": "ALL YOUR ANXIETY",
+      "match_method": "exact_normalized_title"
+    },
+    "2": {
+      "old_number": 2,
+      "old_title": "COME UNTO ME",
+      "new_id": 3,
+      "new_number": 3,
+      "new_title": "COME UNTO ME",
+      "match_method": "exact_normalized_title"
+    },
+    "3": {
+      "old_number": 3,
+      "old_title": "IMPATIENT HEART, BE STILL",
+      "new_id": 4,
+      "new_number": 4,
+      "new_title": "IMPATIENT HEART, BE STILL",
+      "match_method": "exact_normalized_title"
+    },
+    "4": {
+      "old_number": 4,
+      "old_title": "LEAVE IT THERE",
+      "new_id": 6,
+      "new_number": 6,
+      "new_title": "LEAVE IT THERE",
+      "match_method": "exact_normalized_title"
+    },
+    "5": {
+      "old_number": 5,
+      "old_title": "NEVER GIVE UP",
+      "new_id": 7,
+      "new_number": 7,
+      "new_title": "NEVER GIVE UP",
+      "match_method": "exact_normalized_title"
+    },
+    "6": {
+      "old_number": 6,
+      "old_title": "YIELD NOT TO TEMPTATION",
+      "new_id": 10,
+      "new_number": 10,
+      "new_title": "YIELD NOT TO TEMPTATION",
+      "match_method": "exact_normalized_title"
+    },
+    "7": {
+      "old_number": 7,
+      "old_title": "TURN YOUR EYES UPON JESUS",
+      "new_id": 11,
+      "new_number": 11,
+      "new_title": "TURN YOUR EYES UPON JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "8": {
+      "old_number": 8,
+      "old_title": "BLESSED BE THE NAME",
+      "new_id": 18,
+      "new_number": 18,
+      "new_title": "BLESSED BE THE NAME",
+      "match_method": "exact_normalized_title"
+    },
+    "9": {
+      "old_number": 9,
+      "old_title": "GREAT IS THY FAITHFULNESS",
+      "new_id": 24,
+      "new_number": 24,
+      "new_title": "GREAT IS THY FAITHFULNESS",
+      "match_method": "exact_normalized_title"
+    },
+    "10": {
+      "old_number": 10,
+      "old_title": "OH, FOR A THOUSAND TONGUES TO SING!",
+      "new_id": 25,
+      "new_number": 25,
+      "new_title": "OH, FOR A THOUSAND TONGUES TO SING!",
+      "match_method": "exact_normalized_title"
+    },
+    "12": {
+      "old_number": 12,
+      "old_title": "PRAISE HIM! PRAISE HIM!",
+      "new_id": 29,
+      "new_number": 29,
+      "new_title": "PRAISE HIM! PRAISE HIM!",
+      "match_method": "exact_normalized_title"
+    },
+    "13": {
+      "old_number": 13,
+      "old_title": "TO GOD BE THE GLORY",
+      "new_id": 31,
+      "new_number": 31,
+      "new_title": "TO GOD BE THE GLORY",
+      "match_method": "exact_normalized_title"
+    },
+    "14": {
+      "old_number": 14,
+      "old_title": "HOW GREAT THOU ART",
+      "new_id": 33,
+      "new_number": 33,
+      "new_title": "HOW GREAT THOU ART",
+      "match_method": "exact_normalized_title"
+    },
+    "15": {
+      "old_number": 15,
+      "old_title": "O WORSHIP THE KING",
+      "new_id": 34,
+      "new_number": 34,
+      "new_title": "O WORSHIP THE KING",
+      "match_method": "exact_normalized_title"
+    },
+    "16": {
+      "old_number": 16,
+      "old_title": "IF GOD BE FOR US",
+      "new_id": 35,
+      "new_number": 35,
+      "new_title": "IF GOD BE FOR US",
+      "match_method": "exact_normalized_title"
+    },
+    "17": {
+      "old_number": 17,
+      "old_title": "NOTHING BUT THE BLOOD OF JESUS",
+      "new_id": 38,
+      "new_number": 38,
+      "new_title": "NOTHING BUT THE BLOOD OF JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "18": {
+      "old_number": 18,
+      "old_title": "BLESSED ASSURANCE",
+      "new_id": 42,
+      "new_number": 42,
+      "new_title": "BLESSED ASSURANCE",
+      "match_method": "exact_normalized_title"
+    },
+    "19": {
+      "old_number": 19,
+      "old_title": "CHRIST JESUS HATH THE POWER",
+      "new_id": 43,
+      "new_number": 43,
+      "new_title": "CHRIST JESUS HATH THE POWER",
+      "match_method": "exact_normalized_title"
+    },
+    "20": {
+      "old_number": 20,
+      "old_title": "THE WAY, THE TRUTH, THE LIFE",
+      "new_id": 44,
+      "new_number": 44,
+      "new_title": "THE WAY, THE TRUTH, THE LIFE",
+      "match_method": "exact_normalized_title"
+    },
+    "21": {
+      "old_number": 21,
+      "old_title": "WILL YOUR ANCHOR HOLD?",
+      "new_id": 45,
+      "new_number": 45,
+      "new_title": "WILL YOUR ANCHOR HOLD?",
+      "match_method": "exact_normalized_title"
+    },
+    "22": {
+      "old_number": 22,
+      "old_title": "SIMPLY TRUSTING EVERYDAY",
+      "new_id": 46,
+      "new_number": 46,
+      "new_title": "SIMPLY TRUSTING EVERYDAY",
+      "match_method": "exact_normalized_title"
+    },
+    "23": {
+      "old_number": 23,
+      "old_title": "NO OTHER PLEA",
+      "new_id": 47,
+      "new_number": 47,
+      "new_title": "NO OTHER PLEA",
+      "match_method": "exact_normalized_title"
+    },
+    "24": {
+      "old_number": 24,
+      "old_title": "IT IS WELL WITH MY SOUL",
+      "new_id": 48,
+      "new_number": 48,
+      "new_title": "IT IS WELL WITH MY SOUL",
+      "match_method": "exact_normalized_title"
+    },
+    "25": {
+      "old_number": 25,
+      "old_title": "NOW I BELONG TO JESUS",
+      "new_id": 49,
+      "new_number": 49,
+      "new_title": "NOW I BELONG TO JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "26": {
+      "old_number": 26,
+      "old_title": "I KNOW WHOM I HAVE BELIEVED",
+      "new_id": 50,
+      "new_number": 50,
+      "new_title": "I KNOW WHOM I HAVE BELIEVED",
+      "match_method": "exact_normalized_title"
+    },
+    "27": {
+      "old_number": 27,
+      "old_title": "I AM BOUND FOR CANAAN",
+      "new_id": 51,
+      "new_number": 51,
+      "new_title": "I AM BOUND FOR CANAAN",
+      "match_method": "exact_normalized_title"
+    },
+    "28": {
+      "old_number": 28,
+      "old_title": "I'M LIVING IN CANAAN",
+      "new_id": 52,
+      "new_number": 52,
+      "new_title": "I'M LIVING IN CANAAN",
+      "match_method": "exact_normalized_title"
+    },
+    "29": {
+      "old_number": 29,
+      "old_title": "I KNOW WHO HOLDS TOMORROW",
+      "new_id": 55,
+      "new_number": 55,
+      "new_title": "I KNOW WHO HOLDS TOMORROW",
+      "match_method": "exact_normalized_title"
+    },
+    "30": {
+      "old_number": 30,
+      "old_title": "I'VE ANCHORED IN JESUS",
+      "new_id": 58,
+      "new_number": 58,
+      "new_title": "I'VE ANCHORED IN JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "31": {
+      "old_number": 31,
+      "old_title": "HE TOUCHED ME",
+      "new_id": 59,
+      "new_number": 59,
+      "new_title": "HE TOUCHED ME",
+      "match_method": "exact_normalized_title"
+    },
+    "32": {
+      "old_number": 32,
+      "old_title": "HEAVEN CAME DOWN",
+      "new_id": 60,
+      "new_number": 60,
+      "new_title": "HEAVEN CAME DOWN",
+      "match_method": "exact_normalized_title"
+    },
+    "33": {
+      "old_number": 33,
+      "old_title": "SINCE JESUS CAME INTO MY HEART",
+      "new_id": 61,
+      "new_number": 61,
+      "new_title": "SINCE JESUS CAME INTO MY HEART",
+      "match_method": "exact_normalized_title"
+    },
+    "34": {
+      "old_number": 34,
+      "old_title": "CONSTANTLY ABIDING",
+      "new_id": 62,
+      "new_number": 62,
+      "new_title": "CONSTANTLY ABIDING",
+      "match_method": "exact_normalized_title"
+    },
+    "35": {
+      "old_number": 35,
+      "old_title": "A NEW NAME IN GLORY",
+      "new_id": 63,
+      "new_number": 63,
+      "new_title": "A NEW NAME IN GLORY",
+      "match_method": "exact_normalized_title"
+    },
+    "36": {
+      "old_number": 36,
+      "old_title": "MY NAME'S WRITTEN THERE",
+      "new_id": 64,
+      "new_number": 64,
+      "new_title": "MY NAME'S WRITTEN THERE",
+      "match_method": "exact_normalized_title"
+    },
+    "37": {
+      "old_number": 37,
+      "old_title": "WHEN I SEE THE BLOOD",
+      "new_id": 65,
+      "new_number": 65,
+      "new_title": "WHEN I SEE THE BLOOD",
+      "match_method": "exact_normalized_title"
+    },
+    "38": {
+      "old_number": 38,
+      "old_title": "HAVE YOU BEEN TO JESUS?",
+      "new_id": 67,
+      "new_number": 67,
+      "new_title": "HAVE YOU BEEN TO JESUS?",
+      "match_method": "exact_normalized_title"
+    },
+    "39": {
+      "old_number": 39,
+      "old_title": "POWER IN THE BLOOD",
+      "new_id": 68,
+      "new_number": 68,
+      "new_title": "POWER IN THE BLOOD",
+      "match_method": "exact_normalized_title"
+    },
+    "40": {
+      "old_number": 40,
+      "old_title": "WASH ME, O LAMB OF GOD",
+      "new_id": 69,
+      "new_number": 69,
+      "new_title": "WASH ME, O LAMB OF GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "41": {
+      "old_number": 41,
+      "old_title": "ONWARD, CHRISTIAN SOLDIERS!",
+      "new_id": 70,
+      "new_number": 70,
+      "new_title": "ONWARD, CHRISTIAN SOLDIERS!",
+      "match_method": "exact_normalized_title"
+    },
+    "42": {
+      "old_number": 42,
+      "old_title": "CLOSE TO THEE",
+      "new_id": 71,
+      "new_number": 71,
+      "new_title": "CLOSE TO THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "43": {
+      "old_number": 43,
+      "old_title": "TRUST AND OBEY",
+      "new_id": 72,
+      "new_number": 72,
+      "new_title": "TRUST AND OBEY",
+      "match_method": "exact_normalized_title"
+    },
+    "44": {
+      "old_number": 44,
+      "old_title": "COME OVER",
+      "new_id": 73,
+      "new_number": 73,
+      "new_title": "COME OVER",
+      "match_method": "exact_normalized_title"
+    },
+    "45": {
+      "old_number": 45,
+      "old_title": "JESUS, MY STRENGTH, MY HOPE",
+      "new_id": 74,
+      "new_number": 74,
+      "new_title": "JESUS, MY STRENGTH, MY HOPE",
+      "match_method": "exact_normalized_title"
+    },
+    "46": {
+      "old_number": 46,
+      "old_title": "A CHRISTIAN HOME",
+      "new_id": 77,
+      "new_number": 77,
+      "new_title": "A CHRISTIAN HOME",
+      "match_method": "exact_normalized_title"
+    },
+    "47": {
+      "old_number": 47,
+      "old_title": "JUST OBEY",
+      "new_id": 78,
+      "new_number": 78,
+      "new_title": "JUST OBEY",
+      "match_method": "exact_normalized_title"
+    },
+    "48": {
+      "old_number": 48,
+      "old_title": "TIS SO SWEET TO TRUST IN JESUS",
+      "new_id": 79,
+      "new_number": 79,
+      "new_title": "'TIS SO SWEET TO TRUST IN JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "49": {
+      "old_number": 49,
+      "old_title": "LET OTHERS SEE JESUS IN YOU",
+      "new_id": 81,
+      "new_number": 81,
+      "new_title": "LET OTHERS SEE JESUS IN YOU",
+      "match_method": "exact_normalized_title"
+    },
+    "50": {
+      "old_number": 50,
+      "old_title": "COUNT YOUR BLESSINGS",
+      "new_id": 83,
+      "new_number": 83,
+      "new_title": "COUNT YOUR BLESSINGS",
+      "match_method": "exact_normalized_title"
+    },
+    "51": {
+      "old_number": 51,
+      "old_title": "THAT BLESSED CANAAN LAND",
+      "new_id": 84,
+      "new_number": 84,
+      "new_title": "THAT BLESSED CANAAN LAND",
+      "match_method": "exact_normalized_title"
+    },
+    "52": {
+      "old_number": 52,
+      "old_title": "COUNT ME",
+      "new_id": 85,
+      "new_number": 85,
+      "new_title": "COUNT ME",
+      "match_method": "exact_normalized_title"
+    },
+    "53": {
+      "old_number": 53,
+      "old_title": "SO SEND I YOU",
+      "new_id": 87,
+      "new_number": 87,
+      "new_title": "SO SEND I YOU",
+      "match_method": "exact_normalized_title"
+    },
+    "54": {
+      "old_number": 54,
+      "old_title": "I AM READY FOR SERVICE",
+      "new_id": 88,
+      "new_number": 88,
+      "new_title": "I AM READY FOR SERVICE",
+      "match_method": "exact_normalized_title"
+    },
+    "55": {
+      "old_number": 55,
+      "old_title": "ANYWHERE WITH JESUS",
+      "new_id": 89,
+      "new_number": 89,
+      "new_title": "ANYWHERE WITH JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "56": {
+      "old_number": 56,
+      "old_title": "I LOVE, I LOVE MY MASTER",
+      "new_id": 91,
+      "new_number": 91,
+      "new_title": "I LOVE, I LOVE MY MASTER",
+      "match_method": "exact_normalized_title"
+    },
+    "57": {
+      "old_number": 57,
+      "old_title": "THEY THAT WAIT UPON THE LORD",
+      "new_id": 92,
+      "new_number": 92,
+      "new_title": "THEY THAT WAIT UPON THE LORD",
+      "match_method": "exact_normalized_title"
+    },
+    "58": {
+      "old_number": 58,
+      "old_title": "THE LAST MILE OF THE WAY",
+      "new_id": 93,
+      "new_number": 93,
+      "new_title": "THE LAST MILE OF THE WAY",
+      "match_method": "exact_normalized_title"
+    },
+    "59": {
+      "old_number": 59,
+      "old_title": "LITTLE IS MUCH WHEN GOD IS IN IT",
+      "new_id": 96,
+      "new_number": 96,
+      "new_title": "LITTLE IS MUCH WHEN GOD IS IN IT",
+      "match_method": "exact_normalized_title"
+    },
+    "60": {
+      "old_number": 60,
+      "old_title": "WHERE COULD I GO?",
+      "new_id": 97,
+      "new_number": 97,
+      "new_title": "WHERE COULD I GO?",
+      "match_method": "exact_normalized_title"
+    },
+    "61": {
+      "old_number": 61,
+      "old_title": "LORD, SPEAK TO ME, THAT I MAY SPEAK",
+      "new_id": 99,
+      "new_number": 99,
+      "new_title": "LORD, SPEAK TO ME, THAT I MAY SPEAK",
+      "match_method": "exact_normalized_title"
+    },
+    "62": {
+      "old_number": 62,
+      "old_title": "GO, LABOUR ON",
+      "new_id": 100,
+      "new_number": 100,
+      "new_title": "GO, LABOUR ON",
+      "match_method": "exact_normalized_title"
+    },
+    "63": {
+      "old_number": 63,
+      "old_title": "WILL THERE BE ANY STARS?",
+      "new_id": 101,
+      "new_number": 101,
+      "new_title": "WILL THERE BE ANY STARS?",
+      "match_method": "exact_normalized_title"
+    },
+    "64": {
+      "old_number": 64,
+      "old_title": "THE OLD RUGGED CROSS",
+      "new_id": 107,
+      "new_number": 107,
+      "new_title": "THE OLD RUGGED CROSS",
+      "match_method": "exact_normalized_title"
+    },
+    "65": {
+      "old_number": 65,
+      "old_title": "O HOW I LOVE JESUS",
+      "new_id": 109,
+      "new_number": 109,
+      "new_title": "O HOW I LOVE JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "66": {
+      "old_number": 66,
+      "old_title": "JESUS IS THE SWEETEST NAME I KNOW",
+      "new_id": 110,
+      "new_number": 110,
+      "new_title": "JESUS IS THE SWEETEST NAME I KNOW",
+      "match_method": "exact_normalized_title"
+    },
+    "67": {
+      "old_number": 67,
+      "old_title": "MY JESUS I LOVE THEE",
+      "new_id": 111,
+      "new_number": 111,
+      "new_title": "MY JESUS I LOVE THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "68": {
+      "old_number": 68,
+      "old_title": "SAVIOUR, LIKE A SHEPHERD LEAD US",
+      "new_id": 112,
+      "new_number": 112,
+      "new_title": "SAVIOUR, LIKE A SHEPHERD LEAD US",
+      "match_method": "exact_normalized_title"
+    },
+    "69": {
+      "old_number": 69,
+      "old_title": "CHRIST BE BESIDE ME",
+      "new_id": 114,
+      "new_number": 114,
+      "new_title": "CHRIST BE BESIDE ME",
+      "match_method": "exact_normalized_title"
+    },
+    "70": {
+      "old_number": 70,
+      "old_title": "HAVE YOU ANY ROOM FOR JESUS?",
+      "new_id": 116,
+      "new_number": 116,
+      "new_title": "HAVE YOU ANY ROOM FOR JESUS?",
+      "match_method": "exact_normalized_title"
+    },
+    "71": {
+      "old_number": 71,
+      "old_title": "I WANT TO SEE JESUS, DON'T YOU?",
+      "new_id": 118,
+      "new_number": 118,
+      "new_title": "I WANT TO SEE JESUS, DON'T YOU?",
+      "match_method": "exact_normalized_title"
+    },
+    "72": {
+      "old_number": 72,
+      "old_title": "THE SOLID ROCK",
+      "new_id": 119,
+      "new_number": 119,
+      "new_title": "THE SOLID ROCK",
+      "match_method": "exact_normalized_title"
+    },
+    "73": {
+      "old_number": 73,
+      "old_title": "JESUS ONLY IS OUR MESSAGE",
+      "new_id": 120,
+      "new_number": 120,
+      "new_title": "JESUS ONLY IS OUR MESSAGE",
+      "match_method": "exact_normalized_title"
+    },
+    "74": {
+      "old_number": 74,
+      "old_title": "THE HEART THAT WAS BROKEN FOR ME",
+      "new_id": 122,
+      "new_number": 122,
+      "new_title": "THE HEART THAT WAS BROKEN FOR ME",
+      "match_method": "exact_normalized_title"
+    },
+    "75": {
+      "old_number": 75,
+      "old_title": "THE CHURCH'S ONE FOUNDATION",
+      "new_id": 123,
+      "new_number": 123,
+      "new_title": "THE CHURCH'S ONE FOUNDATION",
+      "match_method": "exact_normalized_title"
+    },
+    "76": {
+      "old_number": 76,
+      "old_title": "IN TIMES LIKE THESE",
+      "new_id": 124,
+      "new_number": 124,
+      "new_title": "IN TIMES LIKE THESE",
+      "match_method": "exact_normalized_title"
+    },
+    "77": {
+      "old_number": 77,
+      "old_title": "I HAVE DECIDED TO FOLLOW JESUS",
+      "new_id": 125,
+      "new_number": 125,
+      "new_title": "I HAVE DECIDED TO FOLLOW JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "78": {
+      "old_number": 78,
+      "old_title": "FAITH OF OUR FATHERS",
+      "new_id": 126,
+      "new_number": 126,
+      "new_title": "FAITH OF OUR FATHERS",
+      "match_method": "exact_normalized_title"
+    },
+    "79": {
+      "old_number": 79,
+      "old_title": "THE WAY OF THE CROSS LEADS HOME",
+      "new_id": 134,
+      "new_number": 134,
+      "new_title": "THE WAY OF THE CROSS LEADS HOME",
+      "match_method": "exact_normalized_title"
+    },
+    "80": {
+      "old_number": 80,
+      "old_title": "AT THE CROSS",
+      "new_id": 135,
+      "new_number": 135,
+      "new_title": "AT THE CROSS",
+      "match_method": "exact_normalized_title"
+    },
+    "81": {
+      "old_number": 81,
+      "old_title": "LEAD ME TO CALVARY",
+      "new_id": 136,
+      "new_number": 136,
+      "new_title": "LEAD ME TO CALVARY",
+      "match_method": "exact_normalized_title"
+    },
+    "82": {
+      "old_number": 82,
+      "old_title": "WHEN I SURVEY THE WONDROUS CROSS",
+      "new_id": 139,
+      "new_number": 139,
+      "new_title": "WHEN I SURVEY THE WONDROUS CROSS",
+      "match_method": "exact_normalized_title"
+    },
+    "83": {
+      "old_number": 83,
+      "old_title": "THY WORD HAVE I HID IN MY HEART",
+      "new_id": 140,
+      "new_number": 140,
+      "new_title": "THY WORD HAVE I HID IN MY HEART",
+      "match_method": "exact_normalized_title"
+    },
+    "84": {
+      "old_number": 84,
+      "old_title": "DEEPER, DEEPER IN THE LOVE OF JESUS",
+      "new_id": 141,
+      "new_number": 141,
+      "new_title": "DEEPER, DEEPER IN THE LOVE OF JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "85": {
+      "old_number": 85,
+      "old_title": "GIVE OF YOUR BEST TO THE MASTER",
+      "new_id": 144,
+      "new_number": 144,
+      "new_title": "GIVE OF YOUR BEST TO THE MASTER",
+      "match_method": "exact_normalized_title"
+    },
+    "86": {
+      "old_number": 86,
+      "old_title": "NOTHING BETWEEN",
+      "new_id": 145,
+      "new_number": 145,
+      "new_title": "NOTHING BETWEEN",
+      "match_method": "exact_normalized_title"
+    },
+    "87": {
+      "old_number": 87,
+      "old_title": "TAKE MY LIFE",
+      "new_id": 146,
+      "new_number": 146,
+      "new_title": "TAKE MY LIFE",
+      "match_method": "exact_normalized_title"
+    },
+    "88": {
+      "old_number": 88,
+      "old_title": "WHEREVER HE LEADS I'LL GO",
+      "new_id": 147,
+      "new_number": 147,
+      "new_title": "WHEREVER HE LEADS I'LL GO",
+      "match_method": "exact_normalized_title"
+    },
+    "89": {
+      "old_number": 89,
+      "old_title": "O JESUS, I HAVE PROMISED",
+      "new_id": 148,
+      "new_number": 148,
+      "new_title": "O JESUS, I HAVE PROMISED",
+      "match_method": "exact_normalized_title"
+    },
+    "90": {
+      "old_number": 90,
+      "old_title": "O LOVE THAT WILT NOT LET ME GO",
+      "new_id": 149,
+      "new_number": 149,
+      "new_title": "O LOVE THAT WILT NOT LET ME GO",
+      "match_method": "exact_normalized_title"
+    },
+    "91": {
+      "old_number": 91,
+      "old_title": "WHERE HE LEADS ME",
+      "new_id": 150,
+      "new_number": 150,
+      "new_title": "WHERE HE LEADS ME",
+      "match_method": "exact_normalized_title"
+    },
+    "92": {
+      "old_number": 92,
+      "old_title": "I SURRENDER ALL",
+      "new_id": 151,
+      "new_number": 151,
+      "new_title": "I SURRENDER ALL",
+      "match_method": "exact_normalized_title"
+    },
+    "93": {
+      "old_number": 93,
+      "old_title": "MORE LOVE TO THEE",
+      "new_id": 152,
+      "new_number": 152,
+      "new_title": "MORE LOVE TO THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "94": {
+      "old_number": 94,
+      "old_title": "DRAW ME NEARER, BLESSED LORD",
+      "new_id": 153,
+      "new_number": 153,
+      "new_title": "DRAW ME NEARER, BLESSED LORD",
+      "match_method": "exact_normalized_title"
+    },
+    "95": {
+      "old_number": 95,
+      "old_title": "COME, SAVIOUR JESUS FROM ABOVE",
+      "new_id": 154,
+      "new_number": 154,
+      "new_title": "COME, SAVIOUR JESUS FROM ABOVE",
+      "match_method": "exact_normalized_title"
+    },
+    "96": {
+      "old_number": 96,
+      "old_title": "PEACE! BE STILL",
+      "new_id": 155,
+      "new_number": 155,
+      "new_title": "PEACE! BE STILL",
+      "match_method": "exact_normalized_title"
+    },
+    "97": {
+      "old_number": 97,
+      "old_title": "OFT IN DANGER, OFT IN WOE",
+      "new_id": 156,
+      "new_number": 156,
+      "new_title": "OFT IN DANGER, OFT IN WOE",
+      "match_method": "exact_normalized_title"
+    },
+    "98": {
+      "old_number": 98,
+      "old_title": "THE SONG OF THE SOLDIER",
+      "new_id": 160,
+      "new_number": 160,
+      "new_title": "THE SONG OF THE SOLDIER",
+      "match_method": "exact_normalized_title"
+    },
+    "99": {
+      "old_number": 99,
+      "old_title": "THERE IS VICTORY WITHIN MY SOUL",
+      "new_id": 162,
+      "new_number": 162,
+      "new_title": "THERE IS VICTORY WITHIN MY SOUL",
+      "match_method": "exact_normalized_title"
+    },
+    "100": {
+      "old_number": 100,
+      "old_title": "CHRIST, OUR MIGHTY CAPTAIN",
+      "new_id": 163,
+      "new_number": 163,
+      "new_title": "CHRIST, OUR MIGHTY CAPTAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "101": {
+      "old_number": 101,
+      "old_title": "MY FATHER KNOWS",
+      "new_id": 164,
+      "new_number": 164,
+      "new_title": "MY FATHER KNOWS",
+      "match_method": "exact_normalized_title"
+    },
+    "102": {
+      "old_number": 102,
+      "old_title": "THE HEALER",
+      "new_id": 165,
+      "new_number": 165,
+      "new_title": "THE HEALER",
+      "match_method": "exact_normalized_title"
+    },
+    "103": {
+      "old_number": 103,
+      "old_title": "HE HEALED THEM ALL",
+      "new_id": 167,
+      "new_number": 167,
+      "new_title": "HE HEALED THEM ALL",
+      "match_method": "exact_normalized_title"
+    },
+    "104": {
+      "old_number": 104,
+      "old_title": "TELL SOMEBODY",
+      "new_id": 168,
+      "new_number": 168,
+      "new_title": "TELL SOMEBODY",
+      "match_method": "exact_normalized_title"
+    },
+    "105": {
+      "old_number": 105,
+      "old_title": "P'LL TELL THE WORLD",
+      "new_id": 169,
+      "new_number": 169,
+      "new_title": "I'LL TELL THE WORLD",
+      "match_method": "ocr_typo_title_match: P'LL -> I'LL"
+    },
+    "106": {
+      "old_number": 106,
+      "old_title": "TELL THE WHOLE WIDE WORLD",
+      "new_id": 171,
+      "new_number": 171,
+      "new_title": "TELL THE WHOLE WIDE WORLD",
+      "match_method": "exact_normalized_title"
+    },
+    "107": {
+      "old_number": 107,
+      "old_title": "GO AND TELL THEM",
+      "new_id": 172,
+      "new_number": 172,
+      "new_title": "GO AND TELL THEM",
+      "match_method": "exact_normalized_title"
+    },
+    "108": {
+      "old_number": 108,
+      "old_title": "MUST I GO AND EMPTY-HANDED?",
+      "new_id": 173,
+      "new_number": 173,
+      "new_title": "MUST I GO AND EMPTY-HANDED?",
+      "match_method": "exact_normalized_title"
+    },
+    "109": {
+      "old_number": 109,
+      "old_title": "TO THE WORK",
+      "new_id": 174,
+      "new_number": 174,
+      "new_title": "TO THE WORK",
+      "match_method": "exact_normalized_title"
+    },
+    "110": {
+      "old_number": 110,
+      "old_title": "TILL THE WHOLE WORLD KNOWS",
+      "new_id": 175,
+      "new_number": 175,
+      "new_title": "TILL THE WHOLE WORLD KNOWS",
+      "match_method": "exact_normalized_title"
+    },
+    "111": {
+      "old_number": 111,
+      "old_title": "RESCUE THE PERISHING",
+      "new_id": 176,
+      "new_number": 176,
+      "new_title": "RESCUE THE PERISHING",
+      "match_method": "exact_normalized_title"
+    },
+    "112": {
+      "old_number": 112,
+      "old_title": "WIN THEM ONE BY ONE",
+      "new_id": 177,
+      "new_number": 177,
+      "new_title": "WIN THEM ONE BY ONE",
+      "match_method": "exact_normalized_title"
+    },
+    "113": {
+      "old_number": 113,
+      "old_title": "GO AND TELL THE STORY",
+      "new_id": 178,
+      "new_number": 178,
+      "new_title": "GO AND TELL THE STORY",
+      "match_method": "exact_normalized_title"
+    },
+    "114": {
+      "old_number": 114,
+      "old_title": "BRIGHTEN THE CORNER WHERE YOU ARE",
+      "new_id": 179,
+      "new_number": 179,
+      "new_title": "BRIGHTEN THE CORNER WHERE YOU ARE",
+      "match_method": "exact_normalized_title"
+    },
+    "115": {
+      "old_number": 115,
+      "old_title": "LIFT HIM UP",
+      "new_id": 180,
+      "new_number": 180,
+      "new_title": "LIFT HIM UP",
+      "match_method": "exact_normalized_title"
+    },
+    "116": {
+      "old_number": 116,
+      "old_title": "CARRY YOUR BIBLE",
+      "new_id": 181,
+      "new_number": 181,
+      "new_title": "CARRY YOUR BIBLE",
+      "match_method": "exact_normalized_title"
+    },
+    "117": {
+      "old_number": 117,
+      "old_title": "SHOW A LITTLE BIT OF LOVE AND KINDNESS",
+      "new_id": 182,
+      "new_number": 182,
+      "new_title": "SHOW A LITTLE BIT OF LOVE AND KINDNESS",
+      "match_method": "exact_normalized_title"
+    },
+    "118": {
+      "old_number": 118,
+      "old_title": "I LOVE TO TELL THE STORY",
+      "new_id": 183,
+      "new_number": 183,
+      "new_title": "I LOVE TO TELL THE STORY",
+      "match_method": "exact_normalized_title"
+    },
+    "119": {
+      "old_number": 119,
+      "old_title": "DO SOMETHING FOR OTHERS",
+      "new_id": 184,
+      "new_number": 184,
+      "new_title": "DO SOMETHING FOR OTHERS",
+      "match_method": "exact_normalized_title"
+    },
+    "120": {
+      "old_number": 120,
+      "old_title": "SPEAK A WORD",
+      "new_id": 185,
+      "new_number": 185,
+      "new_title": "SPEAK A WORD",
+      "match_method": "exact_normalized_title"
+    },
+    "121": {
+      "old_number": 121,
+      "old_title": "SOMEBODY ELSE NEEDS HIM, TOO",
+      "new_id": 186,
+      "new_number": 186,
+      "new_title": "SOMEBODY ELSE NEEDS HIM, TOO",
+      "match_method": "exact_normalized_title"
+    },
+    "122": {
+      "old_number": 122,
+      "old_title": "SOMEBODY NEEDS YOUR LOVE",
+      "new_id": 187,
+      "new_number": 187,
+      "new_title": "SOMEBODY NEEDS YOUR LOVE",
+      "match_method": "exact_normalized_title"
+    },
+    "123": {
+      "old_number": 123,
+      "old_title": "NO ONE LIKE MY SAVIOUR",
+      "new_id": 188,
+      "new_number": 188,
+      "new_title": "NO ONE LIKE MY SAVIOUR",
+      "match_method": "exact_normalized_title"
+    },
+    "124": {
+      "old_number": 124,
+      "old_title": "CHRIST RECEIVETH SINFUL MEN",
+      "new_id": 192,
+      "new_number": 192,
+      "new_title": "CHRIST RECEIVETH SINFUL MEN",
+      "match_method": "exact_normalized_title"
+    },
+    "125": {
+      "old_number": 125,
+      "old_title": "WONDERFUL GRACE OF JESUS",
+      "new_id": 195,
+      "new_number": 195,
+      "new_title": "WONDERFUL GRACE OF JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "126": {
+      "old_number": 126,
+      "old_title": "GREAT GOD OF WONDERS",
+      "new_id": 199,
+      "new_number": 199,
+      "new_title": "GREAT GOD OF WONDERS",
+      "match_method": "exact_normalized_title"
+    },
+    "127": {
+      "old_number": 127,
+      "old_title": "ROCK OF AGES CLEFT FOR ME",
+      "new_id": 200,
+      "new_number": 200,
+      "new_title": "ROCK OF AGES CLEFT FOR ME",
+      "match_method": "exact_normalized_title"
+    },
+    "128": {
+      "old_number": 128,
+      "old_title": "VICTORY IN JESUS",
+      "new_id": 201,
+      "new_number": 201,
+      "new_title": "VICTORY IN JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "129": {
+      "old_number": 129,
+      "old_title": "GRACE GREATER THAN OUR SIN",
+      "new_id": 202,
+      "new_number": 202,
+      "new_title": "GRACE GREATER THAN OUR SIN",
+      "match_method": "exact_normalized_title"
+    },
+    "130": {
+      "old_number": 130,
+      "old_title": "JUST AS I AM, WITHOUT ONE PLEA",
+      "new_id": 203,
+      "new_number": 203,
+      "new_title": "JUST AS I AM, WITHOUT ONE PLEA",
+      "match_method": "exact_normalized_title"
+    },
+    "131": {
+      "old_number": 131,
+      "old_title": "IN TENDERNESS HE SOUGHT ME",
+      "new_id": 204,
+      "new_number": 204,
+      "new_title": "IN TENDERNESS HE SOUGHT ME",
+      "match_method": "exact_normalized_title"
+    },
+    "132": {
+      "old_number": 132,
+      "old_title": "RUNNING OVER",
+      "new_id": 205,
+      "new_number": 205,
+      "new_title": "RUNNING OVER",
+      "match_method": "exact_normalized_title"
+    },
+    "133": {
+      "old_number": 133,
+      "old_title": "OUT OF MY BONDAGE",
+      "new_id": 206,
+      "new_number": 206,
+      "new_title": "OUT OF MY BONDAGE",
+      "match_method": "exact_normalized_title"
+    },
+    "134": {
+      "old_number": 134,
+      "old_title": "AND CAN IT BE THAT I SHOULD GAIN",
+      "new_id": 207,
+      "new_number": 207,
+      "new_title": "AND CAN IT BE THAT I SHOULD GAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "135": {
+      "old_number": 135,
+      "old_title": "TELL ME THE OLD, OLD STORY",
+      "new_id": 208,
+      "new_number": 208,
+      "new_title": "TELL ME THE OLD, OLD STORY",
+      "match_method": "exact_normalized_title"
+    },
+    "136": {
+      "old_number": 136,
+      "old_title": "AT CALVARY",
+      "new_id": 209,
+      "new_number": 209,
+      "new_title": "AT CALVARY",
+      "match_method": "exact_normalized_title"
+    },
+    "137": {
+      "old_number": 137,
+      "old_title": "HOW BEAUTIFUL HEAVEN MUST BE",
+      "new_id": 210,
+      "new_number": 210,
+      "new_title": "HOW BEAUTIFUL HEAVEN MUST BE",
+      "match_method": "exact_normalized_title"
+    },
+    "138": {
+      "old_number": 138,
+      "old_title": "WHEN WE ALL GET TO HEAVEN",
+      "new_id": 212,
+      "new_number": 212,
+      "new_title": "WHEN WE ALL GET TO HEAVEN",
+      "match_method": "exact_normalized_title"
+    },
+    "139": {
+      "old_number": 139,
+      "old_title": "BEAUTIFUL HOME!",
+      "new_id": 214,
+      "new_number": 214,
+      "new_title": "BEAUTIFUL HOME!",
+      "match_method": "exact_normalized_title"
+    },
+    "140": {
+      "old_number": 140,
+      "old_title": "LAYING MY TREASURE UP THERE",
+      "new_id": 215,
+      "new_number": 215,
+      "new_title": "LAYING MY TREASURE UP THERE",
+      "match_method": "exact_normalized_title"
+    },
+    "141": {
+      "old_number": 141,
+      "old_title": "I SHALL SEE THE KING",
+      "new_id": 216,
+      "new_number": 216,
+      "new_title": "I SHALL SEE THE KING",
+      "match_method": "exact_normalized_title"
+    },
+    "142": {
+      "old_number": 142,
+      "old_title": "HOLY, HOLY” IS WHAT THE ANGELS SING",
+      "new_id": 217,
+      "new_number": 217,
+      "new_title": "'HOLY, HOLY” IS WHAT THE ANGELS SING",
+      "match_method": "exact_normalized_title"
+    },
+    "143": {
+      "old_number": 143,
+      "old_title": "THE END OF THE ROAD",
+      "new_id": 218,
+      "new_number": 218,
+      "new_title": "THE END OF THE ROAD",
+      "match_method": "exact_normalized_title"
+    },
+    "144": {
+      "old_number": 144,
+      "old_title": "I WON'T HAVE TO CROSS JORDAN ALONE",
+      "new_id": 219,
+      "new_number": 219,
+      "new_title": "I WON'T HAVE TO CROSS JORDAN ALONE",
+      "match_method": "exact_normalized_title"
+    },
+    "145": {
+      "old_number": 145,
+      "old_title": "WHEN THEY RING THE GOLDEN BELLS",
+      "new_id": 220,
+      "new_number": 220,
+      "new_title": "WHEN THEY RING THE GOLDEN BELLS",
+      "match_method": "exact_normalized_title"
+    },
+    "146": {
+      "old_number": 146,
+      "old_title": "FACE TO FACE",
+      "new_id": 221,
+      "new_number": 221,
+      "new_title": "FACE TO FACE",
+      "match_method": "exact_normalized_title"
+    },
+    "147": {
+      "old_number": 147,
+      "old_title": "SWEET BY AND BY",
+      "new_id": 222,
+      "new_number": 222,
+      "new_title": "SWEET BY AND BY",
+      "match_method": "exact_normalized_title"
+    },
+    "148": {
+      "old_number": 148,
+      "old_title": "NO TEARS IN HEAVEN",
+      "new_id": 223,
+      "new_number": 223,
+      "new_title": "NO TEARS IN HEAVEN",
+      "match_method": "exact_normalized_title"
+    },
+    "149": {
+      "old_number": 149,
+      "old_title": "FARTHER ALONG",
+      "new_id": 224,
+      "new_number": 224,
+      "new_title": "FARTHER ALONG",
+      "match_method": "exact_normalized_title"
+    },
+    "150": {
+      "old_number": 150,
+      "old_title": "PENTECOSTAL POWER",
+      "new_id": 225,
+      "new_number": 225,
+      "new_title": "PENTECOSTAL POWER",
+      "match_method": "exact_normalized_title"
+    },
+    "151": {
+      "old_number": 151,
+      "old_title": "THERE SHALL BE SHOWERS OF BLESSING",
+      "new_id": 227,
+      "new_number": 227,
+      "new_title": "THERE SHALL BE SHOWERS OF BLESSING",
+      "match_method": "exact_normalized_title"
+    },
+    "152": {
+      "old_number": 152,
+      "old_title": "JOYS ARE FLOWING LIKE A RIVER",
+      "new_id": 228,
+      "new_number": 228,
+      "new_title": "JOYS ARE FLOWING LIKE A RIVER",
+      "match_method": "exact_normalized_title"
+    },
+    "153": {
+      "old_number": 153,
+      "old_title": "WITH SIGNS FOLLOWING",
+      "new_id": 231,
+      "new_number": 231,
+      "new_title": "WITH SIGNS FOLLOWING",
+      "match_method": "exact_normalized_title"
+    },
+    "154": {
+      "old_number": 154,
+      "old_title": "GIVE ME A DOUBLE PORTION",
+      "new_id": 233,
+      "new_number": 233,
+      "new_title": "GIVE ME A DOUBLE PORTION",
+      "match_method": "exact_normalized_title"
+    },
+    "155": {
+      "old_number": 155,
+      "old_title": "LET JESUS COME INTO YOUR HEART",
+      "new_id": 234,
+      "new_number": 234,
+      "new_title": "LET JESUS COME INTO YOUR HEART",
+      "match_method": "exact_normalized_title"
+    },
+    "156": {
+      "old_number": 156,
+      "old_title": "ROOM AT THE CROSS FOR YOU",
+      "new_id": 236,
+      "new_number": 236,
+      "new_title": "ROOM AT THE CROSS FOR YOU",
+      "match_method": "exact_normalized_title"
+    },
+    "157": {
+      "old_number": 157,
+      "old_title": "WANDERING CHILD, O COME HOME",
+      "new_id": 237,
+      "new_number": 237,
+      "new_title": "WANDERING CHILD, O COME HOME",
+      "match_method": "exact_normalized_title"
+    },
+    "158": {
+      "old_number": 158,
+      "old_title": "COME BELIEVING",
+      "new_id": 243,
+      "new_number": 243,
+      "new_title": "COME BELIEVING",
+      "match_method": "exact_normalized_title"
+    },
+    "159": {
+      "old_number": 159,
+      "old_title": "WHY DO YOU WAIT?",
+      "new_id": 244,
+      "new_number": 244,
+      "new_title": "WHY DO YOU WAIT?",
+      "match_method": "exact_normalized_title"
+    },
+    "160": {
+      "old_number": 160,
+      "old_title": "THE SHEPHERD OF LOVE",
+      "new_id": 247,
+      "new_number": 247,
+      "new_title": "THE SHEPHERD OF LOVE",
+      "match_method": "exact_normalized_title"
+    },
+    "161": {
+      "old_number": 161,
+      "old_title": "WHO'LL BE THE NEXT?",
+      "new_id": 248,
+      "new_number": 248,
+      "new_title": "WHO'LL BE THE NEXT?",
+      "match_method": "exact_normalized_title"
+    },
+    "162": {
+      "old_number": 162,
+      "old_title": "ALMOST PERSUADED",
+      "new_id": 249,
+      "new_number": 249,
+      "new_title": "ALMOST PERSUADED",
+      "match_method": "exact_normalized_title"
+    },
+    "163": {
+      "old_number": 163,
+      "old_title": "MY GOD, IS ANY HOUR SO SWEET?",
+      "new_id": 250,
+      "new_number": 250,
+      "new_title": "MY GOD, IS ANY HOUR SO SWEET?",
+      "match_method": "exact_normalized_title"
+    },
+    "164": {
+      "old_number": 164,
+      "old_title": "PRAYER IS THE SOUL'S SINCERE DESIRE",
+      "new_id": 253,
+      "new_number": 253,
+      "new_title": "PRAYER IS THE SOUL'S SINCERE DESIRE",
+      "match_method": "exact_normalized_title"
+    },
+    "165": {
+      "old_number": 165,
+      "old_title": "GUIDE ME, O THOU GREAT JEHOVAH",
+      "new_id": 254,
+      "new_number": 254,
+      "new_title": "GUIDE ME, O THOU GREAT JEHOVAH",
+      "match_method": "exact_normalized_title"
+    },
+    "166": {
+      "old_number": 166,
+      "old_title": "DID YOU THINK TO PRAY?",
+      "new_id": 255,
+      "new_number": 255,
+      "new_title": "DID YOU THINK TO PRAY?",
+      "match_method": "exact_normalized_title"
+    },
+    "167": {
+      "old_number": 167,
+      "old_title": "I MUST TELL JESUS",
+      "new_id": 258,
+      "new_number": 258,
+      "new_title": "I MUST TELL JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "168": {
+      "old_number": 168,
+      "old_title": "I NEED THEE EVERY HOUR",
+      "new_id": 259,
+      "new_number": 259,
+      "new_title": "I NEED THEE EVERY HOUR",
+      "match_method": "exact_normalized_title"
+    },
+    "169": {
+      "old_number": 169,
+      "old_title": "WHAT A FRIEND WE HAVE IN JESUS",
+      "new_id": 260,
+      "new_number": 260,
+      "new_title": "WHAT A FRIEND WE HAVE IN JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "170": {
+      "old_number": 170,
+      "old_title": "SWEET HOUR OF PRAYER",
+      "new_id": 261,
+      "new_number": 261,
+      "new_title": "SWEET HOUR OF PRAYER",
+      "match_method": "exact_normalized_title"
+    },
+    "171": {
+      "old_number": 171,
+      "old_title": "PASS ME NOT",
+      "new_id": 262,
+      "new_number": 262,
+      "new_title": "PASS ME NOT",
+      "match_method": "exact_normalized_title"
+    },
+    "172": {
+      "old_number": 172,
+      "old_title": "WHEN THE ROLL IS CALLED UP YONDER",
+      "new_id": 263,
+      "new_number": 263,
+      "new_title": "WHEN THE ROLL IS CALLED UP YONDER",
+      "match_method": "exact_normalized_title"
+    },
+    "173": {
+      "old_number": 173,
+      "old_title": "IS IT THE CROWNING DAY?",
+      "new_id": 264,
+      "new_number": 264,
+      "new_title": "IS IT THE CROWNING DAY?",
+      "match_method": "exact_normalized_title"
+    },
+    "174": {
+      "old_number": 174,
+      "old_title": "JESUS IS COMING AGAIN",
+      "new_id": 265,
+      "new_number": 265,
+      "new_title": "JESUS IS COMING AGAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "175": {
+      "old_number": 175,
+      "old_title": "HE IS COMING AGAIN",
+      "new_id": 268,
+      "new_number": 268,
+      "new_title": "HE IS COMING AGAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "176": {
+      "old_number": 176,
+      "old_title": "CHRIST RETURNETH",
+      "new_id": 270,
+      "new_number": 270,
+      "new_title": "CHRIST RETURNETH",
+      "match_method": "exact_normalized_title"
+    },
+    "177": {
+      "old_number": 177,
+      "old_title": "SEARCH ME, O GOD",
+      "new_id": 271,
+      "new_number": 271,
+      "new_title": "SEARCH ME, O GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "178": {
+      "old_number": 178,
+      "old_title": "FILL MY CUP, LORD",
+      "new_id": 272,
+      "new_number": 272,
+      "new_title": "FILL MY CUP, LORD",
+      "match_method": "exact_normalized_title"
+    },
+    "179": {
+      "old_number": 179,
+      "old_title": "HIGHER GROUND",
+      "new_id": 273,
+      "new_number": 273,
+      "new_title": "HIGHER GROUND",
+      "match_method": "exact_normalized_title"
+    },
+    "180": {
+      "old_number": 180,
+      "old_title": "SINCE THE SON HATH MADE ME FREE",
+      "new_id": 276,
+      "new_number": 276,
+      "new_title": "SINCE THE SON HATH MADE ME FREE",
+      "match_method": "exact_normalized_title"
+    },
+    "181": {
+      "old_number": 181,
+      "old_title": "ALL THINGS ARE POSSIBLE",
+      "new_id": 277,
+      "new_number": 277,
+      "new_title": "ALL THINGS ARE POSSIBLE",
+      "match_method": "exact_normalized_title"
+    },
+    "182": {
+      "old_number": 182,
+      "old_title": "BLESSED ARE THE PURE IN HEART",
+      "new_id": 278,
+      "new_number": 278,
+      "new_title": "BLESSED ARE THE PURE IN HEART",
+      "match_method": "exact_normalized_title"
+    },
+    "183": {
+      "old_number": 183,
+      "old_title": "COME, O MY GOD, THE PROMISE SEAL",
+      "new_id": 279,
+      "new_number": 279,
+      "new_title": "COME, O MY GOD, THE PROMISE SEAL",
+      "match_method": "exact_normalized_title"
+    },
+    "184": {
+      "old_number": 184,
+      "old_title": "SAVIOUR FROM SIN, I WAIT TO PROVE",
+      "new_id": 280,
+      "new_number": 280,
+      "new_title": "SAVIOUR FROM SIN, I WAIT TO PROVE",
+      "match_method": "exact_normalized_title"
+    },
+    "185": {
+      "old_number": 185,
+      "old_title": "THE THING MY GOD DOTH HATE",
+      "new_id": 281,
+      "new_number": 281,
+      "new_title": "THE THING MY GOD DOTH HATE",
+      "match_method": "exact_normalized_title"
+    },
+    "186": {
+      "old_number": 186,
+      "old_title": "GOD OF ALL POWER, AND TRUTH, & GRACE",
+      "new_id": 282,
+      "new_number": 282,
+      "new_title": "GOD OF ALL POWER, AND TRUTH, & GRACE",
+      "match_method": "exact_normalized_title"
+    },
+    "187": {
+      "old_number": 187,
+      "old_title": "JESUS, ALL-ATONING LAMB",
+      "new_id": 283,
+      "new_number": 283,
+      "new_title": "JESUS, ALL-ATONING LAMB",
+      "match_method": "exact_normalized_title"
+    },
+    "188": {
+      "old_number": 188,
+      "old_title": "O LORD, HOW HAPPY SHOULD WE BE",
+      "new_id": 284,
+      "new_number": 284,
+      "new_title": "O LORD, HOW HAPPY SHOULD WE BE",
+      "match_method": "exact_normalized_title"
+    },
+    "189": {
+      "old_number": 189,
+      "old_title": "TAKE TIME TO BE HOLY",
+      "new_id": 285,
+      "new_number": 285,
+      "new_title": "TAKE TIME TO BE HOLY",
+      "match_method": "exact_normalized_title"
+    },
+    "190": {
+      "old_number": 190,
+      "old_title": "CALLED UNTO HOLINESS”",
+      "new_id": 286,
+      "new_number": 286,
+      "new_title": "CALLED UNTO HOLINESS",
+      "match_method": "exact_normalized_title"
+    },
+    "191": {
+      "old_number": 191,
+      "old_title": "COME, HOLY GHOST, ALL-QUICKENING FIRE!",
+      "new_id": 287,
+      "new_number": 287,
+      "new_title": "COME, HOLY GHOST, ALL-QUICKENING FIRE!",
+      "match_method": "exact_normalized_title"
+    },
+    "192": {
+      "old_number": 192,
+      "old_title": "O FOR A HEART TO PRAISE MY GOD",
+      "new_id": 288,
+      "new_number": 288,
+      "new_title": "O FOR A HEART TO PRAISE MY GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "193": {
+      "old_number": 193,
+      "old_title": "ANOTHER YEAR IS DAWNING",
+      "new_id": 302,
+      "new_number": 302,
+      "new_title": "ANOTHER YEAR IS DAWNING",
+      "match_method": "exact_normalized_title"
+    },
+    "194": {
+      "old_number": 194,
+      "old_title": "O DAY OF REST AND GLADNESS",
+      "new_id": 290,
+      "new_number": 290,
+      "new_title": "O DAY OF REST AND GLADNESS",
+      "match_method": "exact_normalized_title"
+    },
+    "195": {
+      "old_number": 195,
+      "old_title": "ANOTHER YEAR IS DAWNING",
+      "new_id": 302,
+      "new_number": 302,
+      "new_title": "ANOTHER YEAR IS DAWNING",
+      "match_method": "exact_normalized_title"
+    },
+    "196": {
+      "old_number": 196,
+      "old_title": "DOES JESUS CARE?",
+      "new_id": 303,
+      "new_number": 303,
+      "new_title": "DOES JESUS CARE?",
+      "match_method": "exact_normalized_title"
+    },
+    "197": {
+      "old_number": 197,
+      "old_title": "LOVE FOUND A WAY",
+      "new_id": 308,
+      "new_number": 308,
+      "new_title": "LOVE FOUND A WAY",
+      "match_method": "exact_normalized_title"
+    },
+    "198": {
+      "old_number": 198,
+      "old_title": "HIS LOVE CAN NEVER FAIL",
+      "new_id": 311,
+      "new_number": 311,
+      "new_title": "HIS LOVE CAN NEVER FAIL",
+      "match_method": "exact_normalized_title"
+    },
+    "199": {
+      "old_number": 199,
+      "old_title": "RESTING IN HIS LOVE",
+      "new_id": 314,
+      "new_number": 314,
+      "new_title": "RESTING IN HIS LOVE",
+      "match_method": "exact_normalized_title"
+    },
+    "200": {
+      "old_number": 200,
+      "old_title": "THE NINETY AND NINE",
+      "new_id": 316,
+      "new_number": 316,
+      "new_title": "THE NINETY AND NINE",
+      "match_method": "exact_normalized_title"
+    },
+    "201": {
+      "old_number": 201,
+      "old_title": "LOVE LIFTED ME",
+      "new_id": 317,
+      "new_number": 317,
+      "new_title": "LOVE LIFTED ME",
+      "match_method": "exact_normalized_title"
+    },
+    "202": {
+      "old_number": 202,
+      "old_title": "WONDERFUL STORY OF LOVE",
+      "new_id": 318,
+      "new_number": 318,
+      "new_title": "WONDERFUL STORY OF LOVE",
+      "match_method": "exact_normalized_title"
+    },
+    "203": {
+      "old_number": 203,
+      "old_title": "THERE IS NO LOVE LIKE THE LOVE OF JESUS",
+      "new_id": 319,
+      "new_number": 319,
+      "new_title": "THERE IS NO LOVE LIKE THE LOVE OF JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "204": {
+      "old_number": 204,
+      "old_title": "YE MUST BE BORN AGAIN",
+      "new_id": 320,
+      "new_number": 320,
+      "new_title": "YE MUST BE BORN AGAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "205": {
+      "old_number": 205,
+      "old_title": "HAVE YOU COUNTED THE COST?",
+      "new_id": 321,
+      "new_number": 321,
+      "new_title": "HAVE YOU COUNTED THE COST?",
+      "match_method": "exact_normalized_title"
+    },
+    "206": {
+      "old_number": 206,
+      "old_title": "WHERE WILL YOU SPEND ETERNITY?",
+      "new_id": 322,
+      "new_number": 322,
+      "new_title": "WHERE WILL YOU SPEND ETERNITY?",
+      "match_method": "exact_normalized_title"
+    },
+    "207": {
+      "old_number": 207,
+      "old_title": "THERE'S A GREAT DAY COMING",
+      "new_id": 324,
+      "new_number": 324,
+      "new_title": "THERE'S A GREAT DAY COMING",
+      "match_method": "exact_normalized_title"
+    },
+    "208": {
+      "old_number": 208,
+      "old_title": "THE GREAT JUDGMENT MORNING",
+      "new_id": 325,
+      "new_number": 325,
+      "new_title": "THE GREAT JUDGMENT MORNING",
+      "match_method": "exact_normalized_title"
+    },
+    "209": {
+      "old_number": 209,
+      "old_title": "I WILL NOT FORGET THEE",
+      "new_id": 326,
+      "new_number": 326,
+      "new_title": "I WILL NOT FORGET THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "210": {
+      "old_number": 210,
+      "old_title": "OPEN MY EYES THAT I MAY SEE",
+      "new_id": 327,
+      "new_number": 327,
+      "new_title": "OPEN MY EYES THAT I MAY SEE",
+      "match_method": "exact_normalized_title"
+    },
+    "211": {
+      "old_number": 211,
+      "old_title": "CROWN HIM WITH MANY CROWNS",
+      "new_id": 328,
+      "new_number": 328,
+      "new_title": "CROWN HIM WITH MANY CROWNS",
+      "match_method": "exact_normalized_title"
+    },
+    "212": {
+      "old_number": 212,
+      "old_title": "JESUS SHALL REIGN WHERE'ER THE SUN",
+      "new_id": 329,
+      "new_number": 329,
+      "new_title": "JESUS SHALL REIGN WHERE'ER THE SUN",
+      "match_method": "exact_normalized_title"
+    },
+    "213": {
+      "old_number": 213,
+      "old_title": "REJOICE, THE LORD IS KING!",
+      "new_id": 332,
+      "new_number": 332,
+      "new_title": "REJOICE, THE LORD IS KING!",
+      "match_method": "exact_normalized_title"
+    },
+    "215": {
+      "old_number": 215,
+      "old_title": "O HAPPY DAY, THAT FIXED MY CHOICE",
+      "new_id": 333,
+      "new_number": 333,
+      "new_title": "O HAPPY DAY, THAT FIXED MY CHOICE",
+      "match_method": "exact_normalized_title"
+    },
+    "216": {
+      "old_number": 216,
+      "old_title": "MORE ABOUT JESUS WOULD I KNOW",
+      "new_id": 334,
+      "new_number": 334,
+      "new_title": "MORE ABOUT JESUS WOULD I KNOW",
+      "match_method": "exact_normalized_title"
+    },
+    "217": {
+      "old_number": 217,
+      "old_title": "O PERFECT LOVE, ALL HUMAN THOUGHT TRANSCENDING",
+      "new_id": 335,
+      "new_number": 335,
+      "new_title": "O PERFECT LOVE, ALL HUMAN THOUGHT TRANSCENDING",
+      "match_method": "exact_normalized_title"
+    },
+    "218": {
+      "old_number": 218,
+      "old_title": "LOVE DIVINE, ALL LOVES EXCELLING",
+      "new_id": 336,
+      "new_number": 336,
+      "new_title": "LOVE DIVINE, ALL LOVES EXCELLING",
+      "match_method": "exact_normalized_title"
+    },
+    "219": {
+      "old_number": 219,
+      "old_title": "MORE HOLINESS GIVE ME, MORE STRIVING WITHIN",
+      "new_id": 337,
+      "new_number": 337,
+      "new_title": "MORE HOLINESS GIVE ME, MORE STRIVING WITHIN",
+      "match_method": "exact_normalized_title"
+    },
+    "220": {
+      "old_number": 220,
+      "old_title": "WHEN I SAW THE CLEANSING FOUNTAIN",
+      "new_id": 338,
+      "new_number": 338,
+      "new_title": "WHEN I SAW THE CLEANSING FOUNTAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "221": {
+      "old_number": 221,
+      "old_title": "LET NOT THY HANDS BE SLACK",
+      "new_id": 339,
+      "new_number": 339,
+      "new_title": "LET NOT THY HANDS BE SLACK",
+      "match_method": "exact_normalized_title"
+    },
+    "222": {
+      "old_number": 222,
+      "old_title": "SPEDD THY SERVANTS, SAVIOUR, SPEED THEM",
+      "new_id": 340,
+      "new_number": 340,
+      "new_title": "SPEED THY SERVANTS, SAVIOUR, SPEED THEM",
+      "match_method": "ocr_typo_title_match: SPEDD -> SPEED"
+    },
+    "223": {
+      "old_number": 223,
+      "old_title": "I GAVE MY LIFE FOR THEE",
+      "new_id": 341,
+      "new_number": 341,
+      "new_title": "I GAVE MY LIFE FOR THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "224": {
+      "old_number": 224,
+      "old_title": "OH, THE BITTER SHAME AND SORROW",
+      "new_id": 342,
+      "new_number": 342,
+      "new_title": "OH, THE BITTER SHAME AND SORROW",
+      "match_method": "exact_normalized_title"
+    },
+    "225": {
+      "old_number": 225,
+      "old_title": "BURN, FIRE OF GOD!",
+      "new_id": 343,
+      "new_number": 343,
+      "new_title": "BURN, FIRE OF GOD!",
+      "match_method": "exact_normalized_title"
+    },
+    "226": {
+      "old_number": 226,
+      "old_title": "THY BLESSED WILL DIVINE",
+      "new_id": 344,
+      "new_number": 344,
+      "new_title": "THY BLESSED WILL DIVINE",
+      "match_method": "exact_normalized_title"
+    },
+    "227": {
+      "old_number": 227,
+      "old_title": "NEARER, MY GOD TO THEE",
+      "new_id": 345,
+      "new_number": 345,
+      "new_title": "NEARER, MY GOD TO THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "228": {
+      "old_number": 228,
+      "old_title": "O WHY NOT TONIGHT?",
+      "new_id": 346,
+      "new_number": 346,
+      "new_title": "O WHY NOT TONIGHT?",
+      "match_method": "exact_normalized_title"
+    },
+    "229": {
+      "old_number": 229,
+      "old_title": "HOLD THE FORT",
+      "new_id": 347,
+      "new_number": 347,
+      "new_title": "HOLD THE FORT",
+      "match_method": "exact_normalized_title"
+    },
+    "230": {
+      "old_number": 230,
+      "old_title": "BRING YOUR VESSELS NOT A FEW",
+      "new_id": 348,
+      "new_number": 348,
+      "new_title": "BRING YOUR VESSELS NOT A FEW",
+      "match_method": "exact_normalized_title"
+    },
+    "231": {
+      "old_number": 231,
+      "old_title": "SEND THE LIGHT",
+      "new_id": 349,
+      "new_number": 349,
+      "new_title": "SEND THE LIGHT",
+      "match_method": "exact_normalized_title"
+    },
+    "232": {
+      "old_number": 232,
+      "old_title": "BLEST BE THE TIE THAT BINDS",
+      "new_id": 350,
+      "new_number": 350,
+      "new_title": "BLEST BE THE TIE THAT BINDS",
+      "match_method": "exact_normalized_title"
+    },
+    "233": {
+      "old_number": 233,
+      "old_title": "STAND UP, STAND UP FOR JESUS",
+      "new_id": 351,
+      "new_number": 351,
+      "new_title": "STAND UP, STAND UP FOR JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "234": {
+      "old_number": 234,
+      "old_title": "O LORD, “WITH ONE ACCORD”.",
+      "new_id": 352,
+      "new_number": 352,
+      "new_title": "O LORD, “WITH ONE ACCORD”.",
+      "match_method": "exact_normalized_title"
+    },
+    "235": {
+      "old_number": 235,
+      "old_title": "THE HOLY SPIRIT'S POWER",
+      "new_id": 353,
+      "new_number": 353,
+      "new_title": "THE HOLY SPIRIT'S POWER",
+      "match_method": "exact_normalized_title"
+    },
+    "236": {
+      "old_number": 236,
+      "old_title": "LORD GOD, THE HOLY GHOST",
+      "new_id": 354,
+      "new_number": 354,
+      "new_title": "LORD GOD, THE HOLY GHOST",
+      "match_method": "exact_normalized_title"
+    },
+    "237": {
+      "old_number": 237,
+      "old_title": "PEACE! PERFECT PEACE!",
+      "new_id": 355,
+      "new_number": 355,
+      "new_title": "PEACE! PERFECT PEACE!",
+      "match_method": "exact_normalized_title"
+    },
+    "238": {
+      "old_number": 238,
+      "old_title": "THOU HIDDEN SOURCE OF CALM REPOSE",
+      "new_id": 356,
+      "new_number": 356,
+      "new_title": "THOU HIDDEN SOURCE OF CALM REPOSE",
+      "match_method": "exact_normalized_title"
+    },
+    "239": {
+      "old_number": 239,
+      "old_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "new_id": 310,
+      "new_number": 310,
+      "new_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "match_method": "duplicate_title_disambiguated_by_stanza_text (Well deserves the name of Friend)"
+    },
+    "240": {
+      "old_number": 240,
+      "old_title": "JESUS IS THE SAME FOREVER",
+      "new_id": 357,
+      "new_number": 357,
+      "new_title": "JESUSIS THE SAME FOREVER",
+      "match_method": "spacing_variant_title_match: JESUS IS -> JESUSIS"
+    },
+    "241": {
+      "old_number": 241,
+      "old_title": "IVE FOUND THE “PEARL OF GREATESTPRICE”",
+      "new_id": 358,
+      "new_number": 358,
+      "new_title": "I’VE FOUND THE “PEARL OF GREATEST PRICE”",
+      "match_method": "punctuation_spacing_variant: IVE/GREATESTPRICE -> I'VE/GREATEST PRICE"
+    },
+    "242": {
+      "old_number": 242,
+      "old_title": "A GOOD HIGH PRIEST IS COME",
+      "new_id": 359,
+      "new_number": 359,
+      "new_title": "A GOOD HIGH PRIEST IS COME",
+      "match_method": "exact_normalized_title"
+    },
+    "243": {
+      "old_number": 243,
+      "old_title": "STANDING ON THE PROMISES",
+      "new_id": 360,
+      "new_number": 360,
+      "new_title": "STANDING ON THE PROMISES",
+      "match_method": "exact_normalized_title"
+    },
+    "244": {
+      "old_number": 244,
+      "old_title": "ALL THINGS IN JESUS",
+      "new_id": 361,
+      "new_number": 361,
+      "new_title": "ALL THINGS IN JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "245": {
+      "old_number": 245,
+      "old_title": "IS YOUR LIFE A CHANNEL OF BLESSING?",
+      "new_id": 362,
+      "new_number": 362,
+      "new_title": "IS YOUR LIFE A CHANNEL OF BLESSING?",
+      "match_method": "exact_normalized_title"
+    },
+    "246": {
+      "old_number": 246,
+      "old_title": "O BROTHER, LIFE'S JOURNEY BEGINNING",
+      "new_id": 363,
+      "new_number": 363,
+      "new_title": "O BROTHER, LIFE'S JOURNEY BEGINNING",
+      "match_method": "exact_normalized_title"
+    },
+    "247": {
+      "old_number": 247,
+      "old_title": "TIS FINISHED, THE MESSIAH DIES",
+      "new_id": 364,
+      "new_number": 364,
+      "new_title": "'TIS FINISHED, THE MESSIAH DIES",
+      "match_method": "exact_normalized_title"
+    },
+    "248": {
+      "old_number": 248,
+      "old_title": "THE MERCY SEAT",
+      "new_id": 365,
+      "new_number": 365,
+      "new_title": "THE MERCY SEAT",
+      "match_method": "exact_normalized_title"
+    },
+    "249": {
+      "old_number": 249,
+      "old_title": "COME SING THE PRAISE OF JESUS",
+      "new_id": 366,
+      "new_number": 366,
+      "new_title": "COME SING THE PRAISE OF JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "250": {
+      "old_number": 250,
+      "old_title": "FOR MY SAKE AND THE GOSPEL'S GO",
+      "new_id": 367,
+      "new_number": 367,
+      "new_title": "FOR MY SAKE AND THE GOSPEL'S GO",
+      "match_method": "exact_normalized_title"
+    },
+    "251": {
+      "old_number": 251,
+      "old_title": "ABIDE WITH ME FAST FALLS THE EVENTIDE;",
+      "new_id": 1,
+      "new_number": 1,
+      "new_title": "ABIDE WITH ME FAST FALLS THE EVENTIDE",
+      "match_method": "exact_normalized_title"
+    },
+    "252": {
+      "old_number": 252,
+      "old_title": "WE ARE NEVER, NEVER WEARY OF THE GRAND OLD SONG;",
+      "new_id": 213,
+      "new_number": 213,
+      "new_title": "WE ARE NEVER, NEVER WEARY OF THE GRAND OLD SONG;",
+      "match_method": "exact_normalized_title"
+    },
+    "253": {
+      "old_number": 253,
+      "old_title": "THE BLOOD OF MY REDEEMER",
+      "new_id": 66,
+      "new_number": 66,
+      "new_title": "THE BLOOD OF MY REDEEMER",
+      "match_method": "exact_normalized_title"
+    },
+    "254": {
+      "old_number": 254,
+      "old_title": "PRAISE THE KING OF GLORY",
+      "new_id": 13,
+      "new_number": 13,
+      "new_title": "PRAISE THE KING OF GLORY",
+      "match_method": "exact_normalized_title"
+    },
+    "255": {
+      "old_number": 255,
+      "old_title": "LET US WITH A GLADSOME MIND",
+      "new_id": 26,
+      "new_number": 26,
+      "new_title": "LET US WITH A GLADSOME MIND",
+      "match_method": "exact_normalized_title"
+    },
+    "257": {
+      "old_number": 257,
+      "old_title": "ALLELUIA, SONG OF SWEETNESS,",
+      "new_id": 157,
+      "new_number": 157,
+      "new_title": "ALLELUIA, SONG OF SWEETNESS,",
+      "match_method": "exact_normalized_title"
+    },
+    "258": {
+      "old_number": 258,
+      "old_title": "HEAD OF THE CHURCH TRIUMPHANT,",
+      "new_id": 28,
+      "new_number": 28,
+      "new_title": "HEAD OF THE CHURCH TRIUMPHANT",
+      "match_method": "exact_normalized_title"
+    },
+    "259": {
+      "old_number": 259,
+      "old_title": "TO THEE, O COMFORTER DIVINE",
+      "new_id": 17,
+      "new_number": 17,
+      "new_title": "TO THEE, O COMFORTER DIVINE",
+      "match_method": "exact_normalized_title"
+    },
+    "260": {
+      "old_number": 260,
+      "old_title": "PRAISE, O PRAISE OUR GOD AND KING!",
+      "new_id": 19,
+      "new_number": 19,
+      "new_title": "PRAISE, O PRAISE OUR GOD AND KING!",
+      "match_method": "exact_normalized_title"
+    },
+    "261": {
+      "old_number": 261,
+      "old_title": "NOW THANK WE ALL OUR GOD",
+      "new_id": 20,
+      "new_number": 20,
+      "new_title": "NOW THANK WE ALL OUR GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "262": {
+      "old_number": 262,
+      "old_title": "O MAGNIFY THE LORD WITH ME,",
+      "new_id": 21,
+      "new_number": 21,
+      "new_title": "O MAGNIFY THE LORD WITH ME",
+      "match_method": "exact_normalized_title"
+    },
+    "263": {
+      "old_number": 263,
+      "old_title": "PRAISE TO THE LORD, THE ALMIGHTY",
+      "new_id": 22,
+      "new_number": 22,
+      "new_title": "PRAISE TO THE LORD, THE ALMIGHTY",
+      "match_method": "exact_normalized_title"
+    },
+    "264": {
+      "old_number": 264,
+      "old_title": "IMMORTAL, INVISIBLE, GOD ONLY WISE",
+      "new_id": 23,
+      "new_number": 23,
+      "new_title": "IMMORTAL, INVISIBLE, GOD ONLY WISE",
+      "match_method": "exact_normalized_title"
+    },
+    "265": {
+      "old_number": 265,
+      "old_title": "JESUS IS COMING WITH JOY",
+      "new_id": 266,
+      "new_number": 266,
+      "new_title": "JESUS IS COMING WITH JOY",
+      "match_method": "exact_normalized_title"
+    },
+    "266": {
+      "old_number": 266,
+      "old_title": "WE ARE WATCHING WE ARE WAITING",
+      "new_id": 267,
+      "new_number": 267,
+      "new_title": "WE ARE WATCHING WE ARE WAITING",
+      "match_method": "exact_normalized_title"
+    },
+    "267": {
+      "old_number": 267,
+      "old_title": "GLORY TO GOD, IN THE HIGHEST",
+      "new_id": 300,
+      "new_number": 300,
+      "new_title": "GLORY TO GOD, IN THE HIGHEST",
+      "match_method": "exact_normalized_title"
+    },
+    "268": {
+      "old_number": 268,
+      "old_title": "ANGELS FROM THE REALMS OF GLORY",
+      "new_id": 301,
+      "new_number": 301,
+      "new_title": "ANGELS FROM THE REALMS OF GLORY",
+      "match_method": "exact_normalized_title"
+    },
+    "269": {
+      "old_number": 269,
+      "old_title": "HARK! THE HERALD-ANGELS SING",
+      "new_id": 291,
+      "new_number": 291,
+      "new_title": "HARK! THE HERALD-ANGELS SING",
+      "match_method": "exact_normalized_title"
+    },
+    "270": {
+      "old_number": 270,
+      "old_title": "JOY TO THE WORLD! THE LORD IS COME;",
+      "new_id": 298,
+      "new_number": 298,
+      "new_title": "JOY TO THE WORLD! THE LORD IS COME",
+      "match_method": "exact_normalized_title"
+    },
+    "271": {
+      "old_number": 271,
+      "old_title": "O COME, ALL YE FAITHFUL,",
+      "new_id": 299,
+      "new_number": 299,
+      "new_title": "O COME, ALL YE FAITHFUL",
+      "match_method": "exact_normalized_title"
+    },
+    "272": {
+      "old_number": 272,
+      "old_title": "O GOD, OUR HELP IN AGES PAST,",
+      "new_id": 36,
+      "new_number": 36,
+      "new_title": "O GOD, OUR HELP IN AGES PAST",
+      "match_method": "exact_normalized_title"
+    },
+    "273": {
+      "old_number": 273,
+      "old_title": "BLESSED INVITATION FROM THE KING OF HEAV'N,",
+      "new_id": 238,
+      "new_number": 238,
+      "new_title": "BLESSED INVITATION FROM THE KING OF HEAV'N",
+      "match_method": "exact_normalized_title"
+    },
+    "274": {
+      "old_number": 274,
+      "old_title": "YET THERE IS ROOM\" THE LAMB'S BRIGHT HALL",
+      "new_id": 239,
+      "new_number": 239,
+      "new_title": "YET THERE IS ROOM\" THE LAMB'S BRIGHT HALL",
+      "match_method": "exact_normalized_title"
+    },
+    "275": {
+      "old_number": 275,
+      "old_title": "I'VE A MESSAGE FROM THE LORD, HALLELUJAH!",
+      "new_id": 240,
+      "new_number": 240,
+      "new_title": "I'VE A MESSAGE FROM THE LORD, HALLELUJAH!",
+      "match_method": "exact_normalized_title"
+    },
+    "276": {
+      "old_number": 276,
+      "old_title": "THERE IS A CLEANSING FOUNTAIN",
+      "new_id": 241,
+      "new_number": 241,
+      "new_title": "THERE IS A CLEANSING FOUNTAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "277": {
+      "old_number": 277,
+      "old_title": "COME TO THE SAVIOUR MAKE NO DELAY",
+      "new_id": 242,
+      "new_number": 242,
+      "new_title": "COME TO THE SAVIOUR MAKE NO DELAY",
+      "match_method": "exact_normalized_title"
+    },
+    "278": {
+      "old_number": 278,
+      "old_title": "THY LOVE HAS SPARED OUR LIVES TODAY",
+      "new_id": 305,
+      "new_number": 305,
+      "new_title": "THY LOVE HAS SPARED OUR LIVES TODAY",
+      "match_method": "exact_normalized_title"
+    },
+    "279": {
+      "old_number": 279,
+      "old_title": "SINCE CHRIST MY SOUL FROM SIN SET FREE",
+      "new_id": 189,
+      "new_number": 189,
+      "new_title": "SINCE CHRIST MY SOUL FROM SIN SET FREE",
+      "match_method": "exact_normalized_title"
+    },
+    "280": {
+      "old_number": 280,
+      "old_title": "NO NOT DESPAIRINGLY COME I TO THEE",
+      "new_id": 190,
+      "new_number": 190,
+      "new_title": "NO NOT DESPAIRINGLY COME I TO THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "281": {
+      "old_number": 281,
+      "old_title": "LOVING SAVIOUR, HEAR MY CRY",
+      "new_id": 191,
+      "new_number": 191,
+      "new_title": "LOVING SAVIOUR, HEAR MY CRY",
+      "match_method": "exact_normalized_title"
+    },
+    "282": {
+      "old_number": 282,
+      "old_title": "I HEAR THE SAVIOUR SAY",
+      "new_id": 108,
+      "new_number": 108,
+      "new_title": "I HEAR THE SAVIOUR SAY",
+      "match_method": "exact_normalized_title"
+    },
+    "284": {
+      "old_number": 284,
+      "old_title": "AMAZING GRACE! HOW SWEET THE SOUND",
+      "new_id": 197,
+      "new_number": 197,
+      "new_title": "AMAZING GRACE! HOW SWEET THE SOUND",
+      "match_method": "exact_normalized_title"
+    },
+    "285": {
+      "old_number": 285,
+      "old_title": "MY SOUL IS SO HAPPY IN JESUS",
+      "new_id": 76,
+      "new_number": 76,
+      "new_title": "MY SOUL IS SO HAPPY IN JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "286": {
+      "old_number": 286,
+      "old_title": "GRACE! 'TIS A CHARMING SOUND",
+      "new_id": 198,
+      "new_number": 198,
+      "new_title": "GRACE! 'TIS A CHARMING SOUND",
+      "match_method": "exact_normalized_title"
+    },
+    "287": {
+      "old_number": 287,
+      "old_title": "ONCE I WAS BOUND BY SIN'S GALLING FETTERS",
+      "new_id": 80,
+      "new_number": 80,
+      "new_title": "ONCE I WAS BOUND BY SIN'S GALLING FETTERS",
+      "match_method": "exact_normalized_title"
+    },
+    "288": {
+      "old_number": 288,
+      "old_title": "THERE IS A FOUNTAIN FILL'D WITH BLOOD",
+      "new_id": 368,
+      "new_number": 368,
+      "new_title": "THERE IS A FOUNTAIN FILL'D WITH BLOOD",
+      "match_method": "duplicate_title_disambiguated_by_stanza_text (sim=0.990, full 5-verse version)"
+    },
+    "289": {
+      "old_number": 289,
+      "old_title": "HAVE YOU READ THE STORY OF THE CROSS",
+      "new_id": 304,
+      "new_number": 304,
+      "new_title": "HAVE YOU READ THE STORY OF THE CROSS?",
+      "match_method": "exact_normalized_title"
+    },
+    "290": {
+      "old_number": 290,
+      "old_title": "THERE IS A GREEN HILL FAR AWAY",
+      "new_id": 113,
+      "new_number": 113,
+      "new_title": "THERE IS A GREEN HILL FAR AWAY",
+      "match_method": "exact_normalized_title"
+    },
+    "291": {
+      "old_number": 291,
+      "old_title": "ON THE RESURRECTION MORNING",
+      "new_id": 370,
+      "new_number": 370,
+      "new_title": "ON THE RESURRECTION MORNING",
+      "match_method": "exact_normalized_title"
+    },
+    "292": {
+      "old_number": 292,
+      "old_title": "JESUS LIVES! THY TERRORS NOW",
+      "new_id": 158,
+      "new_number": 158,
+      "new_title": "JESUS LIVES! THY TERRORS NOW",
+      "match_method": "exact_normalized_title"
+    },
+    "293": {
+      "old_number": 293,
+      "old_title": "THE STRIFE IS O'ER THE BATTLE DONE",
+      "new_id": 159,
+      "new_number": 159,
+      "new_title": "THE STRIFE IS O'ER THE BATTLE DONE",
+      "match_method": "exact_normalized_title"
+    },
+    "294": {
+      "old_number": 294,
+      "old_title": "CHRIST THE LORD IS RISEN TO-DAY",
+      "new_id": 371,
+      "new_number": 371,
+      "new_title": "CHRIST THE LORD IS RISEN TO-DAY",
+      "match_method": "exact_normalized_title"
+    },
+    "295": {
+      "old_number": 295,
+      "old_title": "PLEASANT ARE THY COURTS ABOVE",
+      "new_id": 211,
+      "new_number": 211,
+      "new_title": "PLEASANT ARE THY COURTS ABOVE",
+      "match_method": "exact_normalized_title"
+    },
+    "296": {
+      "old_number": 296,
+      "old_title": "MY HEART IS OPEN TO THEE, DEAR LORD,",
+      "new_id": 86,
+      "new_number": 86,
+      "new_title": "MY HEART IS OPEN TO THEE, DEAR LORD,",
+      "match_method": "exact_normalized_title"
+    },
+    "297": {
+      "old_number": 297,
+      "old_title": "WHEN THE POW'R OF GOD DESCENDED",
+      "new_id": 229,
+      "new_number": 229,
+      "new_title": "WHEN THE POW'R OF GOD DESCENDED",
+      "match_method": "exact_normalized_title"
+    },
+    "298": {
+      "old_number": 298,
+      "old_title": "BREATHE ON ME, BREATHE OF GOD",
+      "new_id": 230,
+      "new_number": 230,
+      "new_title": "BREATHE ON ME, BREATHE OF GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "299": {
+      "old_number": 299,
+      "old_title": "THERE'S A STRANGER AT THE DOOR",
+      "new_id": 245,
+      "new_number": 245,
+      "new_title": "THERE'S A STRANGER AT THE DOOR",
+      "match_method": "exact_normalized_title"
+    },
+    "300": {
+      "old_number": 300,
+      "old_title": "WHEN JESUS COMES TO REWARD HIS SERVANTS",
+      "new_id": 106,
+      "new_number": 106,
+      "new_title": "WHEN JESUS COMES TO REWARD HIS SERVANTS",
+      "match_method": "exact_normalized_title"
+    },
+    "301": {
+      "old_number": 301,
+      "old_title": "SINNERS JESUS WILL RECEIVE",
+      "new_id": 246,
+      "new_number": 246,
+      "new_title": "SINNERS JESUS WILL RECEIVE",
+      "match_method": "exact_normalized_title"
+    },
+    "302": {
+      "old_number": 302,
+      "old_title": "ARE YOU WEARY, ARE YOU HEAVY HEARTED?",
+      "new_id": 252,
+      "new_number": 252,
+      "new_title": "ARE YOU WEARY, ARE YOU HEAVY HEARTED?",
+      "match_method": "exact_normalized_title"
+    },
+    "303": {
+      "old_number": 303,
+      "old_title": "ONCE MORE, MY SOUL, THY SAVIOUR",
+      "new_id": 82,
+      "new_number": 82,
+      "new_title": "ONCE MORE, MY SOUL, THY SAVIOUR",
+      "match_method": "exact_normalized_title"
+    },
+    "304": {
+      "old_number": 304,
+      "old_title": "SING THEM OVER AGAIN TO ME",
+      "new_id": 373,
+      "new_number": 373,
+      "new_title": "SING THEM OVER AGAIN TO ME",
+      "match_method": "exact_normalized_title"
+    },
+    "305": {
+      "old_number": 305,
+      "old_title": "THE GREAT PHYSICIAN NOW IS NEAR",
+      "new_id": 117,
+      "new_number": 117,
+      "new_title": "THE GREAT PHYSICIAN NOW IS NEAR",
+      "match_method": "exact_normalized_title"
+    },
+    "306": {
+      "old_number": 306,
+      "old_title": "O BROTHER, HAVE YOU TOLD HOW THE LORD FORGAVE",
+      "new_id": 170,
+      "new_number": 170,
+      "new_title": "O BROTHER, HAVE YOU TOLD HOW THE LORD FORGAVE",
+      "match_method": "exact_normalized_title"
+    },
+    "307": {
+      "old_number": 307,
+      "old_title": "OH, SPREAD THE TIDINGS ROUND",
+      "new_id": 232,
+      "new_number": 232,
+      "new_title": "OH, SPREAD THE TIDINGS ROUND",
+      "match_method": "exact_normalized_title"
+    },
+    "308": {
+      "old_number": 308,
+      "old_title": "THY KINGDOM COME, O GOD",
+      "new_id": 115,
+      "new_number": 115,
+      "new_title": "THY KINGDOM COME, O GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "309": {
+      "old_number": 309,
+      "old_title": "BLOW YE THE TRUMPET BLOW!",
+      "new_id": 323,
+      "new_number": 323,
+      "new_title": "BLOW YE THE TRUMPET BLOW!",
+      "match_method": "exact_normalized_title"
+    },
+    "310": {
+      "old_number": 310,
+      "old_title": "BREAK THOU THE BREAD OF LIFE",
+      "new_id": 372,
+      "new_number": 372,
+      "new_title": "BREAK THOU THE BREAD OF LIFE",
+      "match_method": "exact_normalized_title"
+    },
+    "311": {
+      "old_number": 311,
+      "old_title": "HOLY BIBLE, BOOK DIVINE",
+      "new_id": 374,
+      "new_number": 374,
+      "new_title": "HOLY BIBLE, BOOK DIVINE.",
+      "match_method": "exact_normalized_title"
+    },
+    "312": {
+      "old_number": 312,
+      "old_title": "LORD, THY WORD ABIDETH,",
+      "new_id": 375,
+      "new_number": 375,
+      "new_title": "LORD, THY WORD ABIDETH,",
+      "match_method": "exact_normalized_title"
+    },
+    "313": {
+      "old_number": 313,
+      "old_title": "I AM SO GLAD THAT OUR FATHER IN HEAVEN",
+      "new_id": 307,
+      "new_number": 307,
+      "new_title": "I AM SO GLAD THAT OUR FATHER IN HEAVEN",
+      "match_method": "exact_normalized_title"
+    },
+    "314": {
+      "old_number": 314,
+      "old_title": "MY LIFE, MY LOVE, I GIVE TO THEE",
+      "new_id": 90,
+      "new_number": 90,
+      "new_title": "MY LIFE, MY LOVE, I GIVE TO THEE",
+      "match_method": "exact_normalized_title"
+    },
+    "315": {
+      "old_number": 315,
+      "old_title": "THE VOICE THAT BREATHED O'ER EDEN",
+      "new_id": 306,
+      "new_number": 306,
+      "new_title": "THE VOICE THAT BREATHED O'ER EDEN",
+      "match_method": "exact_normalized_title"
+    },
+    "316": {
+      "old_number": 316,
+      "old_title": "JESUS, MEEK AND GENTLE",
+      "new_id": 121,
+      "new_number": 121,
+      "new_title": "JESUS, MEEK AND GENTLE",
+      "match_method": "exact_normalized_title"
+    },
+    "317": {
+      "old_number": 317,
+      "old_title": "I WANT TO BE LIKE JESUS",
+      "new_id": 275,
+      "new_number": 275,
+      "new_title": "I WANT TO BE LIKE JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "318": {
+      "old_number": 318,
+      "old_title": "JESUS LOVES ME, THIS I KNOW",
+      "new_id": 309,
+      "new_number": 309,
+      "new_title": "JESUS LOVES ME, THIS I KNOW",
+      "match_method": "exact_normalized_title"
+    },
+    "319": {
+      "old_number": 319,
+      "old_title": "WHEN HE COMETH, WHEN HE COMETH",
+      "new_id": 269,
+      "new_number": 269,
+      "new_title": "WHEN HE COMETH, WHEN HE COMETH",
+      "match_method": "exact_normalized_title"
+    },
+    "320": {
+      "old_number": 320,
+      "old_title": "DO NO SINFUL ACTION",
+      "new_id": 274,
+      "new_number": 274,
+      "new_title": "DO NO SINFUL ACTION",
+      "match_method": "exact_normalized_title"
+    },
+    "321": {
+      "old_number": 321,
+      "old_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "new_id": 369,
+      "new_number": 369,
+      "new_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "match_method": "duplicate_title_disambiguated_by_stanza_text (Oh, how He loves!)"
+    },
+    "322": {
+      "old_number": 322,
+      "old_title": "YE LITTLE ONES KEEP CLOSE TO GOD",
+      "new_id": 5,
+      "new_number": 5,
+      "new_title": "YE LITTLE ONES KEEP CLOSE TO GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "323": {
+      "old_number": 323,
+      "old_title": "PRAY, ALWAYS PRAY;THE HOLY SPIRIT PLEADS.",
+      "new_id": 256,
+      "new_number": 256,
+      "new_title": "PRAY, ALWAYS PRAY; THE HOLY SPIRIT PLEADS.",
+      "match_method": "exact_normalized_title"
+    },
+    "324": {
+      "old_number": 324,
+      "old_title": "THROUGH THE LOVE OF GOD OUR SAVIOUR",
+      "new_id": 9,
+      "new_number": 9,
+      "new_title": "THROUGH THE LOVE OF GOD OUR SAVIOUR",
+      "match_method": "exact_normalized_title"
+    },
+    "325": {
+      "old_number": 325,
+      "old_title": "HE WILL ANSWER EVERY PRAY'R",
+      "new_id": 257,
+      "new_number": 257,
+      "new_title": "HE WILL ANSWER EVERY PRAY'R",
+      "match_method": "exact_normalized_title"
+    },
+    "326": {
+      "old_number": 326,
+      "old_title": "O LORD OF HEAV'N AND EARTH AND SEA",
+      "new_id": 15,
+      "new_number": 15,
+      "new_title": "O LORD OF HEAV’N AND EARTH AND SEA",
+      "match_method": "exact_normalized_title"
+    },
+    "327": {
+      "old_number": 327,
+      "old_title": "JESUS, MY LORD, MY GOD, MY ALL",
+      "new_id": 94,
+      "new_number": 94,
+      "new_title": "JESUS, MY LORD, MY GOD, MY ALL",
+      "match_method": "exact_normalized_title"
+    },
+    "328": {
+      "old_number": 328,
+      "old_title": "IN TENDERNESS HE SOUGHT ME",
+      "new_id": 204,
+      "new_number": 204,
+      "new_title": "IN TENDERNESS HE SOUGHT ME",
+      "match_method": "exact_normalized_title"
+    },
+    "329": {
+      "old_number": 329,
+      "old_title": "LOVE HIM WHO'S THY NEIGHBOUR",
+      "new_id": 95,
+      "new_number": 95,
+      "new_title": "LOVE HIM WHO'S THY NEIGHBOUR",
+      "match_method": "exact_normalized_title"
+    },
+    "330": {
+      "old_number": 330,
+      "old_title": "HE GAVE TO ME A SEAL",
+      "new_id": 312,
+      "new_number": 312,
+      "new_title": "HE GAVE TO ME A SEAL",
+      "match_method": "exact_normalized_title"
+    },
+    "331": {
+      "old_number": 331,
+      "old_title": "AWAKE, MY SOUL! STRETCH EVERY NERVE",
+      "new_id": 102,
+      "new_number": 102,
+      "new_title": "AWAKE, MY SOUL! STRETCH EVERY NERVE",
+      "match_method": "exact_normalized_title"
+    },
+    "332": {
+      "old_number": 332,
+      "old_title": "GLADLY, GLADLY, TOILING FOR THE MASTER",
+      "new_id": 105,
+      "new_number": 105,
+      "new_title": "GLADLY, GLADLY, TOILING FOR THE MASTER",
+      "match_method": "exact_normalized_title"
+    },
+    "333": {
+      "old_number": 333,
+      "old_title": "WHEN YOU START FOR THE LAND OF HEAVENLY REST",
+      "new_id": 129,
+      "new_number": 129,
+      "new_title": "WHEN YOU START FOR THE LAND OF HEAVENLY REST",
+      "match_method": "exact_normalized_title"
+    },
+    "334": {
+      "old_number": 334,
+      "old_title": "CHRISTIAN! SEEK NOT YET REPOSE",
+      "new_id": 131,
+      "new_number": 131,
+      "new_title": "CHRISTIAN! SEEK NOT YET REPOSE",
+      "match_method": "exact_normalized_title"
+    },
+    "335": {
+      "old_number": 335,
+      "old_title": "JESUS CALLS US! O'ER THE TUMULT",
+      "new_id": 132,
+      "new_number": 132,
+      "new_title": "JESUS CALLS US! O'ER THE TUMULT",
+      "match_method": "exact_normalized_title"
+    },
+    "336": {
+      "old_number": 336,
+      "old_title": "O WEARY HEART, THERE IS A HOME",
+      "new_id": 133,
+      "new_number": 133,
+      "new_title": "O WEARY HEART, THERE IS A HOME",
+      "match_method": "exact_normalized_title"
+    },
+    "337": {
+      "old_number": 337,
+      "old_title": "CONQUERORS AND OVER COMERS NOW ARE WE",
+      "new_id": 161,
+      "new_number": 161,
+      "new_title": "CONQUERORS AND OVERCOMERS NOW ARE WE",
+      "match_method": "spacing_variant_title_match: OVER COMERS -> OVERCOMERS"
+    },
+    "338": {
+      "old_number": 338,
+      "old_title": "MY FAITH LOOKS UP O THEE",
+      "new_id": 130,
+      "new_number": 130,
+      "new_title": "MY FAITH LOOKS UP TO THEE",
+      "match_method": "ocr_typo_title_match: O THEE -> TO THEE"
+    },
+    "339": {
+      "old_number": 339,
+      "old_title": "WHEN SHADOWS DARKEN MY EARTHLY WAY",
+      "new_id": 39,
+      "new_number": 39,
+      "new_title": "WHEN SHADOWS DARKEN MY EARTHLY WAY",
+      "match_method": "exact_normalized_title"
+    },
+    "340": {
+      "old_number": 340,
+      "old_title": "THE GOD WHO LED HIS PEOPLE THRO' THE PARTED SEA",
+      "new_id": 41,
+      "new_number": 41,
+      "new_title": "THE GOD WHO LED HIS PEOPLE THRO' THE PARTED SEA",
+      "match_method": "exact_normalized_title"
+    },
+    "341": {
+      "old_number": 341,
+      "old_title": "BE GLAD IN THE LORD, AND REJOICE",
+      "new_id": 12,
+      "new_number": 12,
+      "new_title": "BE GLAD IN THE LORD, AND REJOICE",
+      "match_method": "exact_normalized_title"
+    },
+    "342": {
+      "old_number": 342,
+      "old_title": "THEY THAT TRUST IN THE LORD ARE SECURE",
+      "new_id": 196,
+      "new_number": 196,
+      "new_title": "THEY THAT TRUST IN THE LORD ARE SECURE",
+      "match_method": "exact_normalized_title"
+    },
+    "343": {
+      "old_number": 343,
+      "old_title": "BE NOT DISMAYED WHATE'ER BETIDE",
+      "new_id": 27,
+      "new_number": 27,
+      "new_title": "BE NOT DISMAYED WHATE'ER BETIDE",
+      "match_method": "exact_normalized_title"
+    },
+    "344": {
+      "old_number": 344,
+      "old_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "new_id": 32,
+      "new_number": 32,
+      "new_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "match_method": "duplicate_title_disambiguated_by_stanza_text (In a beliver's ear!)"
+    },
+    "345": {
+      "old_number": 345,
+      "old_title": "I HAVE FOUND A FRIEND IN JESUS",
+      "new_id": 37,
+      "new_number": 37,
+      "new_title": "I HAVE FOUND A FRIEND IN JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "346": {
+      "old_number": 346,
+      "old_title": "IF YOU WANT PARDON IF YOU WANT PEACE",
+      "new_id": 8,
+      "new_number": 8,
+      "new_title": "IF YOU WANT PEACE IF YOU WANT PARDON",
+      "match_method": "word_order_swap_same_first_line"
+    },
+    "347": {
+      "old_number": 347,
+      "old_title": "I AM COMING TO THE CROSS",
+      "new_id": 137,
+      "new_number": 137,
+      "new_title": "I AM COMING TO THE CROSS",
+      "match_method": "exact_normalized_title"
+    },
+    "348": {
+      "old_number": 348,
+      "old_title": "JESUS IS ALL THE WORLD TO ME",
+      "new_id": 53,
+      "new_number": 53,
+      "new_title": "JESUS IS ALL THE WORLD TO ME",
+      "match_method": "exact_normalized_title"
+    },
+    "349": {
+      "old_number": 349,
+      "old_title": "THERE IS NO FRIEND LIKE JESUS IN THIS WORLD.",
+      "new_id": 54,
+      "new_number": 54,
+      "new_title": "THERE IS NO FRIEND LIKE JESUS IN THIS WORLD.",
+      "match_method": "exact_normalized_title"
+    },
+    "350": {
+      "old_number": 350,
+      "old_title": "CHRIST IS OUR CORNER STONE",
+      "new_id": 98,
+      "new_number": 98,
+      "new_title": "CHRIST IS OUR CORNER STONE",
+      "match_method": "exact_normalized_title"
+    },
+    "351": {
+      "old_number": 351,
+      "old_title": "GOD BE WITH YOU TILL WE MEET AGAIN",
+      "new_id": 292,
+      "new_number": 292,
+      "new_title": "GOD BE WITH YOU TILL WE MEET AGAIN",
+      "match_method": "exact_normalized_title"
+    },
+    "352": {
+      "old_number": 352,
+      "old_title": "SLEEP ON, BELOVED, SLEEP AND TAKE THY REST",
+      "new_id": 293,
+      "new_number": 293,
+      "new_title": "SLEEP ON, BELOVED, SLEEP AND TAKE THY REST",
+      "match_method": "exact_normalized_title"
+    },
+    "353": {
+      "old_number": 353,
+      "old_title": "JERUSALEM ON HIGH",
+      "new_id": 294,
+      "new_number": 294,
+      "new_title": "JERUSALEM ON HIGH",
+      "match_method": "exact_normalized_title"
+    },
+    "354": {
+      "old_number": 354,
+      "old_title": "FOREVER WITH THE LORD! AMEN",
+      "new_id": 295,
+      "new_number": 295,
+      "new_title": "FOREVER WITH THE LORD! AMEN",
+      "match_method": "exact_normalized_title"
+    },
+    "355": {
+      "old_number": 355,
+      "old_title": "WE SPEAK OF THE REALMS OF THE BLEST",
+      "new_id": 296,
+      "new_number": 296,
+      "new_title": "WE SPEAK OF THE REALMS OF THE BLEST",
+      "match_method": "exact_normalized_title"
+    },
+    "357": {
+      "old_number": 357,
+      "old_title": "THERE IS SUNSHINE IN THE VALLEY",
+      "new_id": 56,
+      "new_number": 56,
+      "new_title": "THERE IS SUNSHINE IN THE VALLEY",
+      "match_method": "exact_normalized_title"
+    },
+    "358": {
+      "old_number": 358,
+      "old_title": "THROUGH ALL THE DANGERS OF THE NIGHT",
+      "new_id": 57,
+      "new_number": 57,
+      "new_title": "THROUGH ALL THE DANGERS OF THE NIGHT",
+      "match_method": "exact_normalized_title"
+    },
+    "359": {
+      "old_number": 359,
+      "old_title": "THE RADIANT MORN HATH PASS'D AWAY",
+      "new_id": 313,
+      "new_number": 313,
+      "new_title": "THE RADIANT MORN HATH PASS'D AWAY",
+      "match_method": "exact_normalized_title"
+    },
+    "360": {
+      "old_number": 360,
+      "old_title": "COME, AND LET US TO THE LORD",
+      "new_id": 16,
+      "new_number": 16,
+      "new_title": "COME AND LET US TO THE LORD",
+      "match_method": "exact_normalized_title"
+    },
+    "361": {
+      "old_number": 361,
+      "old_title": "COME, LET US JOIN OUR CHEERFUL SONGS",
+      "new_id": 330,
+      "new_number": 330,
+      "new_title": "COME, LET US JOIN OUR CHEERFUL SONGS",
+      "match_method": "exact_normalized_title"
+    },
+    "362": {
+      "old_number": 362,
+      "old_title": "JESUS WE LOVE TO MEET",
+      "new_id": 138,
+      "new_number": 138,
+      "new_title": "JESUS WE LOVE TO MEET",
+      "match_method": "exact_normalized_title"
+    },
+    "363": {
+      "old_number": 363,
+      "old_title": "PRAISE HIM, PRAISE HIM, JESUS OUR BLESSED REDEEMER",
+      "new_id": 29,
+      "new_number": 29,
+      "new_title": "PRAISE HIM! PRAISE HIM!",
+      "match_method": "shortened_title_same_first_line"
+    },
+    "364": {
+      "old_number": 364,
+      "old_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "new_id": 40,
+      "new_number": 40,
+      "new_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "match_method": "duplicate_title_disambiguated_by_stanza_text (Blessed be the name of the Lord)"
+    },
+    "365": {
+      "old_number": 365,
+      "old_title": "OH FOR A THOUSAND TONGUES TO SING",
+      "new_id": 25,
+      "new_number": 25,
+      "new_title": "OH, FOR A THOUSAND TONGUES TO SING!",
+      "match_method": "exact_normalized_title"
+    },
+    "366": {
+      "old_number": 366,
+      "old_title": "O WORSHIP THE KING",
+      "new_id": 34,
+      "new_number": 34,
+      "new_title": "O WORSHIP THE KING",
+      "match_method": "exact_normalized_title"
+    },
+    "368": {
+      "old_number": 368,
+      "old_title": "SINFUL, SIGHING TO BE BLEST",
+      "new_id": 193,
+      "new_number": 193,
+      "new_title": "SINFUL, SIGHING TO BE BLEST",
+      "match_method": "exact_normalized_title"
+    },
+    "369": {
+      "old_number": 369,
+      "old_title": "WEARY OF WAND'RING FROM MY GOD",
+      "new_id": 194,
+      "new_number": 194,
+      "new_title": "WEARY OF WAND'RING FROM MY GOD",
+      "match_method": "exact_normalized_title"
+    },
+    "370": {
+      "old_number": 370,
+      "old_title": "HO, MY COMRADES! SEE THE SIGNAL",
+      "new_id": 347,
+      "new_number": 347,
+      "new_title": "HOLD THE FORT",
+      "match_method": "first_line_as_title_match: Ho, my comrades! See the signal -> HOLD THE FORT"
+    },
+    "371": {
+      "old_number": 371,
+      "old_title": "SAFE IN THE ARMS OF JESUS",
+      "new_id": 315,
+      "new_number": 315,
+      "new_title": "SAFE IN THE ARMS OF JESUS",
+      "match_method": "exact_normalized_title"
+    },
+    "372": {
+      "old_number": 372,
+      "old_title": "SHALL WE GATHER AT THE RIVER",
+      "new_id": 297,
+      "new_number": 297,
+      "new_title": "SHALL WE GATHER AT THE RIVER",
+      "match_method": "exact_normalized_title"
+    },
+    "373": {
+      "old_number": 373,
+      "old_title": "AWAKE, MY SOUL, AND WITH THE SUN",
+      "new_id": 142,
+      "new_number": 142,
+      "new_title": "AWAKE, MY SOUL, AND WITH THE SUN",
+      "match_method": "exact_normalized_title"
+    },
+    "374": {
+      "old_number": 374,
+      "old_title": "THE MORNING BRIGHT WITH ROSY LIGHT",
+      "new_id": 143,
+      "new_number": 143,
+      "new_title": "THE MORNING BRIGHT WITH ROSY LIGHT",
+      "match_method": "exact_normalized_title"
+    },
+    "375": {
+      "old_number": 375,
+      "old_title": "CHRIST, WHOSE GLORY FILLS THE SKIES",
+      "new_id": 331,
+      "new_number": 331,
+      "new_title": "CHRIST, WHOSE GLORY FILLS THE SKIES",
+      "match_method": "exact_normalized_title"
+    },
+    "376": {
+      "old_number": 376,
+      "old_title": "FATHER OF HEAV'N ABOVE",
+      "new_id": 30,
+      "new_number": 30,
+      "new_title": "FATHER OF HEAV'N ABOVE",
+      "match_method": "exact_normalized_title"
+    }
+  },
+  "unmatched_old": [
+    {
+      "old_id": 11,
+      "old_number": 11,
+      "old_title": "HOLY, HOLY, HOLY",
+      "first_line": "Holy,holy,holy,Lord God Almighty!",
+      "reason": "Not present in new 375-hymn print edition"
+    },
+    {
+      "old_id": 214,
+      "old_number": 214,
+      "old_title": "ALL HAIL THE POWER OF JESUS' NAME!",
+      "first_line": "All hail the power of Jesus'name!",
+      "reason": "Not present in new 375-hymn print edition"
+    },
+    {
+      "old_id": 256,
+      "old_number": 256,
+      "old_title": "ALL HAIL THE POWER OF JESUS' NAME,",
+      "first_line": "All hail the power of Jesus' name,",
+      "reason": "Not present in new 375-hymn print edition"
+    },
+    {
+      "old_id": 283,
+      "old_number": 283,
+      "old_title": "I AM NOT BOUGHT WITH RICHES",
+      "first_line": "I am not bought with riches",
+      "reason": "Not present in new 375-hymn print edition"
+    },
+    {
+      "old_id": 356,
+      "old_number": 356,
+      "old_title": "COME TO THE MORNING PRAY'R",
+      "first_line": "Come to the morning pray'r,Come,let us kneel and pray;Pray'r is the Christian pilgrim's staff To walk with God all day.",
+      "reason": "Not present in new 375-hymn print edition"
+    },
+    {
+      "old_id": 367,
+      "old_number": 367,
+      "old_title": "HOLY, HOLY, HOLY, LORD GOD ALMIGHTY!",
+      "first_line": "Holy, holy, holy, Lord God Almighty!",
+      "reason": "Not present in new 375-hymn print edition"
+    }
+  ],
+  "duplicate_title_notes": [
+    {
+      "old_id": 239,
+      "old_number": 239,
+      "old_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "resolved_new_number": 310,
+      "resolved_new_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "reason": "duplicate_title_disambiguated_by_stanza_text (Well deserves the name of Friend)"
+    },
+    {
+      "old_id": 288,
+      "old_number": 288,
+      "old_title": "THERE IS A FOUNTAIN FILL'D WITH BLOOD",
+      "resolved_new_number": 368,
+      "resolved_new_title": "THERE IS A FOUNTAIN FILL'D WITH BLOOD",
+      "reason": "duplicate_title_disambiguated_by_stanza_text (sim=0.990, full 5-verse version)"
+    },
+    {
+      "old_id": 321,
+      "old_number": 321,
+      "old_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "resolved_new_number": 369,
+      "resolved_new_title": "ONE THERE IS ABOVE ALL OTHERS",
+      "reason": "duplicate_title_disambiguated_by_stanza_text (Oh, how He loves!)"
+    },
+    {
+      "old_id": 344,
+      "old_number": 344,
+      "old_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "resolved_new_number": 32,
+      "resolved_new_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "reason": "duplicate_title_disambiguated_by_stanza_text (In a beliver's ear!)"
+    },
+    {
+      "old_id": 364,
+      "old_number": 364,
+      "old_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "resolved_new_number": 40,
+      "resolved_new_title": "HOW SWEET THE NAME OF JESUS SOUNDS",
+      "reason": "duplicate_title_disambiguated_by_stanza_text (Blessed be the name of the Lord)"
+    }
+  ],
+  "many_to_one_collisions": {
+    "25": [
+      [
+        10,
+        "OH, FOR A THOUSAND TONGUES TO SING!"
+      ],
+      [
+        365,
+        "OH FOR A THOUSAND TONGUES TO SING"
+      ]
+    ],
+    "29": [
+      [
+        12,
+        "PRAISE HIM! PRAISE HIM!"
+      ],
+      [
+        363,
+        "PRAISE HIM, PRAISE HIM, JESUS OUR BLESSED REDEEMER"
+      ]
+    ],
+    "34": [
+      [
+        15,
+        "O WORSHIP THE KING"
+      ],
+      [
+        366,
+        "O WORSHIP THE KING"
+      ]
+    ],
+    "204": [
+      [
+        131,
+        "IN TENDERNESS HE SOUGHT ME"
+      ],
+      [
+        328,
+        "IN TENDERNESS HE SOUGHT ME"
+      ]
+    ],
+    "302": [
+      [
+        193,
+        "ANOTHER YEAR IS DAWNING"
+      ],
+      [
+        195,
+        "ANOTHER YEAR IS DAWNING"
+      ]
+    ],
+    "347": [
+      [
+        229,
+        "HOLD THE FORT"
+      ],
+      [
+        370,
+        "HO, MY COMRADES! SEE THE SIGNAL"
+      ]
+    ]
+  }
+}

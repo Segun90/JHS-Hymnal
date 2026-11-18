@@ -2,6 +2,7 @@
   "expo": {
     "name": "J.H.S Bible & Hymnal",
     "slug": "jhs-bible-hymnal",
+    "owner": "segun90",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -38,7 +39,18 @@
         }
       ],
       "@react-native-community/datetimepicker",
-      "expo-sharing"
+      "expo-sharing",
+      [
+        "expo-notifications",
+        {
+          "sounds": [
+            "./assets/Sounds/act.mp3",
+            "./assets/Sounds/pray.mp3",
+            "./assets/Sounds/read.mp3",
+            "./assets/Sounds/wake.mp3"
+          ]
+        }
+      ]
     ],
     "extra": {
       "router": {},

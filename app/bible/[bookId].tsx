@@ -7,6 +7,7 @@ import { space, fonts } from '@/theme/tokens';
 import { getBook, getChapterCount } from '@/db/bible';
 import { useLibraryStore } from '@/stores/useLibraryStore';
 import { ChapterGrid } from '@/components/ChapterGrid';
+import { AppBar } from '@/components/AppBar';
 
 export default function ChapterGridScreen() {
   const { palette } = useTheme();
@@ -30,24 +31,23 @@ export default function ChapterGridScreen() {
   if (!book) {
     return (
       <View style={{ flex: 1, backgroundColor: palette.background }}>
-        <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-          <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-            <ChevronLeft size={24} color={palette.text} />
-          </TouchableOpacity>
-          <Text style={[styles.appbarTitle, { color: palette.text }]}>Book not found</Text>
-        </View>
+        <AppBar 
+          title="Book not found" 
+          variant="primary" 
+          onBack={() => router.back()} 
+        />
       </View>
     );
   }
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.serifTitle, { color: palette.text }]}>{book.name}</Text>
-      </View>
+      <AppBar 
+        title={book.name} 
+        variant="primary" 
+        onBack={() => router.back()} 
+        serif
+      />
       <ChapterGrid
         chapterCount={chapterCount}
         currentChapter={1}

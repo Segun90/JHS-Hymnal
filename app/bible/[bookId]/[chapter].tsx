@@ -2,9 +2,10 @@ import React, { useMemo, useState, useCallback, useRef, useEffect } from 'react'
 import { View, FlatList, TouchableOpacity, StyleSheet, Share, Text, TextInput, Modal, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ChevronLeft, ChevronRight, Bookmark, Heart, Share2, Settings2, Pencil } from 'lucide-react-native';
+import { GestureDetector, Gesture, Directions } from 'react-native-gesture-handler';
 import { useTheme } from '@/theme/ThemeContext';
 import { space, fonts, radius } from '@/theme/tokens';
-import { getChapter, getBook } from '@/db/bible';
+import { getChapter, getBook, getChapterCount } from '@/db/bible';
 import { useSettingsStore } from '@/stores/useSettingsStore';
 import { useLibraryStore } from '@/stores/useLibraryStore';
 import { useStatsStore } from '@/stores/useStatsStore';
@@ -13,6 +14,7 @@ import { VerseText } from '@/components/VerseText';
 import { ActionSheet } from '@/components/ActionSheet';
 import { ReaderSettings } from '@/components/ReaderSettings';
 import { Toast } from '@/components/Toast';
+import { AppBar } from '@/components/AppBar';
 
 export default function ReaderScreen() {
   const { palette, isDark } = useTheme();
@@ -33,6 +35,7 @@ export default function ReaderScreen() {
 
   const book = useMemo(() => getBook(bid), [bid]);
   const verses = useMemo(() => getChapter(bid, ch), [bid, ch]);
+  const chapterCount = useMemo(() => getChapterCount(bid), [bid]);
   const [selectedVerse, setSelectedVerse] = useState<number | null>(null);
   const [showSheet, setShowSheet] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -57,6 +60,20 @@ export default function ReaderScreen() {
     setToastMsg(msg);
     setToastKey((k: number) => k + 1);
   };
+
+  const swipeLeft = Gesture.Fling().direction(Directions.LEFT).onEnd(() => {
+    if (ch < chapterCount) {
+      router.replace(`/bible/${bid}/${ch + 1}`);
+    }
+  });
+
+  const swipeRight = Gesture.Fling().direction(Directions.RIGHT).onEnd(() => {
+    if (ch > 1) {
+      router.replace(`/bible/${bid}/${ch - 1}`);
+    }
+  });
+
+  const composedGestures = Gesture.Exclusive(swipeLeft, swipeRight);
 
   const handlePrev = () => {
     if (ch > 1) router.replace(`/bible/${bid}/${ch - 1}` as any);
@@ -186,25 +203,27 @@ export default function ReaderScreen() {
   const keyExtractor = useCallback((item: any) => String(item.id), []);
 
   return (
-    <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, shadowColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.serifTitle, { color: palette.text }]}>
-          {book?.name} {ch}
-        </Text>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity onPress={bookmarkChapter} style={styles.iconBtn}>
-          <Bookmark size={18} color={palette.text} fill={store.isBookmarked({ itemType: 'bible', bibleRef: `${bid}:${ch}` }) ? palette.text : 'transparent'} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/search')}>
-          <Text style={{ fontSize: 22, color: palette.text, fontFamily: fonts.sansSemiBold }}>⌕</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.iconBtn} onPress={() => setShowSettings(true)}>
-          <Settings2 size={20} color={palette.text} />
-        </TouchableOpacity>
-      </View>
+    <GestureDetector gesture={composedGestures}>
+      <View style={{ flex: 1, backgroundColor: palette.background }}>
+        <AppBar 
+        title={`${book?.name} ${ch}`} 
+        variant="primary" 
+        onBack={() => router.back()}
+        serif
+        trailing={
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity onPress={bookmarkChapter} style={styles.iconBtn}>
+              <Bookmark size={18} color={palette.onPrimary} fill={store.isBookmarked({ itemType: 'bible', bibleRef: `${bid}:${ch}` }) ? palette.onPrimary : 'transparent'} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/search')}>
+              <Text style={{ fontSize: 22, color: palette.onPrimary, fontFamily: fonts.sansSemiBold }}>⌕</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconBtn} onPress={() => setShowSettings(true)}>
+              <Settings2 size={20} color={palette.onPrimary} />
+            </TouchableOpacity>
+          </View>
+        }
+      />
 
       <FlatList
         ref={listRef}
@@ -285,6 +304,7 @@ export default function ReaderScreen() {
 
       <Toast key={toastKey} message={toastMsg} visible={!!toastMsg} onDismiss={() => setToastMsg('')} />
     </View>
+    </GestureDetector>
   );
 }
 

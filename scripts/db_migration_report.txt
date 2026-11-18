@@ -1,0 +1,48 @@
+=== JHS HYMNAL CONTENT.DB MIGRATION REPORT (v2 -> v3) ===
+Date: 2026-11-12
+Builder: dbbuilder
+
+1. BACKUP & OLD DB INSPECTION
+- Backed up assets/db/content.db -> scripts/backup_content_v2.db (9,428,992 bytes).
+- Old v2 SHA256: 9608017446518171A3CF7921927443B938326CD43048E2B299D3137E6BFC2905.
+- assets/content.db had the identical SHA256 (unused duplicate; src/db/database.ts only requires assets/db/content.db). Both were updated atomically.
+- Old v2 DB contained 376 hymns, 21 sections, 1,728 stanzas, 874 index entries (topical=250, general=376, first_lines=248), plus unused Bible tables (bible_books=66, bible_verses=31,102, bible_fts=31,102) which database.ts drops on startup.
+
+2. DOCX CORRUPT IMAGE & INDEXES CHECK
+- Source: HYMN_JHS_ENGLISH_PRINT.docx
+- word/media/image1.png: Zip header has CRC=0x0 (146,295 bytes), causing BadZipFile on read.
+- Relationship: word/_rels/document.xml.rels rId6 -> document.xml char index 2525 (Picture 1, full-page cover image at start of document). Zero hymn content is affected.
+- DOCX Indexes: TOC mentions Topical Index (pp. 194-203) and General Index (pp. 203-212), but the DOCX body only contains Topical Index entries for hymns #1-#325 (325 entries) and stops at Supplementary Hymn & Songs (#326-#375 missing; General Index missing).
+- Resolution: Generated complete topical, general, and first_lines index entries (375 each) directly from scripts/hymns_extracted.json.
+
+3. OLD-TO-NEW HYMN ID MIGRATION MAP
+- Output: scripts/hymn_id_migration_map.json
+- Old hymns: 376 (IDs 1..376) -> New hymns: 375 (IDs 1..375, id == number).
+- Matched: 370 old hymns (361 exact normalized title, 8 OCR/punctuation/word-order variants, 1 first-line-as-title #370 -> #347 HOLD THE FORT).
+- Duplicate-title disambiguations (5 old hymns, resolved via stanza text):
+  * Old #239 -> New #310 (ONE THERE IS ABOVE ALL OTHERS — "Well deserves the name of Friend")
+  * Old #321 -> New #369 (ONE THERE IS ABOVE ALL OTHERS — "Oh, how He loves!")
+  * Old #288 -> New #368 (THERE IS A FOUNTAIN FILL'D WITH BLOOD — full 5-verse version)
+  * Old #344 -> New #32  (HOW SWEET THE NAME OF JESUS SOUNDS — "In a beliver's ear!")
+  * Old #364 -> New #40  (HOW SWEET THE NAME OF JESUS SOUNDS — "Blessed be the name of the Lord")
+- Many-to-one collisions (6): Old DB had 6 internal duplicate hymns (#10/#365 -> #25, #12/#363 -> #29, #15/#366 -> #34, #131/#328 -> #204, #193/#195 -> #302, #229/#370 -> #347).
+- Unmatched old hymns (6): #11 (HOLY, HOLY, HOLY), #214 (ALL HAIL THE POWER OF JESUS' NAME!), #256 (ALL HAIL THE POWER OF JESUS' NAME,), #283 (I AM NOT BOUGHT WITH RICHES), #356 (COME TO THE MORNING PRAY'R), #367 (HOLY, HOLY, HOLY, LORD GOD ALMIGHTY!).
+
+4. NEW CONTENT.DB BUILD & VERIFICATION
+- Build script: scripts/build_content_db.py (repeatable, transactional via scripts/content_staging.db).
+- Target DB: assets/db/content.db (815,104 bytes, sha256=a9fdbff5da398bb7ce1527d30b255e1b7444aab6e487154829af45d6db21a835).
+- Duplicate synced: assets/content.db (identical SHA256).
+- Schema & counts:
+  * hymn_sections: 22 (sort_order 1..22)
+  * hymns: 375 (id == number, 1..375)
+  * hymn_stanzas: 1,425 (1,205 verses, 220 choruses)
+  * hymn_index_entries: 1,125 (topical=375 as "Section Name — HYMN TITLE", general=375, first_lines=375)
+  * hymn_fts: 375 (FTS5 content='', rowid=hymn.id)
+  * content_metadata: version=3, source_document=HYMN_JHS_ENGLISH_PRINT.docx, sha256_checksum, counts, imported_at
+  * Indexes: idx_hymns_section, idx_stanzas_hymn, idx_index_type
+- Validation checks:
+  * PRAGMA integrity_check -> ok
+  * PRAGMA foreign_key_check -> 0 errors
+  * Orphan rows (hymns, stanzas, index_entries) -> 0
+  * id != number -> 0
+  * FTS5 search tests ("abide" title, "comrades" first_line, "immanuel" lyrics) & number=375 lookup -> all passed.

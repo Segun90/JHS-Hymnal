@@ -9,6 +9,7 @@ import { useScreenClearance } from '@/utils/layout';
 import { getHymnsBySection, getSections } from '@/db/hymns';
 import { useLibraryStore } from '@/stores/useLibraryStore';
 import { HymnListItem } from '@/components/HymnListItem';
+import { AppBar } from '@/components/AppBar';
 
 export default function SectionListScreen() {
   const { palette } = useTheme();
@@ -24,14 +25,13 @@ export default function SectionListScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.serifTitle, { color: palette.text }]}>{section?.name ?? 'Section'}</Text>
-        <View style={{ flex: 1 }} />
-        <Text style={[styles.countText, { color: palette.textSecondary }]}>{hymns.length} hymns</Text>
-      </View>
+      <AppBar 
+        title={section?.name ?? 'Section'} 
+        variant="primary" 
+        onBack={() => router.back()}
+        trailing={<Text style={[styles.countText, { color: palette.onPrimary }]}>{hymns.length} hymns</Text>}
+        serif
+      />
       <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingTop: 4, paddingBottom: screenClearance }}>
         {hymns.map((hymn: any) => (
           <HymnListItem

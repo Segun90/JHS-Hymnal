@@ -8,6 +8,7 @@ import { space, fonts, radius } from '@/theme/tokens';
 import { useScreenClearance } from '@/utils/layout';
 import { useSettingsStore } from '@/stores/useSettingsStore';
 import { SegmentedControl } from '@/components/SegmentedControl';
+import { AppBar } from '@/components/AppBar';
 
 export default function SettingsScreen() {
   const { palette } = useTheme();
@@ -17,12 +18,11 @@ export default function SettingsScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>Settings</Text>
-      </View>
+      <AppBar 
+        title="Settings" 
+        variant="primary" 
+        onBack={() => router.back()} 
+      />
 
       <ScrollView
         style={{ flex: 1 }}

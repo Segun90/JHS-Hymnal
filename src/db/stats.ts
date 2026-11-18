@@ -180,7 +180,7 @@ export function getHymnStats(): {
   const hymnsOpened: number = (db.getFirstSync(
     "SELECT COUNT(*) as c FROM history WHERE item_type = 'hymn'"
   ) as any).c;
-  const totalHymns: number = (getContentDb().getFirstSync('SELECT COUNT(*) as c FROM hymns') as any).c ?? 376;
+  const totalHymns: number = (getContentDb().getFirstSync('SELECT COUNT(*) as c FROM hymns') as any)?.c ?? 0;
   return { hymnsOpened, uniqueHymns: rows.length, totalHymns };
 }
 

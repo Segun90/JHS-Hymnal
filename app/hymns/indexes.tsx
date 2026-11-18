@@ -1,48 +1,65 @@
-import React, { useState, useMemo } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useMemo, useCallback } from 'react';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { ChevronLeft } from 'lucide-react-native';
 import { useTheme } from '@/theme/ThemeContext';
 import { space, fonts } from '@/theme/tokens';
 import { useScreenClearance } from '@/utils/layout';
 import { getIndexEntries } from '@/db/hymns';
 import { SegmentedControl } from '@/components/SegmentedControl';
+import { AppBar } from '@/components/AppBar';
+import type { IndexEntry } from '@/types';
 
 const tabs = ['Topical', 'General', 'First Lines'];
+const types = ['topical', 'general', 'first_lines'] as const;
 
 export default function IndexesScreen() {
   const { palette } = useTheme();
   const router = useRouter();
   const screenClearance = useScreenClearance();
   const [tab, setTab] = useState(0);
-  const types = ['topical', 'general', 'first_lines'] as const;
   const entries = useMemo(() => getIndexEntries(types[tab]), [tab]);
+
+  const renderItem = useCallback(
+    ({ item }: { item: IndexEntry }) => {
+      const targetNum = item.hymnNumber ?? item.hymnId;
+      return (
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: palette.border }]}
+          onPress={() => router.push(`/hymns/${targetNum}`)}
+        >
+          <Text style={[styles.entryText, { color: palette.text }]} numberOfLines={1}>
+            {item.entryText}
+          </Text>
+          <Text style={[styles.entryNum, { color: palette.highlight }]}>
+            {targetNum}
+          </Text>
+        </TouchableOpacity>
+      );
+    },
+    [palette.border, palette.text, palette.highlight, router]
+  );
+
+  const keyExtractor = useCallback((item: IndexEntry) => String(item.id), []);
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>Indexes</Text>
-      </View>
+      <AppBar
+        title="Indexes"
+        variant="primary"
+        onBack={() => router.back()}
+      />
       <SegmentedControl segments={tabs} selectedIndex={tab} onSelect={setTab} />
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingTop: 6, paddingBottom: screenClearance }}>
-        {entries.map((entry: any) => (
-          <TouchableOpacity
-            key={entry.id}
-            style={[styles.row, { borderBottomColor: palette.border }]}
-            onPress={() => router.push(`/hymns/${entry.hymnId}`)}
-          >
-            <Text style={[styles.entryText, { color: palette.text }]} numberOfLines={1}>
-              {entry.entryText}
-            </Text>
-            <Text style={[styles.entryNum, { color: palette.highlight }]}>
-              {entry.hymnId}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
+      <FlatList
+        style={{ flex: 1 }}
+        data={entries}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        contentContainerStyle={{ paddingTop: 6, paddingBottom: screenClearance }}
+        initialNumToRender={25}
+        maxToRenderPerBatch={20}
+        windowSize={7}
+        removeClippedSubviews
+      />
     </View>
   );
 }

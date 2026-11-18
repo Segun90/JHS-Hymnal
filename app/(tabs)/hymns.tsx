@@ -8,6 +8,7 @@ import { space, fonts } from '@/theme/tokens';
 import { useTabBarClearance } from '@/utils/layout';
 import { getSections } from '@/db/hymns';
 import { NumberPad } from '@/components/NumberPad';
+import { AppBar } from '@/components/AppBar';
 import type { HymnSection } from '@/types';
 
 export default function HymnsScreen() {
@@ -18,13 +19,15 @@ export default function HymnsScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>J.H.S Hymnal</Text>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/search')}>
-          <SearchIcon size={22} color={palette.text} />
-        </TouchableOpacity>
-      </View>
+      <AppBar 
+        title="J.H.S Hymnal" 
+        variant="primary" 
+        trailing={
+          <TouchableOpacity style={styles.iconBtn} onPress={() => router.push('/search')}>
+            <SearchIcon size={22} color={palette.onPrimary} />
+          </TouchableOpacity>
+        }
+      />
 
       <ScrollView
         style={{ flex: 1 }}
@@ -64,11 +67,15 @@ export default function HymnsScreen() {
 function getHymnRange(sections: HymnSection[], sectionId: number): string {
   const idx = sections.findIndex((s) => s.id === sectionId);
   if (idx === -1) return '';
+  const sec = sections[idx];
+  if (sec.minNumber != null && sec.maxNumber != null) {
+    return `${sec.minNumber}\u2013${sec.maxNumber}`;
+  }
   let start = 1;
   for (let i = 0; i < idx; i++) {
     start += sections[i].hymnCount;
   }
-  const end = start + sections[idx].hymnCount - 1;
+  const end = start + sec.hymnCount - 1;
   return `${start}\u2013${end}`;
 }
 

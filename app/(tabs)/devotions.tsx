@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { View, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, ScrollView, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Sun, BookOpen, Calendar as CalendarIcon, Bell, ChevronRight, Sunrise, PartyPopper } from 'lucide-react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
@@ -8,6 +8,7 @@ import { space, radius, fonts, type, gradients } from '@/theme/tokens';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useTabBarClearance } from '@/utils/layout';
 import { useDevotionsStore } from '@/stores/useDevotionsStore';
+import { AppBar } from '@/components/AppBar';
 
 function timeOfDay(): { greeting: string } {
   const h = new Date().getHours();
@@ -63,14 +64,16 @@ export default function DevotionsScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.primary }]}>
-        <Sun size={22} color={palette.onPrimary} />
-        <Text style={[styles.appbarTitle, { color: palette.onPrimary }]}>Devotions</Text>
-        <View style={{ flex: 1 }} />
-        <TouchableOpacity onPress={() => router.push('/devotional/calendar')} style={styles.iconBtn}>
-          <CalendarIcon size={22} color={palette.onPrimary} />
-        </TouchableOpacity>
-      </View>
+      <AppBar 
+        title="Devotions" 
+        variant="primary" 
+        leading={<Sun size={22} color={palette.onPrimary} />}
+        trailing={
+          <TouchableOpacity onPress={() => router.push('/devotional/calendar')} style={styles.iconBtn}>
+            <CalendarIcon size={22} color={palette.onPrimary} />
+          </TouchableOpacity>
+        }
+      />
 
       <ScrollView
         style={{ flex: 1 }}
@@ -96,7 +99,15 @@ export default function DevotionsScreen() {
               activeOpacity={0.9}
               style={styles.hero}
             >
-              <LinearGradient colors={gradients.hero} style={styles.heroBg} />
+              <View style={StyleSheet.absoluteFill}>
+                <LinearGradient colors={['#13224a', '#0a1128']} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
+                <Image 
+                  source={require('../../assets/images/devotional-bg.png')}
+                  style={{ position: 'absolute', height: '120%', width: '130%', right: 0, bottom: 0, opacity: 0.2 }}
+                  resizeMode="cover"
+                />
+              </View>
+              <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.1)' }]} pointerEvents="none" />
               <View style={styles.heroTop}>
                 <View style={styles.dayPill}>
                   <PartyPopper size={14} color={palette.onPrimary} />
@@ -120,7 +131,15 @@ export default function DevotionsScreen() {
               activeOpacity={0.9}
               style={styles.hero}
             >
-              <LinearGradient colors={gradients.hero} style={styles.heroBg} />
+              <View style={StyleSheet.absoluteFill}>
+                <LinearGradient colors={['#13224a', '#0a1128']} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
+                <Image 
+                  source={require('../../assets/images/devotional-bg.png')}
+                  style={{ position: 'absolute', height: '120%', width: '130%', right: 0, bottom: 0, opacity: 0.2 }}
+                  resizeMode="cover"
+                />
+              </View>
+              <View style={[StyleSheet.absoluteFill, { backgroundColor: 'rgba(0,0,0,0.1)' }]} pointerEvents="none" />
               <View style={styles.heroTop}>
                 <View style={styles.dayPill}>
                   <Sunrise size={14} color={palette.onPrimary} />

@@ -10,6 +10,7 @@ import { SegmentedControl } from '@/components/SegmentedControl';
 import { formatBibleRef } from '@/utils/references';
 import { UpcomingCard } from '@/components/UpcomingCard';
 import { getUpcomingContent } from '@/data/upcomingContent';
+import { AppBar } from '@/components/AppBar';
 import type { LibraryItem, Note, HistoryItem } from '@/types';
 
 const TABS = ['Bookmarks', 'Favorites', 'Notes', 'History'];
@@ -59,8 +60,8 @@ export default function LibraryScreen() {
       case 'oldest': return items.sort((a, b) => (a.createdAt ?? a.viewedAt ?? 0) - (b.createdAt ?? b.viewedAt ?? 0));
       case 'alpha':
         return items.sort((a, b) => {
-          const aRef = a.bibleRef ?? `Hymn ${a.hymnId}`;
-          const bRef = b.bibleRef ?? `Hymn ${b.hymnId}`;
+          const aRef = a.bibleRef ?? (a.hymnId != null ? `Hymn ${a.hymnId}` : (a.label ?? 'Legacy Hymn'));
+          const bRef = b.bibleRef ?? (b.hymnId != null ? `Hymn ${b.hymnId}` : (b.label ?? 'Legacy Hymn'));
           return aRef.localeCompare(bRef);
         });
       case 'recent':
@@ -116,7 +117,7 @@ export default function LibraryScreen() {
     if (ref) {
       const parts = ref.split(':');
       if (parts.length >= 2) router.push(`/bible/${parts[0]}/${parts[1]}`);
-    } else if (hid) {
+    } else if (hid != null && hid > 0) {
       router.push(`/hymns/${hid}`);
     }
   };
@@ -124,7 +125,9 @@ export default function LibraryScreen() {
   const renderItem = useCallback(({ item }: { item: any }) => {
     const isBible = !!item.bibleRef;
     const isNote = tab === 2;
-    const refStr = item.bibleRef ? formatBibleRef(item.bibleRef) : `Hymn ${item.hymnId}`;
+    const refStr = item.bibleRef
+      ? formatBibleRef(item.bibleRef)
+      : (item.hymnId != null ? `Hymn ${item.hymnId}` : (item.label ?? 'Legacy Hymn'));
     const date = new Date(item.createdAt ?? item.updatedAt ?? item.viewedAt ?? Date.now());
     const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
     const preview = item.body ?? item.previewText ?? '';
@@ -196,22 +199,25 @@ export default function LibraryScreen() {
 
   return (
     <View style={{ flex: 1, backgroundColor: palette.background }}>
-      <View style={[styles.appbar, { backgroundColor: palette.surface, borderBottomColor: palette.border }]}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconBtn}>
-          <ChevronLeft size={24} color={palette.text} />
-        </TouchableOpacity>
-        <Text style={[styles.appbarTitle, { color: palette.text }]}>My Library</Text>
-        {selecting && sel.size > 0 && (
-          <TouchableOpacity onPress={handleDeleteSel} style={styles.iconBtn}>
-            <Trash2 size={20} color={palette.error} />
-          </TouchableOpacity>
-        )}
-        {selecting && (
-          <TouchableOpacity onPress={() => { setSel(new Set()); setSelecting(false); }} style={styles.iconBtn}>
-            <X size={20} color={palette.textSecondary} />
-          </TouchableOpacity>
-        )}
-      </View>
+      <AppBar 
+        title="My Library" 
+        variant="primary" 
+        onBack={() => router.back()}
+        trailing={
+          <>
+            {selecting && sel.size > 0 && (
+              <TouchableOpacity onPress={handleDeleteSel} style={styles.iconBtn}>
+                <Trash2 size={20} color={palette.error} />
+              </TouchableOpacity>
+            )}
+            {selecting && (
+              <TouchableOpacity onPress={() => { setSel(new Set()); setSelecting(false); }} style={styles.iconBtn}>
+                <X size={20} color={palette.onPrimary} />
+              </TouchableOpacity>
+            )}
+          </>
+        }
+      />
 
       <FlatList
         data={sorted}

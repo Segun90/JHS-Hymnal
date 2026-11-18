@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { ChevronLeft } from 'lucide-react-native';
 import { useTheme } from '../theme/ThemeContext';
 import { type, space, radius, gradients } from '../theme/tokens';
 import { LinearGradient } from 'expo-linear-gradient';
 import { DecorativeBackground } from './DecorativeBackground';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface AppBarProps {
   title: string;
@@ -17,6 +18,7 @@ interface AppBarProps {
 
 export function AppBar({ title, variant = 'default', leading, onBack, trailing, serif }: AppBarProps) {
   const { palette, isDark } = useTheme();
+  const insets = useSafeAreaInsets();
 
   const bgColor = variant === 'primary' ? palette.primary
     : variant === 'immersive' ? palette.surface
@@ -28,15 +30,20 @@ export function AppBar({ title, variant = 'default', leading, onBack, trailing, 
   return (
     <View style={[
       styles.bar,
+      { paddingTop: Math.max(insets.top, 24) + 12, paddingBottom: 12 },
       variant !== 'primary' && { backgroundColor: bgColor },
       showBorder && { borderBottomWidth: 1, borderBottomColor: palette.border },
       variant === 'immersive' && styles.elevation,
       variant === 'immersive' && { shadowColor: palette.border },
     ]}>
       {variant === 'primary' && (
-        <View style={StyleSheet.absoluteFill} pointerEvents="none">
-          <LinearGradient colors={gradients.primaryToAccent} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 1, y: 1}} />
-          <DecorativeBackground variant="waves" opacity={0.08} inverse />
+        <View style={[StyleSheet.absoluteFill, { overflow: 'hidden' }]} pointerEvents="none">
+          <Image 
+            source={require('../../assets/images/home-header-bg.png')}
+            style={{ position: 'absolute', width: '100%', height: 700, bottom: 0 }}
+            resizeMode="cover"
+          />
+          <LinearGradient colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0.1)']} style={StyleSheet.absoluteFill} start={{x: 0, y: 0}} end={{x: 0, y: 1}} />
         </View>
       )}
       <View style={[styles.left, !onBack && !leading && { minWidth: 0 }]}>
@@ -63,7 +70,7 @@ export function AppBar({ title, variant = 'default', leading, onBack, trailing, 
 }
 
 const styles = StyleSheet.create({
-  bar: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.screenPadding, minHeight: 52, paddingTop: 6, paddingBottom: 6 },
+  bar: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: space.screenPadding, minHeight: 52 },
   elevation: {
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.03,

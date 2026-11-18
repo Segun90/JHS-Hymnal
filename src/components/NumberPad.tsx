@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Hash, Delete, Check } from 'lucide-react-native';
 import { useTheme } from '../theme/ThemeContext';
 import { fonts, space, radius } from '../theme/tokens';
+import { getHymnBounds, hymnNumberExists } from '../db/hymns';
 
 interface NumberPadProps {
   onGo: (number: number) => void;
@@ -11,24 +12,36 @@ interface NumberPadProps {
 export function NumberPad({ onGo }: NumberPadProps) {
   const { palette } = useTheme();
   const [value, setValue] = useState('');
+  const bounds = useMemo(() => getHymnBounds(), []);
+  const maxDigits = Math.max(3, String(bounds.maxNumber || 375).length);
 
   const handlePress = (key: string) => {
     if (key === 'back') {
       setValue(value.slice(0, -1));
     } else if (key === 'go') {
       const num = parseInt(value, 10);
-      if (num >= 1 && num <= 376) {
+      if (
+        Number.isFinite(num) &&
+        num >= bounds.minNumber &&
+        num <= bounds.maxNumber &&
+        hymnNumberExists(num)
+      ) {
         onGo(num);
         setValue('');
       }
     } else {
-      if (value.length < 3) {
+      if (value.length < maxDigits) {
         setValue(value + key);
       }
     }
   };
 
-  const canGo = value.length >= 1;
+  const parsed = parseInt(value, 10);
+  const canGo =
+    value.length >= 1 &&
+    Number.isFinite(parsed) &&
+    parsed >= bounds.minNumber &&
+    parsed <= bounds.maxNumber;
 
   const keys: { label: string; icon?: 'back' | 'go' }[] = [
     { label: '1' }, { label: '2' }, { label: '3' },

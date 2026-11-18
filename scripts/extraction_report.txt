@@ -1,0 +1,37 @@
+=== JHS HYMNAL EXTRACTION REPORT ===
+Source: HYMN_JHS_ENGLISH_PRINT.docx
+Total hymns extracted: 375
+Number range: 1 - 375
+Total stanzas: 1425 (verses=1205, choruses=220)
+Sections found (22):
+  Admonition: 12 hymns (#1-#12)
+  Adoration: 22 hymns (#13-#34)
+  Assurance & Confidence: 30 hymns (#35-#64)
+  Blood of Jesus: 9 hymns (#65-#73)
+  Christian Life: 28 hymns (#74-#101)
+  Christian Service & Reward: 5 hymns (#102-#106)
+  Christ Our Saviour: 18 hymns (#107-#124)
+  Commitment & Consecration: 30 hymns (#125-#154)
+  Conflict & Victory: 9 hymns (#155-#163)
+  Divine Healing: 4 hymns (#164-#167)
+  Evangelism: 20 hymns (#168-#187)
+  Grace & Forgiveness: 22 hymns (#188-#209)
+  Heaven: 15 hymns (#210-#224)
+  Holy Spirit: 9 hymns (#225-#233)
+  Invitation: 16 hymns (#234-#249)
+  Prayer: 13 hymns (#250-#262)
+  Rapture: 8 hymns (#263-#270)
+  Sanctification: 18 hymns (#271-#288)
+  Special Occasion: 14 hymns (#289-#302)
+  The Lord's Love & Care: 17 hymns (#303-#319)
+  Warning & Judgment: 6 hymns (#320-#325)
+  Supplementary Hymns & Songs: 50 hymns (#326-#375)
+Duplicate numbers: 0
+Duplicate titles: 3
+Missing titles: []
+No stanzas: []
+Number gaps: []
+All errors/warnings:
+  - Duplicate title: 'HOW SWEET THE NAME OF JESUS SOUNDS' (numbers 32 and 40)
+  - Duplicate title: "THERE IS A FOUNTAIN FILL'D WITH BLOOD" (numbers 166 and 368)
+  - Duplicate title: 'ONE THERE IS ABOVE ALL OTHERS' (numbers 310 and 369)
